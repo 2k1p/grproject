@@ -7,16 +7,10 @@
     android:orientation="vertical"
     tools:context=".MainActivity" >
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/background_dark" />
-
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="180dp"
         app:srcCompat="@drawable/main05" />
 
     <View
@@ -27,13 +21,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="210dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
-            android:layout_height="220dp"
+            android:layout_height="210dp"
             android:layout_weight="1"
             android:background="@drawable/main01" />
 
@@ -46,7 +40,7 @@
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
-            android:layout_height="220dp"
+            android:layout_height="210dp"
             android:layout_weight="1"
             android:background="@drawable/main02" />
 
@@ -60,27 +54,26 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_height="210dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/button3"
             android:layout_width="192dp"
-            android:layout_height="220dp"
+            android:layout_height="210dp"
             android:layout_weight="1"
             android:background="@drawable/main03" />
 
         <View
             android:id="@+id/view6"
             android:layout_width="1dp"
-            android:layout_height="2330dp"
+            android:layout_height="220dp"
             android:background="@android:color/background_dark" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="wrap_content"
-            android:layout_height="220dp"
+            android:layout_height="210dp"
             android:layout_weight="1"
             android:background="@drawable/main04" />
     </LinearLayout>
