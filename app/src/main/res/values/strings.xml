@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">IBYG</string>
+    <string name="todo">TODO</string>
+    <string name="image01">알고가</string>
 </resources>
