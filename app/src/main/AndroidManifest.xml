@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ibyg">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +11,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" android:parentActivityName=".MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="http"
+                    android:host="google.com" />
+            </intent-filter>
         </activity>
+        <activity android:name=".LoginActivity">
+
+
+
+        </activity>
+        <activity android:name=".SignUpActivity">
+
+
+        </activity>
+        <activity
+            android:name=".CafeManager"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".CafeManager2"
+            android:parentActivityName=".CafeManager"></activity>
+        <activity
+            android:name=".CafeManager3"
+            android:parentActivityName=".CafeManager2"></activity>
     </application>
 
 </manifest>
