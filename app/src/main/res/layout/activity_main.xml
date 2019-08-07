@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="100dp"
         app:srcCompat="@drawable/main05" />
 
     <View
@@ -77,12 +77,28 @@
             android:layout_height="210dp"
             android:layout_weight="1"
             android:background="@drawable/main04" />
+
+
+
     </LinearLayout>
+
 
     <View
         android:id="@+id/view5"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/background_dark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:text="로그아웃" />
+    </LinearLayout>
 
 </LinearLayout>
