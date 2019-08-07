@@ -45,7 +45,10 @@
             android:parentActivityName=".CafeManager"></activity>
         <activity
             android:name=".CafeManager3"
-            android:parentActivityName=".CafeManager2"></activity>
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".CafeManager4"
+            android:parentActivityName=".CafeManager3"></activity>
     </application>
 
 </manifest>
