@@ -1,7 +1,6 @@
 package com.example.ibyg;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -63,7 +62,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button button3 = findViewById(R.id.button3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {    //카페관리 눌렀을때 다음화면이동
+                Intent intent = new Intent(MainActivity.this, NoticeManagement.class);
+
+                startActivity(intent);
+            }
+        });
     }
+
+
 
 
     //로그아웃 로직
