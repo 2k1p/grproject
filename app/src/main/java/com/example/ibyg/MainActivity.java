@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {    //카페관리 눌렀을때 다음화면이동
                 Intent intent = new Intent(getApplicationContext(), CafeManager.class);
 
                 startActivity(intent);

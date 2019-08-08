@@ -8,12 +8,6 @@
     tools:context=".MainActivity" >
 
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/main05" />
-
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
@@ -96,7 +90,7 @@
         <Button
             android:id="@+id/logout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
 
             android:text="로그아웃" />
     </LinearLayout>
