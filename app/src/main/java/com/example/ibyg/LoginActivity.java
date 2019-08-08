@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String TAG = "SignUpActivity";
     private FirebaseAuth mAuth;
 
 
@@ -26,33 +25,31 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        // Initialize Firebase Auth
+
         mAuth = FirebaseAuth.getInstance();
 
 
         findViewById(R.id.loginButton).setOnClickListener(onClickListener);
+        findViewById(R.id.gotoPasswordResetButton).setOnClickListener(onClickListener);
 
     }
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
 
-    }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             switch(v.getId()){
                 case R.id.loginButton:
-                    signUp();
+                    login();
+                    break;
+                case R.id.gotoPasswordResetButton:
+                    myStartActivity(PasswordResetActivity.class);
                     break;
             }
         }
     };
 
-    private void signUp(){
+    private void login(){
         String email = ((EditText)findViewById(R.id.emailEditText)).getText().toString();
         String password = ((EditText)findViewById(R.id.passwordEditText)).getText().toString();
 
@@ -67,10 +64,11 @@ public class LoginActivity extends AppCompatActivity {
 
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 startToast("로그인 하였습니다");
-                                startMainActivity();
+                                myStartActivity(MainActivity.class);
                             } else {
                                 if(task.getException() != null){
-                                    startToast(task.getException().toString());
+                                    startToast("이메일 또는 비밀번호가 일치하지 않습니다.");
+                                    //startToast(task.getException().toString());
                                 }
                             }
                         }
@@ -78,17 +76,19 @@ public class LoginActivity extends AppCompatActivity {
         }else{
             startToast("이메일 또는 비밀번호를 입력해 주세요.");
         }
-        }
+    }
 
     private void startToast(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
 
-    private void startMainActivity(){
-        Intent intent = new Intent(this,MainActivity.class);
+    private void myStartActivity(Class c){
+        Intent intent = new Intent(this, c);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
+
+
 }
 
