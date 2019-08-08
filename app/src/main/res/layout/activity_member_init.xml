@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:gravity="center"
-        android:text="로그인"
+        android:text="회원정보"
         android:textColor="#E92D2D"
         android:textSize="24dp"
         android:textStyle="bold" />
@@ -20,34 +20,42 @@
         android:padding="10dp">
 
         <EditText
-            android:id="@+id/emailEditText"
+            android:id="@+id/nameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:ems="10"
-            android:hint="이메일"
-            android:inputType="textEmailAddress" />
+            android:hint="이름"
+            android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/passwordEditText"
+            android:id="@+id/phoneEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:ems="10"
-            android:hint="비밀번호"
-            android:inputType="textPassword" />
+            android:hint="전화번호"
+            android:inputType="phone" />
 
-        <Button
-            android:id="@+id/loginButton"
+        <EditText
+            android:id="@+id/birthEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="로그인" />
+            android:ems="10"
+            android:hint="생년월일"
+            android:inputType="date" />
 
-        <Button
-            android:id="@+id/gotoPasswordResetButton"
+        <EditText
+            android:id="@+id/addrEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="비밀번호 재설정" />
+            android:ems="10"
+            android:hint="주소"
+            android:inputType="textPostalAddress" />
+
+        <Button
+            android:id="@+id/checkButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="확인" />
 
     </LinearLayout>
 </LinearLayout>
