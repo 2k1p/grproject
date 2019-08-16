@@ -53,6 +53,7 @@ public class CafeManager3 extends AppCompatActivity {
 
 
         //***해야할것: 카페등록하고 뒤로가기하면 메인으로 가는데 다시 들어가면 카페관리화면으로 들어가지도록 수정
+        //액션바의 뒤로가기하고 폰의 뒤로가기버튼하고 똑같이 화면전환되도록 수정
 
         Button button = findViewById(R.id.cafebutton3);
         button.setOnClickListener(new View.OnClickListener() {
