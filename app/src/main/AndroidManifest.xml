@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".FirstReady">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,6 +46,14 @@
 
 
         </activity>
+        <activity android:name=".MainActivity">
+
+
+    </activity>
+        <activity android:name=".ListingActivity">
+
+
+        </activity>
         <activity
             android:name=".CafeManager"
             android:parentActivityName=".MainActivity"></activity>
@@ -58,6 +66,12 @@
         <activity
             android:name=".CafeManager4"
             android:parentActivityName=".CafeManager3"></activity>
+        <activity
+            android:name=".NoticeManagement"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".NoticeAdd"
+            android:parentActivityName=".NoticeManagement"></activity>
     </application>
 
 </manifest>
