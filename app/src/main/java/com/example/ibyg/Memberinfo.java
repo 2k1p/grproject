@@ -1,7 +1,5 @@
 package com.example.ibyg;
 
-import android.widget.EditText;
-
 public class Memberinfo {
     private String name;
     private String phoneNumber;
