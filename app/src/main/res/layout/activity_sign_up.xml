@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="20dp"
             android:background="#2DA6E8"
             android:text="가입하기"
             android:textColor="#F5F5F5"
