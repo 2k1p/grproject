@@ -32,7 +32,7 @@ public class NoticeAdd extends MainActivity {
 
 
 
-        findViewById(R.id.noticeadd).setOnClickListener(onClickListener);
+        findViewById(R.id.noticeModify).setOnClickListener(onClickListener);
 
 
     }
@@ -41,7 +41,7 @@ public class NoticeAdd extends MainActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.noticeadd:    //등록하기 버튼
+                case R.id.noticeModify:    //등록하기 버튼
                     myStartActivity(NoticeManagement.class);
                     profileUpdate();
                     break;
@@ -53,7 +53,7 @@ public class NoticeAdd extends MainActivity {
     //안드로이드 + 파이어베이스 SNS앱 만들기 part10 [게시글 작성 화면 구현]
     private void profileUpdate(){
         String title = ((EditText)findViewById(R.id.titleEditText)).getText().toString();
-        String contents = ((EditText)findViewById(R.id.contentEditText)).getText().toString();
+        String contents = ((EditText)findViewById(R.id.contentsEditText)).getText().toString();
 
         if(title.length() > 0 && contents.length() > 0){
             user = FirebaseAuth.getInstance().getCurrentUser();
