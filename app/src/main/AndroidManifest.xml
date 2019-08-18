@@ -4,6 +4,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,31 +35,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity">
-
-
-
         </activity>
         <activity android:name=".SignUpActivity">
-
-
-    </activity>
-
+        </activity>
         <activity android:name=".PasswordResetActivity">
-
-
-    </activity>
+        </activity>
         <activity android:name=".MemberInitActivity">
-
-
         </activity>
         <activity android:name=".MainActivity">
-
-
-    </activity>
-        <activity android:name=".ListingActivity">
-
-
         </activity>
+        <activity android:name=".ListingActivity">
+        </activity>
+
+
+
         <activity
             android:name=".CafeManager"
             android:parentActivityName=".MainActivity"></activity>
@@ -73,6 +67,8 @@
         <activity
             android:name=".NoticeAdd"
             android:parentActivityName=".NoticeManagement"></activity>
+        <activity android:name=".BasicActivity">
+        </activity>
     </application>
 
 </manifest>

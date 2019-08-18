@@ -67,7 +67,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/noticeAdd"
+                android:id="@+id/check"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="등록하기" />

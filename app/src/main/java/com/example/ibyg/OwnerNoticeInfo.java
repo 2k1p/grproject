@@ -18,9 +18,13 @@ public class OwnerNoticeInfo {
     public String getContents(){
         return this.contents;
     }
-    public void setContents(String contents){ this.contents = contents; }
+    public void setContents(String contents){
+        this.contents = contents;
+    }
     public String getPublisher(){
         return this.publisher;
     }
-    public void setPublisher(String publisher){ this.publisher = publisher; }
+    public void setPublisher(String publisher){
+        this.publisher = publisher;
+    }
 }
