@@ -21,7 +21,7 @@ public class NoticeModify extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);   //뒤로가기버튼 <- 만들기
 
 
-        Button button = findViewById(R.id.noticeadd);
+        Button button = findViewById(R.id.noticeModify);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {    //카페관리 눌렀을때 다음화면이동
