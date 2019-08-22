@@ -78,7 +78,6 @@ public class NoticeAdd extends BasicActivity {
         });
     }
 
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -199,7 +198,8 @@ public class NoticeAdd extends BasicActivity {
                         }
                     } else {
                         contentsList.add(pathList.get(pathCount));
-                        final StorageReference mountainImagesRef = storageRef.child("owner_notice/" + documentReference.getId() + "/"+pathCount+".jpg");
+                        String[] pathArray = pathList.get(pathCount).split("\\.");
+                        final StorageReference mountainImagesRef = storageRef.child("owner_notice/" + documentReference.getId() + "/"+pathCount+"."+pathArray[pathArray.length - 1]);
                         try {
                             InputStream stream = new FileInputStream(new File(pathList.get(pathCount)));
                             StorageMetadata metadata = new StorageMetadata.Builder().setCustomMetadata("index",""+(contentsList.size()-1)).build();
@@ -224,6 +224,7 @@ public class NoticeAdd extends BasicActivity {
                                                 storeUpload(documentReference, ownerNoticeInfo);
                                                 for(int a = 0; a < contentsList.size(); a++){
                                                     Log.e("로그: ","콘덴츠: "+contentsList.get(a));
+                                                    startToast("공지사항이 등록되었습니다");
                                                 }
                                             }
                                         }
@@ -236,6 +237,10 @@ public class NoticeAdd extends BasicActivity {
                         pathCount++;
                     }
                 }
+            }
+            if(pathList.size() == 0){
+                OwnerNoticeInfo ownerNoticeInfo = new OwnerNoticeInfo(title, contentsList, user.getUid(), new Date());
+                storeUpload(documentReference, ownerNoticeInfo);
             }
         } else {
             startToast("제목을 입력해주세요.");
