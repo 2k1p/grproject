@@ -10,6 +10,8 @@ import android.provider.MediaStore;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ibyg.adapter.GalleryAdapter;
+
 import java.util.ArrayList;
 
 public class GalleryActivity extends BasicActivity {
