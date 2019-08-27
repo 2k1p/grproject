@@ -1,6 +1,7 @@
 package com.example.ibyg.adapter;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -20,7 +21,6 @@ import com.bumptech.glide.Glide;
 import com.example.ibyg.OnPostListener;
 import com.example.ibyg.OwnerNoticeInfo;
 import com.example.ibyg.R;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,7 +29,6 @@ import java.util.Locale;
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder> {
     private ArrayList<OwnerNoticeInfo> mDataset;
     private Activity activity;
-    private FirebaseFirestore firebaseFirestore;
     private OnPostListener onPostListener;
 
     static class MainViewHolder extends RecyclerView.ViewHolder {
@@ -41,9 +40,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     }
 
     public MainAdapter(Activity activity, ArrayList<OwnerNoticeInfo> myDataset) {
-        mDataset = myDataset;
+        this.mDataset = myDataset;
         this.activity = activity;
-        firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
     public void setOnPostListener(OnPostListener onPostListener){
@@ -90,25 +88,32 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         ArrayList<String> contentsList = mDataset.get(position).getContents();
 
-        if(contetnsLayout.getTag() == null || !contetnsLayout.getTag().equals(contentsList)){
+        if (contetnsLayout.getTag() == null || !contetnsLayout.getTag().equals(contentsList)) {
             contetnsLayout.setTag(contentsList);
             contetnsLayout.removeAllViews();
-            if(contentsList.size() > 0){
-                for (int i = 0; i < contentsList.size(); i++ ){
-                    String contents = contentsList.get(i);
-                    if(Patterns.WEB_URL.matcher(contents).matches()){
-                        ImageView imageView = new ImageView(activity);
-                        imageView.setLayoutParams(layoutParams);
-                        imageView.setAdjustViewBounds(true);
-                        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-                        contetnsLayout.addView(imageView);
-                        Glide.with(activity).load(contents).override(1000).thumbnail(0.1f).into(imageView);
-                    }else {
-                        TextView textView = new TextView(activity);
-                        textView.setLayoutParams(layoutParams);
-                        textView.setText(contents);
-                        contetnsLayout.addView(textView);
-                    }
+            final int MORE_INDEX = 2;
+            for (int i = 0; i < contentsList.size(); i++) {
+                if (i == MORE_INDEX) {
+                    TextView textView = new TextView(activity);
+                    textView.setLayoutParams(layoutParams);
+                    textView.setText("더보기...");
+                    contetnsLayout.addView(textView);
+                    break;
+                }
+                String contents = contentsList.get(i);
+                if (Patterns.WEB_URL.matcher(contents).matches() && contents.contains("https://firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/owner_notice")) {
+                    ImageView imageView = new ImageView(activity);
+                    imageView.setLayoutParams(layoutParams);
+                    imageView.setAdjustViewBounds(true);
+                    imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                    contetnsLayout.addView(imageView);
+                    Glide.with(activity).load(contents).override(1000).thumbnail(0.1f).into(imageView);
+                } else {
+                    TextView textView = new TextView(activity);
+                    textView.setLayoutParams(layoutParams);
+                    textView.setText(contents);
+                    textView.setTextColor(Color.rgb(0, 0, 0));
+                    contetnsLayout.addView(textView);
                 }
             }
         }
@@ -124,13 +129,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                String id = mDataset.get(position).getId();
                 switch (menuItem.getItemId()) {
                     case R.id.modify:
-                        onPostListener.onModify(id);
+                        onPostListener.onModify(position);
                         return true;
                     case R.id.delete:
-                        onPostListener.onDelete(id);
+                        onPostListener.onDelete(position);
                         return true;
                     default:
                         return false;

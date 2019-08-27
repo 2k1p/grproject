@@ -1,9 +1,10 @@
 package com.example.ibyg;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class OwnerNoticeInfo {
+public class OwnerNoticeInfo implements Serializable {
     private String title;
     private ArrayList<String> contents;
     private String publisher;
@@ -23,7 +24,6 @@ public class OwnerNoticeInfo {
         this.contents = contents;
         this.publisher = publisher;
         this.createdAt = createdAt;
-        this.id = id;
     }
 
     public String getTitle(){
