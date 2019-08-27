@@ -10,7 +10,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ibyg.adapter.MainAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,7 +32,9 @@ public class NoticeManagement extends BasicActivity {
     private static final String TAG = "NoticeManagement";
     private FirebaseUser firebaseUser;
     private FirebaseFirestore firebaseFirestore;
-    private RecyclerView recyclerView;
+    private MainAdapter mainAdapter;
+    private ArrayList<OwnerNoticeInfo> postList;
+    private Util util;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +44,6 @@ public class NoticeManagement extends BasicActivity {
         ActionBar actionBar = getSupportActionBar(); //제목줄 객체 얻어오기
         actionBar.setTitle("공지사항 관리");          //액션바 제목설정
         actionBar.setDisplayHomeAsUpEnabled(true);   //뒤로가기버튼 <- 만들기
-
-
-
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -70,19 +72,71 @@ public class NoticeManagement extends BasicActivity {
             });
         }
 
+        util = new Util(this);
+        postList = new ArrayList<>();
+        mainAdapter = new MainAdapter(NoticeManagement.this, postList);
+        mainAdapter.setOnPostListener(onPostListener);
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         findViewById(R.id.noticeaddbutton).setOnClickListener(onClickListener);
 
-        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(NoticeManagement.this));
+        recyclerView.setAdapter(mainAdapter);
 
     }
 
 
-
+    @Override
     protected void onResume(){
         super.onResume();
+        postsUpdate();
+    }
 
+    OnPostListener onPostListener = new OnPostListener() {
+        @Override
+        public void onDelete(String id) {
+            firebaseFirestore.collection("owner_notice").document(id)
+                    .delete()
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            util.showToast("게시글을 삭제하였습니다.");
+                            postsUpdate();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            util.showToast("게시글을 삭제하지 못하였습니다.");
+                        }
+                    });
+        }
+
+        @Override
+        public void onModify(String id) {
+            myStartActivity(NoticeAdd.class, id);
+        }
+    };
+
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                /*
+                case R.id.logoutButton:
+                    FirebaseAuth.getInstance().signOut();
+                    myStartActivity(SignUpActivity.class);
+                    break;
+                */
+                case R.id.noticeaddbutton:
+                    myStartActivity(NoticeAdd.class);
+                    break;
+            }
+        }
+    };
+
+    private void postsUpdate(){
         if (firebaseUser != null) {
             CollectionReference collectionReference = firebaseFirestore.collection("owner_notice");
             collectionReference.orderBy("createdAt", Query.Direction.DESCENDING).get()
@@ -90,18 +144,17 @@ public class NoticeManagement extends BasicActivity {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
-                                ArrayList<OwnerNoticeInfo> postList = new ArrayList<>();
+                                postList.clear();
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Log.d(TAG, document.getId() + " => " + document.getData());
                                     postList.add(new OwnerNoticeInfo(
                                             document.getData().get("title").toString(),
                                             (ArrayList<String>) document.getData().get("contents"),
                                             document.getData().get("publisher").toString(),
-                                            new Date(document.getDate("createdAt").getTime())));
+                                            new Date(document.getDate("createdAt").getTime()),
+                                            document.getId()));
                                 }
-
-                                RecyclerView.Adapter mAdapter = new MainAdapter(NoticeManagement.this, postList);
-                                recyclerView.setAdapter(mAdapter);
+                                mainAdapter.notifyDataSetChanged();
                             } else {
                                 Log.d(TAG, "Error getting documents: ", task.getException());
                             }
@@ -110,25 +163,14 @@ public class NoticeManagement extends BasicActivity {
         }
     }
 
-
-
-    View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-                /*case R.id.logoutButton:
-                    FirebaseAuth.getInstance().signOut();
-                    myStartActivity(SignUpActivity.class);
-                    break; */
-                case R.id.noticeaddbutton:
-                    myStartActivity(NoticeAdd.class);
-                    break;
-            }
-        }
-    };
-
     private void myStartActivity(Class c) {
         Intent intent = new Intent(this, c);
+        startActivity(intent);
+    }
+
+    private void myStartActivity(Class c, String id) {
+        Intent intent = new Intent(this, c);
+        intent.putExtra("id",id);
         startActivity(intent);
     }
 }

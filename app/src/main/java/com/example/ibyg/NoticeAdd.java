@@ -59,6 +59,7 @@ public class NoticeAdd extends BasicActivity {
 
         parent = findViewById(R.id.contentsLayout);
         buttonsBackgroundLayout = findViewById(R.id.buttonsBackgroundLayout);
+        //loaderLayout = findViewById(R.id.loaderLyaout);
 
         buttonsBackgroundLayout.setOnClickListener(onClickListener);
         findViewById(R.id.check).setOnClickListener(onClickListener);
@@ -185,7 +186,14 @@ public class NoticeAdd extends BasicActivity {
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference storageRef = storage.getReference();
             FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-            final DocumentReference documentReference = firebaseFirestore.collection("owner_notice").document();
+            String id = getIntent().getStringExtra("id");
+            DocumentReference dr;
+            if(id == null){
+                dr = firebaseFirestore.collection("owner_notice").document();
+            }else{
+                dr = firebaseFirestore.collection("owner_notice").document(id);
+            }
+            final DocumentReference documentReference = dr;
 
             for(int i = 0; i < parent.getChildCount(); i++){
                 LinearLayout linearLayout = (LinearLayout)parent.getChildAt(i);
@@ -224,7 +232,6 @@ public class NoticeAdd extends BasicActivity {
                                                 storeUpload(documentReference, ownerNoticeInfo);
                                                 for(int a = 0; a < contentsList.size(); a++){
                                                     Log.e("로그: ","콘덴츠: "+contentsList.get(a));
-                                                    startToast("공지사항이 등록되었습니다");
                                                 }
                                             }
                                         }

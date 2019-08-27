@@ -1,4 +1,4 @@
-package com.example.ibyg;
+package com.example.ibyg.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.ibyg.R;
 
 import java.util.ArrayList;
 
