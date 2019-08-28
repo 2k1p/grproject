@@ -46,6 +46,7 @@
         </activity>
         <activity android:name=".ListingActivity">
         </activity>
+        <activity android:name=".SetLocActivity"></activity>
 
 
 
