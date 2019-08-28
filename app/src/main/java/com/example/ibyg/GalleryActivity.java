@@ -10,6 +10,8 @@ import android.provider.MediaStore;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ibyg.adapter.GalleryAdapter;
+
 import java.util.ArrayList;
 
 public class GalleryActivity extends BasicActivity {
@@ -27,7 +29,7 @@ public class GalleryActivity extends BasicActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
 
-        mAdapter = new CafeManager.GalleryAdapter(this, getImagesPath(this));
+        mAdapter = new GalleryAdapter(this, getImagesPath(this));
         recyclerView.setAdapter(mAdapter);
     }
 
