@@ -47,6 +47,8 @@
         <activity android:name=".ListingActivity">
         </activity>
         <activity android:name=".SetLocActivity"></activity>
+        <activity android:name=".FindCafeActivity"></activity>
+        <activity android:name=".AhpActivity"></activity>
 
 
 
