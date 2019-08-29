@@ -9,8 +9,8 @@
         android:layout_height="200dp"
         android:gravity="center"
         android:text="로그인"
-        android:textColor="#E92D2D"
-        android:textSize="24dp"
+        android:textColor="#2DA6E8"
+        android:textSize="42dp"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -41,13 +41,20 @@
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="로그인" />
+            android:background="#2DA6E8"
+            android:text="로그인"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/gotoPasswordResetButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="비밀번호 재설정" />
+            android:layout_marginTop="2.5dp"
+            android:background="#2DA6E8"
+            android:text="비밀번호 재설정"
+            android:textColor="#F5F2F2"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </LinearLayout>
