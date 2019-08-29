@@ -5,6 +5,58 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/gae3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="332dp"
+        android:layout_marginEnd="207dp"
+        android:text="개"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/gae4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="393dp"
+        android:layout_marginEnd="206dp"
+        android:text="개"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/gae5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="274dp"
+        android:layout_marginEnd="207dp"
+        android:text="개"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/won2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="453dp"
+        android:layout_marginEnd="206dp"
+        android:text="원"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
         android:id="@+id/cafeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -107,6 +159,92 @@
         android:hint="예) 08:00~22:00"
         android:inputType="textPersonName" />
 
+    <TextView
+        android:id="@+id/cafeText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="270dp"
+        android:text="와이파이"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/cafeEdit8"
+        android:layout_width="78dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cafeText5"
+        android:layout_toStartOf="@+id/gae4"
+        android:ems="10"
+        android:hint="예) 1"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/cafeText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="330dp"
+        android:text="좌석 수"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/cafeEdit5"
+        android:layout_width="78dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cafeText6"
+        android:layout_alignEnd="@+id/cafeEdit2"
+        android:layout_marginEnd="134dp"
+        android:ems="10"
+        android:hint="예) 20"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/cafeText7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="390dp"
+        android:text="콘센트"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/cafeEdit6"
+        android:layout_width="78dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cafeText7"
+        android:layout_alignStart="@+id/cafeEdit2"
+        android:ems="10"
+        android:hint="예) 6"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/cafeText8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="450dp"
+        android:text="최소가격"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/cafeEdit7"
+        android:layout_width="78dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/won2"
+        android:layout_alignStart="@+id/cafeEdit2"
+        android:ems="10"
+        android:hint="예) 2000"
+        android:inputType="textPersonName" />
+
+
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
@@ -117,7 +255,7 @@
         android:background="@android:color/background_dark" />
 
     <Button
-        android:id="@+id/cafebutton4"
+        android:id="@+id/modifybutton2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -131,5 +269,7 @@
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold" />
+
+
 
 </RelativeLayout>

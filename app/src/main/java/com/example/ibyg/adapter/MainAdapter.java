@@ -18,8 +18,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ibyg.OnPostListener;
-import com.example.ibyg.OwnerNoticeInfo;
+import com.example.ibyg.Notice.OnPostListener;
+import com.example.ibyg.Notice.OwnerNoticeInfo;
 import com.example.ibyg.R;
 
 import java.text.SimpleDateFormat;

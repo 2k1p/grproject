@@ -1,4 +1,4 @@
-package com.example.ibyg;
+package com.example.ibyg.Notice;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 
 import com.bumptech.glide.Glide;
+import com.example.ibyg.BasicActivity;
+import com.example.ibyg.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;

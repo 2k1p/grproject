@@ -1,4 +1,4 @@
-package com.example.ibyg;
+package com.example.ibyg.Notice;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ibyg.BasicActivity;
+import com.example.ibyg.MemberInitActivity;
+import com.example.ibyg.R;
+import com.example.ibyg.SignUpActivity;
 import com.example.ibyg.adapter.MainAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;

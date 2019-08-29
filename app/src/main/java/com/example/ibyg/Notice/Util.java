@@ -1,4 +1,4 @@
-package com.example.ibyg;
+package com.example.ibyg.Notice;
 
 import android.app.Activity;
 import android.widget.Toast;
