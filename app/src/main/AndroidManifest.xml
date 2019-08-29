@@ -3,7 +3,6 @@
     package="com.example.ibyg">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-feature android:name="android.hardware.camera" />
@@ -34,22 +33,15 @@
                     android:host="google.com" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity">
-        </activity>
-        <activity android:name=".SignUpActivity">
-        </activity>
-        <activity android:name=".PasswordResetActivity">
-        </activity>
-        <activity android:name=".MemberInitActivity">
-        </activity>
-        <activity android:name=".MainActivity">
-        </activity>
-        <activity android:name=".ListingActivity">
-        </activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".PasswordResetActivity"></activity>
+        <activity android:name=".MemberInitActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".ListingActivity"></activity>
         <activity android:name=".SetLocActivity"></activity>
         <activity android:name=".FindCafeActivity"></activity>
         <activity android:name=".AhpActivity"></activity>
-
 
 
         <activity
@@ -65,14 +57,14 @@
             android:name=".CafeManager4"
             android:parentActivityName=".CafeManager3"></activity>
         <activity
-            android:name=".NoticeManagement"
+            android:name=".Notice.NoticeManagement"
             android:parentActivityName=".MainActivity"></activity>
         <activity
-            android:name=".NoticeAdd"
-            android:parentActivityName=".NoticeManagement"></activity>
+            android:name=".Notice.NoticeAdd"
+            android:parentActivityName=".Notice.NoticeManagement"></activity>
         <activity android:name=".BasicActivity">
         </activity>
-        <activity android:name=".GalleryActivity">
+        <activity android:name=".Notice.GalleryActivity">
         </activity>
 
     </application>

@@ -18,10 +18,11 @@ public class CafeManager2 extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();  //제목줄 객체 얻어오기
         actionBar.setTitle("카페 등록");  //액션바 제목설정
-
         actionBar.setDisplayHomeAsUpEnabled(true);   //뒤로가기버튼 <- 만들기
         //업버튼이 되려면 눌렀을 때 돌아갈 Activity를 지정해줘야 함
         //이 작업은 매니패스트에서 함
+
+
 
 
 
@@ -47,8 +48,23 @@ public class CafeManager2 extends AppCompatActivity {
                 EditText editTexttime =  findViewById(R.id.cafeEdit4) ;
                 intent.putExtra("time", editTexttime.getText().toString()) ;
 
+                EditText editTextwifi =  findViewById(R.id.cafeEdit8) ;
+                intent.putExtra("wifi", editTextwifi.getText().toString()) ;
+
+
+
+                EditText editTextseat =  findViewById(R.id.cafeEdit5) ;
+                intent.putExtra("seat", editTextseat.getText().toString()) ;
+
+                EditText editTextconsent =  findViewById(R.id.cafeEdit6) ;
+                intent.putExtra("consent", editTextconsent.getText().toString()) ;
+
+                EditText editTextprice =  findViewById(R.id.cafeEdit7) ;
+                intent.putExtra("price", editTextprice.getText().toString()) ;
+
                 startActivity(intent) ;
             }
         });
+
     }
 }

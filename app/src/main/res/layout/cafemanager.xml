@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/cafebutton"
-        android:layout_width="337dp"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"

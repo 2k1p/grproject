@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -17,6 +16,7 @@ public class ListingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listing);
+
 
         TextView text = (TextView)findViewById(R.id.textView9);
         text.setOnClickListener(new View.OnClickListener() {

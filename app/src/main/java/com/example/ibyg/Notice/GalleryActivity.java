@@ -1,4 +1,4 @@
-package com.example.ibyg;
+package com.example.ibyg.Notice;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.provider.MediaStore;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ibyg.BasicActivity;
+import com.example.ibyg.R;
 import com.example.ibyg.adapter.GalleryAdapter;
 
 import java.util.ArrayList;

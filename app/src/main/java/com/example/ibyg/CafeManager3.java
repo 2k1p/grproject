@@ -2,6 +2,7 @@ package com.example.ibyg;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,8 +22,6 @@ public class CafeManager3 extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();  //제목줄 객체 얻어오기
         actionBar.setTitle("카페 관리");  //액션바 제목설정
 
-        //업버튼이 되려면 눌렀을 때 돌아갈 Activity를 지정해줘야 함
-        //이 작업은 매니패스트에서 함
 
         // Intent 가져오기.
         Intent intent = getIntent();
@@ -51,15 +50,60 @@ public class CafeManager3 extends AppCompatActivity {
         if (time != null)
             textViewTime.setText(time);
 
+        TextView textViewwifi = findViewById(R.id.cafeTextRe9);
+        String wifi = intent.getStringExtra("wifi");
+        if (wifi != null)
+            textViewwifi.setText(wifi);
+
+
+
+
+
+        TextView textViewseat = findViewById(R.id.cafeTextRe10);
+        String seat = intent.getStringExtra("seat");
+        if (seat != null)
+            textViewseat.setText(seat);
+
+        TextView textViewconsent = findViewById(R.id.cafeTextRe11);
+        String consent = intent.getStringExtra("consent");
+        if (consent != null)
+            textViewconsent.setText(consent);
+
+        TextView textViewprice = findViewById(R.id.cafeTextRe12);
+        String price = intent.getStringExtra("price");
+        if (price != null)
+            textViewprice.setText(price);
+
 
         //***해야할것: 카페등록하고 뒤로가기하면 메인으로 가는데 다시 들어가면 카페관리화면으로 들어가지도록 수정
         //액션바의 뒤로가기하고 폰의 뒤로가기버튼하고 똑같이 화면전환되도록 수정
 
-        Button button = findViewById(R.id.cafebutton3);
+        Button button = findViewById(R.id.modifybutton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CafeManager3.this, CafeManager4.class));
+                Intent intent = new Intent(CafeManager3.this, CafeManager4.class) ;
+
+                TextView editTextNumber = findViewById(R.id.cafeTextRe5) ;
+                intent.putExtra("name", editTextNumber.getText().toString()) ;
+                TextView editTextAddress = findViewById(R.id.cafeTextRe6) ;
+                intent.putExtra("address", editTextAddress.getText().toString()) ;
+                TextView editTextPhone = findViewById(R.id.cafeTextRe7) ;
+                intent.putExtra("phone", editTextPhone.getText().toString()) ;
+                TextView editTextTime = findViewById(R.id.cafeTextRe8) ;
+                intent.putExtra("time", editTextTime.getText().toString()) ;
+
+                TextView editTextwifi = findViewById(R.id.cafeTextRe9) ;
+                intent.putExtra("wifi", editTextwifi.getText().toString()) ;
+
+                TextView editTextseat = findViewById(R.id.cafeTextRe10) ;
+                intent.putExtra("seat", editTextseat.getText().toString()) ;
+                TextView editTextconsent = findViewById(R.id.cafeTextRe11) ;
+                intent.putExtra("consent", editTextconsent.getText().toString()) ;
+                TextView editTextprice = findViewById(R.id.cafeTextRe12) ;
+                intent.putExtra("price", editTextprice.getText().toString()) ;
+
+                startActivity(intent) ;
             }
         });
         Button button2 = findViewById(R.id.deletebutton);
@@ -105,7 +149,16 @@ public class CafeManager3 extends AppCompatActivity {
                 }
             });
 
-            AlertDialog dialog = builder.create();
+
+            final AlertDialog dialog = builder.create();
+            dialog.setOnShowListener( new DialogInterface.OnShowListener() {
+                @Override
+                public void onShow(DialogInterface arg0) {
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+                    dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+                }
+            });
+
             dialog.show();
         }
 }
