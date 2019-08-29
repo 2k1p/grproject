@@ -1,4 +1,4 @@
-package com.example.ibyg;
+package com.example.ibyg.Notice;
 
 import java.io.Serializable;
 import java.util.ArrayList;

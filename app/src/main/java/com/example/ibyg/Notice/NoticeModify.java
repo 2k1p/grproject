@@ -1,4 +1,4 @@
-package com.example.ibyg;
+package com.example.ibyg.Notice;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.ibyg.R;
 
 public class NoticeModify extends AppCompatActivity {
 

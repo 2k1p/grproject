@@ -28,32 +28,54 @@ public class CafeManager4 extends AppCompatActivity {
         Intent intent = getIntent() ;
 
         // Name 값을 String 타입 그대로 표시.
-        TextView textViewName = findViewById(R.id.cafeTextRe5) ;
+        TextView textViewName = findViewById(R.id.cafeEdit) ;
         String name = intent.getStringExtra("name") ;
         if (name != null)
             textViewName.setText(name) ;
 
         // Address 값을 String 타입 그대로 표시.
-        TextView textViewAddress = findViewById(R.id.cafeTextRe6) ;
+        TextView textViewAddress = findViewById(R.id.cafeEdit2) ;
         String address = intent.getStringExtra("address") ;
         if (address != null)
             textViewAddress.setText(address) ;
 
         // Phone 값을 String 타입 그대로 표시.
-        TextView textViewPhone = findViewById(R.id.cafeTextRe7) ;
+        TextView textViewPhone = findViewById(R.id.cafeEdit3) ;
         String phone = intent.getStringExtra("phone") ;
         if (phone != null)
             textViewPhone.setText(phone) ;
 
         // Time 값을 String 타입 그대로 표시.
-        TextView textViewTime = findViewById(R.id.cafeTextRe8) ;
+        TextView textViewTime = findViewById(R.id.cafeEdit4) ;
         String time = intent.getStringExtra("time") ;
         if (time != null)
             textViewTime.setText(time) ;
 
+        TextView textViewwifi = findViewById(R.id.cafeEdit8) ;
+        String wifi = intent.getStringExtra("wifi") ;
+        if (wifi != null)
+            textViewwifi.setText(wifi) ;
 
 
-        Button button = findViewById(R.id.cafebutton4);
+
+        TextView textViewseat = findViewById(R.id.cafeEdit5) ;
+        String seat = intent.getStringExtra("seat") ;
+        if (seat != null)
+            textViewseat.setText(seat) ;
+
+        TextView textViewconsent = findViewById(R.id.cafeEdit6) ;
+        String consent = intent.getStringExtra("consent") ;
+        if (consent != null)
+            textViewconsent.setText(consent) ;
+
+        TextView textViewprice = findViewById(R.id.cafeEdit7) ;
+        String price = intent.getStringExtra("price") ;
+        if (price != null)
+            textViewprice.setText(price) ;
+
+
+
+        Button button = findViewById(R.id.modifybutton2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,6 +96,20 @@ public class CafeManager4 extends AppCompatActivity {
                 // Time 입력 값을 String 값으로 그대로 전달.
                 EditText editTexttime =  findViewById(R.id.cafeEdit4) ;
                 intent.putExtra("time", editTexttime.getText().toString()) ;
+
+                EditText editTextwifi =  findViewById(R.id.cafeEdit8) ;
+                intent.putExtra("wifi", editTextwifi.getText().toString()) ;
+
+
+                EditText editTextseat =  findViewById(R.id.cafeEdit5) ;
+                intent.putExtra("seat", editTextseat.getText().toString()) ;
+
+                EditText editTextconsent =  findViewById(R.id.cafeEdit6) ;
+                intent.putExtra("consent", editTextconsent.getText().toString()) ;
+
+                EditText editTextprice =  findViewById(R.id.cafeEdit7) ;
+                intent.putExtra("price", editTextprice.getText().toString()) ;
+
 
                 startActivity(intent) ;
             }
