@@ -55,10 +55,6 @@ public class CafeManager3 extends AppCompatActivity {
         if (wifi != null)
             textViewwifi.setText(wifi);
 
-
-
-
-
         TextView textViewseat = findViewById(R.id.cafeTextRe10);
         String seat = intent.getStringExtra("seat");
         if (seat != null)
@@ -75,21 +71,25 @@ public class CafeManager3 extends AppCompatActivity {
             textViewprice.setText(price);
 
 
-        //***해야할것: 카페등록하고 뒤로가기하면 메인으로 가는데 다시 들어가면 카페관리화면으로 들어가지도록 수정
+
+        //***해야할것: 카페등록하고 뒤로가기하면 메인으로 가는데 다시 들어가면 카페관리2화면으로 들어가지도록 수정
         //액션바의 뒤로가기하고 폰의 뒤로가기버튼하고 똑같이 화면전환되도록 수정
 
-        Button button = findViewById(R.id.modifybutton);
+        Button button = findViewById(R.id.modifybutton);    //수정버튼:누르면 카페등록화면으로 이동
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CafeManager3.this, CafeManager4.class) ;
+                Intent intent = new Intent(CafeManager3.this, CafeManager2.class) ;
 
                 TextView editTextNumber = findViewById(R.id.cafeTextRe5) ;
                 intent.putExtra("name", editTextNumber.getText().toString()) ;
+
                 TextView editTextAddress = findViewById(R.id.cafeTextRe6) ;
                 intent.putExtra("address", editTextAddress.getText().toString()) ;
+
                 TextView editTextPhone = findViewById(R.id.cafeTextRe7) ;
                 intent.putExtra("phone", editTextPhone.getText().toString()) ;
+
                 TextView editTextTime = findViewById(R.id.cafeTextRe8) ;
                 intent.putExtra("time", editTextTime.getText().toString()) ;
 
@@ -98,15 +98,17 @@ public class CafeManager3 extends AppCompatActivity {
 
                 TextView editTextseat = findViewById(R.id.cafeTextRe10) ;
                 intent.putExtra("seat", editTextseat.getText().toString()) ;
+
                 TextView editTextconsent = findViewById(R.id.cafeTextRe11) ;
                 intent.putExtra("consent", editTextconsent.getText().toString()) ;
+
                 TextView editTextprice = findViewById(R.id.cafeTextRe12) ;
                 intent.putExtra("price", editTextprice.getText().toString()) ;
 
                 startActivity(intent) ;
             }
         });
-        Button button2 = findViewById(R.id.deletebutton);
+        Button button2 = findViewById(R.id.deletebutton);   //삭제버튼:누르면 메시지가 뜬다
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,7 +120,7 @@ public class CafeManager3 extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("안내");
             builder.setMessage("정말 삭제하시겠습니까?");
-           builder.setIcon(android.R.drawable.ic_dialog_alert);
+            builder.setIcon(android.R.drawable.ic_dialog_alert);
 
             builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
                 @Override
@@ -148,7 +150,6 @@ public class CafeManager3 extends AppCompatActivity {
 
                 }
             });
-
 
             final AlertDialog dialog = builder.create();
             dialog.setOnShowListener( new DialogInterface.OnShowListener() {

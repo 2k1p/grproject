@@ -54,9 +54,6 @@
             android:name=".CafeManager3"
             android:parentActivityName=".MainActivity"></activity>
         <activity
-            android:name=".CafeManager4"
-            android:parentActivityName=".CafeManager3"></activity>
-        <activity
             android:name=".Notice.NoticeManagement"
             android:parentActivityName=".MainActivity"></activity>
         <activity
