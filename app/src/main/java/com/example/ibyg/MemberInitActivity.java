@@ -19,8 +19,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class MemberInitActivity extends AppCompatActivity {
     private static final String TAG = "MemberInitActivity";
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
