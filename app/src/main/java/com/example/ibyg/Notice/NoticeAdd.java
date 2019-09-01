@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -361,5 +363,39 @@ public class NoticeAdd extends BasicActivity {
         Intent intent = new Intent(this, c);
         intent.putExtra("media", media);
         startActivityForResult(intent, requestCode);
+        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
+
+
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {   //휴대폰 자체 뒤로가기
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                Intent i = new Intent(this, NoticeManagement.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+                finish();
+                return true;
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{
+                Intent i = new Intent(this, NoticeManagement.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

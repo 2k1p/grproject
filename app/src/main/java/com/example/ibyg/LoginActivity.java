@@ -2,7 +2,8 @@ package com.example.ibyg;
 
 import android.content.Intent;
 import android.os.Bundle;
-
+import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -87,7 +88,38 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, c);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {   //휴대폰 뒤로가기, 둘다 액티비티 통일
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                Intent i = new Intent(this, SignUpActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+                finish();
+                return true;
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {   //툴바 뒤로가기
+        switch (item.getItemId()){
+            case android.R.id.home:{
+                Intent i = new Intent(this, SignUpActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
 }
