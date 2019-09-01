@@ -33,9 +33,15 @@
                     android:host="google.com" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:parentActivityName=".SignUpActivity">
+        </activity>
         <activity android:name=".SignUpActivity"></activity>
-        <activity android:name=".PasswordResetActivity"></activity>
+        <activity
+            android:name=".PasswordResetActivity"
+            android:parentActivityName=".LoginActivity">
+        </activity>
         <activity android:name=".MemberInitActivity"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".ListingActivity"></activity>
@@ -45,13 +51,13 @@
 
 
         <activity
-            android:name=".CafeManager"
+            android:name=".Manager.CafeManager"
             android:parentActivityName=".MainActivity"></activity>
         <activity
-            android:name=".CafeManager2"
-            android:parentActivityName=".CafeManager"></activity>
+            android:name=".Manager.CafeManager2"
+            android:parentActivityName=".Manager.CafeManager"></activity>
         <activity
-            android:name=".CafeManager3"
+            android:name=".Manager.CafeManager3"
             android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".Notice.NoticeManagement"

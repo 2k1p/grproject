@@ -32,9 +32,7 @@ public class OwnerNoticeInfo implements Serializable {
     public void setTitle(String title){
         this.title = title;
     }
-    public ArrayList<String> getContents(){
-        return this.contents;
-    }
+    public ArrayList<String> getContents(){ return this.contents; }
     public void setContents(ArrayList<String> contents){
         this.contents = contents;
     }
@@ -50,10 +48,7 @@ public class OwnerNoticeInfo implements Serializable {
     public void setCreatedAt(Date createdAt){
         this.createdAt = createdAt;
     }
-    public String getId(){
-        return this.id;
-    }
+    public String getId(){ return this.id; }
     public void setId(String id){
         this.id = id;
-    }
-}
+    }}
