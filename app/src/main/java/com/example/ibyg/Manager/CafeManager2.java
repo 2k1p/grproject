@@ -1,8 +1,10 @@
-package com.example.ibyg;
+package com.example.ibyg.Manager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ibyg.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -121,6 +124,7 @@ public class CafeManager2 extends AppCompatActivity {
         intent.putExtra("price", editTextprice2.getText().toString()) ;
 
         startActivity(intent) ;
+        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
 
         if(editTextName.length() > 0 ){
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -157,5 +161,38 @@ public class CafeManager2 extends AppCompatActivity {
         Intent intent = new Intent(this, c);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+
     }
+
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {   //휴대폰 자체 뒤로가기
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                Intent i = new Intent(this, CafeManager.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+                finish();
+                return true;
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{
+                Intent i = new Intent(this, CafeManager.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

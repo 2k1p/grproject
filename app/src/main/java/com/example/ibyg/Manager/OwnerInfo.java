@@ -1,4 +1,4 @@
-package com.example.ibyg;
+package com.example.ibyg.Manager;
 
 public class OwnerInfo {
     private String editTextName;
@@ -33,9 +33,7 @@ public class OwnerInfo {
     public String geteditTextAddress(){
         return this.editTextAddress;
     }
-    public void seteditTextAddress(String editTextAddress){
-        this.editTextAddress = editTextAddress;
-    }
+    public void seteditTextAddress(String editTextAddress){ this.editTextAddress = editTextAddress; }
 
     public String geteditTextPhone(){
         return this.editTextPhone;
@@ -68,14 +66,12 @@ public class OwnerInfo {
     public String geteditTextconsent(){
         return this.editTextconsent;
     }
-    public void seteditTextconsent(String editTextconsent){
-        this.editTextconsent = editTextconsent;
-    }
+    public void seteditTextconsent(String editTextconsent){ this.editTextconsent = editTextconsent; }
 
     public String geteditTextprice (){
         return this.editTextprice ;
     }
     public void seteditTextprice(String editTextprice ){
         this.editTextprice  = editTextprice ;
-    }
-}
+    }}
+
