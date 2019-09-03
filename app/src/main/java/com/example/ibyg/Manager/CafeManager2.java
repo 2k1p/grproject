@@ -1,13 +1,13 @@
 package com.example.ibyg.Manager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +23,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CafeManager2 extends AppCompatActivity {
     private static final String TAG = "CafeManager2";
+    String sfName = "myFile";
+    EditText textViewName, textViewAddress, textViewPhone, textViewTime, textViewwifi, textViewseat, textViewconsent, textViewprice;
+    String name, address, phone, time, wifi, seat, consent, price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,37 +45,55 @@ public class CafeManager2 extends AppCompatActivity {
         Intent intent = getIntent();
 
         // Name 값을 String 타입 그대로 표시.
-        TextView textViewName = findViewById(R.id.cafeEdit) ;
-        String name = intent.getStringExtra("name") ;
+        textViewName = findViewById(R.id.cafeEdit) ;
+        name = intent.getStringExtra("name") ;
         if (name != null) textViewName.setText(name) ;
+        // 지난번 저장해놨던 사용자 입력값을 꺼내서 보여주기
+        SharedPreferences sf = getSharedPreferences(sfName, 0);
+        name = sf.getString("name", "");
+        textViewName.setText(name);
 
-        TextView textViewAddress = findViewById(R.id.cafeEdit2) ;
-        String address = intent.getStringExtra("address") ;
+        textViewAddress = findViewById(R.id.cafeEdit2) ;
+        address = intent.getStringExtra("address") ;
         if (address != null) textViewAddress.setText(address) ;
+        address = sf.getString("address", "");
+        textViewAddress.setText(address);
 
-        TextView textViewPhone = findViewById(R.id.cafeEdit3) ;
-        String phone = intent.getStringExtra("phone") ;
+        textViewPhone = findViewById(R.id.cafeEdit3) ;
+        phone = intent.getStringExtra("phone") ;
         if (phone != null) textViewPhone.setText(phone) ;
+        phone = sf.getString("phone", "");
+        textViewPhone.setText(phone);
 
-        TextView textViewTime = findViewById(R.id.cafeEdit4) ;
-        String time = intent.getStringExtra("time") ;
+        textViewTime = findViewById(R.id.cafeEdit4) ;
+        time = intent.getStringExtra("time") ;
         if (time != null) textViewTime.setText(time) ;
+        time = sf.getString("time", "");
+        textViewTime.setText(time);
 
-        TextView textViewwifi = findViewById(R.id.cafeEdit8) ;
-        String wifi = intent.getStringExtra("wifi") ;
+        textViewwifi = findViewById(R.id.cafeEdit8) ;
+        wifi = intent.getStringExtra("wifi") ;
         if (wifi != null) textViewwifi.setText(wifi) ;
+        wifi = sf.getString("wifi", "");
+        textViewwifi.setText(wifi);
 
-        TextView textViewseat = findViewById(R.id.cafeEdit5) ;
-        String seat = intent.getStringExtra("seat") ;
+        textViewseat = findViewById(R.id.cafeEdit5) ;
+        seat = intent.getStringExtra("seat") ;
         if (seat != null) textViewseat.setText(seat) ;
+        seat = sf.getString("seat", "");
+        textViewseat.setText(seat);
 
-        TextView textViewconsent = findViewById(R.id.cafeEdit6) ;
-        String consent = intent.getStringExtra("consent") ;
+        textViewconsent = findViewById(R.id.cafeEdit6) ;
+        consent = intent.getStringExtra("consent") ;
         if (consent != null) textViewconsent.setText(consent) ;
+        consent = sf.getString("consent", "");
+        textViewconsent.setText(consent);
 
-        TextView textViewprice = findViewById(R.id.cafeEdit7) ;
-        String price = intent.getStringExtra("price") ;
+        textViewprice = findViewById(R.id.cafeEdit7) ;
+        price = intent.getStringExtra("price") ;
         if (price != null) textViewprice.setText(price) ;
+        price = sf.getString("price", "");
+        textViewprice.setText(price);
 
     }
 
@@ -87,8 +108,37 @@ public class CafeManager2 extends AppCompatActivity {
         }
     };
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Activity 가 종료되기 전에 저장한다
+        // SharedPreferences 에 설정값(특별히 기억해야할 사용자 값)을 저장하기
+        SharedPreferences sf = getSharedPreferences(sfName, 0);
+        SharedPreferences.Editor editor = sf.edit();//저장하려면 editor가 필요
+        String name = textViewName.getText().toString(); // 사용자가 입력한 값
+        editor.putString("name", name); // 값을 수정함
+        String address = textViewAddress.getText().toString(); // 사용자가 입력한 값
+        editor.putString("address", address); // 값을 수정함
+        String phone = textViewPhone.getText().toString(); // 사용자가 입력한 값
+        editor.putString("phone", phone); // 값을 수정함
+        String time = textViewTime.getText().toString(); // 사용자가 입력한 값
+        editor.putString("time", time); // 값을 수정함
+        String wifi = textViewwifi.getText().toString(); // 사용자가 입력한 값
+        editor.putString("wifi", wifi); // 값을 수정함
+        String seat = textViewseat.getText().toString(); // 사용자가 입력한 값
+        editor.putString("seat", seat); // 값을 수정함
+        String consent = textViewconsent.getText().toString(); // 사용자가 입력한 값
+        editor.putString("consent", consent); // 값을 수정함
+        String price = textViewprice.getText().toString(); // 사용자가 입력한 값
+        editor.putString("price", price); // 값을 수정함
+
+        editor.commit(); //저장함
+    }
+
+
+
     private void CafeUpdate(){
-        Intent intent = new Intent(CafeManager2.this, CafeManager3.class) ;
+        final Intent intent = new Intent(CafeManager2.this, CafeManager3.class) ;
 
         // Name 입력 값을 String 값으로 그대로 전달.
         String editTextName = ((EditText)findViewById(R.id.cafeEdit)).getText().toString();
@@ -123,10 +173,9 @@ public class CafeManager2 extends AppCompatActivity {
         EditText editTextprice2 =  findViewById(R.id.cafeEdit7) ;
         intent.putExtra("price", editTextprice2.getText().toString()) ;
 
-        startActivity(intent) ;
-        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
 
-        if(editTextName.length() > 0 ){
+        if(editTextName.length() > 0 && textViewAddress.length() > 0 && editTextPhone.length() > 0 && textViewTime.length() > 0
+                && textViewwifi.length() > 0 && textViewseat.length() > 0 && textViewconsent.length() > 0 && textViewprice.length() > 0){
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             OwnerInfo ownerInfo = new OwnerInfo(editTextName, textViewAddress, editTextPhone, textViewTime, textViewwifi, textViewseat, textViewconsent, textViewprice);
@@ -136,12 +185,13 @@ public class CafeManager2 extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 startToast("카페정보 등록을 성공하였습니다.");
+                                startActivity(intent);
+                                overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-
                                 startToast("카페정보 등록에 실패하였습니다.");
                                 Log.w(TAG, "Error writing document", e);
                             }
@@ -151,6 +201,7 @@ public class CafeManager2 extends AppCompatActivity {
         }else{
             startToast("카페정보를 입력해주세요.");
         }
+
     }
 
     private void startToast(String msg){
@@ -163,7 +214,6 @@ public class CafeManager2 extends AppCompatActivity {
         startActivity(intent);
 
     }
-
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {   //휴대폰 자체 뒤로가기
@@ -193,6 +243,5 @@ public class CafeManager2 extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }

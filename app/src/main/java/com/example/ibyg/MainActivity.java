@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ibyg.Manager.CafeManager;
+import com.example.ibyg.Manager.CafeManager3;
 import com.example.ibyg.Notice.NoticeManagement;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,6 +24,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    TextView textViewName;
+    String name;
+    String sfName = "myFile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +68,11 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        textViewName = findViewById(R.id.cafeTextRe5);
 
         findViewById(R.id.logout).setOnClickListener(onClickListener);
-
         findViewById(R.id.button).setOnClickListener(onClickListener);
         findViewById(R.id.button3).setOnClickListener(onClickListener);
-
     }
 
     //로그아웃 로직
@@ -81,15 +85,22 @@ public class MainActivity extends AppCompatActivity {
                     myStartActivity(SignUpActivity.class);
                     break;
 
-                case R.id.button:
-                    myStartActivity(CafeManager.class);
+                case R.id.button:   //카페관리 버튼
+                    if(textViewName != null) {
+                        myStartActivity(CafeManager.class);
+                    }else {
+                        myStartActivity(CafeManager3.class);
+                    }
                     break;
-                case R.id.button3:
+                case R.id.button3:  //공지사항 버튼
                     myStartActivity(NoticeManagement.class);
                     break;
+
             }
         }
     };
+
+
 
     void myStartActivity(Class c){
         Intent intent = new Intent(this, c);
