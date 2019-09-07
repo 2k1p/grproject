@@ -1,6 +1,13 @@
 package com.example.ibyg.Manager;
 
-public class OwnerInfo {
+import com.google.firebase.firestore.Exclude;
+
+import java.io.Serializable;
+
+public class OwnerInfo implements Serializable {
+
+    @Exclude private String id;
+
     private String editTextName;
     private String editTextAddress;
     private String editTextPhone;
@@ -10,6 +17,9 @@ public class OwnerInfo {
     private String editTextconsent;
     private String editTextprice;
 
+    public OwnerInfo() {
+
+    }
 
     public OwnerInfo(String editTextName, String editTextAddress, String editTextPhone, String editTexttime,
                      String editTextwifi, String editTextseat, String editTextconsent, String editTextprice){
@@ -22,6 +32,9 @@ public class OwnerInfo {
         this.editTextconsent = editTextconsent;
         this.editTextprice  = editTextprice ;
     }
+
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
     public String geteditTextName(){
         return this.editTextName;

@@ -49,16 +49,15 @@
         <activity android:name=".FindCafeActivity"></activity>
         <activity android:name=".AhpActivity"></activity>
 
-
         <activity
             android:name=".Manager.CafeManager"
             android:parentActivityName=".MainActivity"></activity>
         <activity
-            android:name=".Manager.CafeManager2"
+            android:name=".Manager.CafeActivity"
             android:parentActivityName=".Manager.CafeManager"></activity>
         <activity
-            android:name=".Manager.CafeManager3"
-            android:parentActivityName=".MainActivity"></activity>
+            android:name=".Manager.CafeManager2"
+            android:parentActivityName=".Manager.CafeActivity"></activity>
         <activity
             android:name=".Notice.NoticeManagement"
             android:parentActivityName=".MainActivity"></activity>
