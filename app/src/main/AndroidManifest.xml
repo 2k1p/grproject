@@ -42,32 +42,23 @@
             android:name=".PasswordResetActivity"
             android:parentActivityName=".LoginActivity">
         </activity>
+        <activity android:name=".BasicActivity"></activity>
         <activity android:name=".MemberInitActivity"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".ListingActivity"></activity>
         <activity android:name=".SetLocActivity"></activity>
         <activity android:name=".FindCafeActivity"></activity>
         <activity android:name=".AhpActivity"></activity>
+        <activity android:name=".Review.ReviewActivity"></activity>
+        <activity android:name=".Review.ReviewAdd"></activity>
+        <activity android:name=".Notice.NoticeManagement"></activity>
+        <activity android:name=".Notice.NoticeAdd"></activity>
+        <activity android:name=".Notice.GalleryActivity"></activity>
 
-        <activity
-            android:name=".Manager.CafeManager"
-            android:parentActivityName=".MainActivity"></activity>
-        <activity
-            android:name=".Manager.CafeActivity"
-            android:parentActivityName=".Manager.CafeManager"></activity>
-        <activity
-            android:name=".Manager.CafeManager2"
-            android:parentActivityName=".Manager.CafeActivity"></activity>
-        <activity
-            android:name=".Notice.NoticeManagement"
-            android:parentActivityName=".MainActivity"></activity>
-        <activity
-            android:name=".Notice.NoticeAdd"
-            android:parentActivityName=".Notice.NoticeManagement"></activity>
-        <activity android:name=".BasicActivity">
-        </activity>
-        <activity android:name=".Notice.GalleryActivity">
-        </activity>
+        <activity android:name=".Manager.CafeManager"></activity>
+        <activity android:name=".Manager.CafeActivity"></activity>
+        <activity android:name=".Manager.CafeManager2"></activity>
+
 
     </application>
 

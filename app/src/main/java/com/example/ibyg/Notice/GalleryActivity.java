@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ibyg.BasicActivity;
 import com.example.ibyg.R;
-import com.example.ibyg.adapter.GalleryAdapter;
 
 import java.util.ArrayList;
 
@@ -45,10 +44,10 @@ public class GalleryActivity extends BasicActivity {
 
         Intent intent = getIntent();
         if(intent.getStringExtra("media").equals("video")){
-            uri = android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+            uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
             projection = new String[] { MediaStore.MediaColumns.DATA, MediaStore.Video.Media.BUCKET_DISPLAY_NAME };
         }else{
-            uri = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
             projection = new String[] { MediaStore.MediaColumns.DATA, MediaStore.Images.Media.BUCKET_DISPLAY_NAME };
         }
 

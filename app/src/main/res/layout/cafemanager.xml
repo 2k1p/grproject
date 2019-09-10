@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/edittext_background"
+
             android:hint="업체명"
             android:padding="10dp" />
 
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/edittext_background"
+
             android:hint="주소"
             android:padding="10dp" />
 
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/edittext_background"
+
             android:hint="전화번호"
             android:padding="10dp" />
 
@@ -51,7 +51,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/edittext_background"
             android:hint="영업시간"
             android:padding="10dp" />
 
@@ -61,8 +60,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/edittext_background"
-            android:digits="0123456789"
             android:hint="와이파이"
             android:inputType="numberDecimal"
             android:padding="10dp" />
@@ -73,8 +70,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/edittext_background"
-            android:digits="0123456789"
             android:hint="좌석 수"
             android:inputType="numberDecimal"
             android:padding="10dp" />
@@ -85,8 +80,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/edittext_background"
-            android:digits="0123456789"
             android:hint="콘센트"
             android:inputType="numberDecimal"
             android:padding="10dp" />
@@ -97,8 +90,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/edittext_background"
-            android:digits="0123456789"
             android:hint="최소가격"
             android:inputType="numberDecimal"
             android:padding="10dp" />
@@ -108,9 +99,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:background="@drawable/button_background"
             android:text="등록하기"
-            android:textAllCaps="false"
+
             android:textColor="@color/colorAccent" />
 
 
