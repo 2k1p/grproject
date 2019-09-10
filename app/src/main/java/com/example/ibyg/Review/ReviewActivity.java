@@ -1,4 +1,4 @@
-package com.example.ibyg.Notice;
+package com.example.ibyg.Review;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,14 +6,13 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ibyg.BasicActivity;
 import com.example.ibyg.MainActivity;
 import com.example.ibyg.MemberInitActivity;
 import com.example.ibyg.R;
@@ -39,34 +38,33 @@ import java.util.Date;
 
 import static com.example.ibyg.Notice.Util.showToast;
 
-public class NoticeManagement extends BasicActivity {
-    private static final String TAG = "NoticeManagement";
-    private FirebaseUser firebaseUser;
+public class ReviewActivity extends AppCompatActivity {
+    private static final String TAG = "ReviewActivity";
+    private FirebaseUser user;
     private FirebaseFirestore firebaseFirestore;
     private StorageReference storageRef;
-    private MainAdapter mainAdapter;
-    private ArrayList<OwnerNoticeInfo> postList;
-    private Util util;
+    private ReviewAdapter reviewAdapter;
+    private ArrayList<ReviewInfo> postList;
     private int successCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.notice_management);
+        setContentView(R.layout.review_main);
 
-        ActionBar actionBar = getSupportActionBar(); //제목줄 객체 얻어오기
-        actionBar.setTitle("공지사항 관리");          //액션바 제목설정
+        ActionBar actionBar = getSupportActionBar();  //제목줄 객체 얻어오기
+        actionBar.setTitle("리뷰 관리");  //액션바 제목설정
         actionBar.setDisplayHomeAsUpEnabled(true);   //뒤로가기버튼 <- 만들기
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
 
-        if (firebaseUser == null) {
+        if (user == null) {
             myStartActivity(SignUpActivity.class);
         } else {
             firebaseFirestore = FirebaseFirestore.getInstance();
-            DocumentReference documentReference = firebaseFirestore.collection("users").document(firebaseUser.getUid());
+            DocumentReference documentReference = firebaseFirestore.collection("users").document(user.getUid());
             documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -87,17 +85,15 @@ public class NoticeManagement extends BasicActivity {
             });
         }
 
-        util = new Util(this);
         postList = new ArrayList<>();
-        mainAdapter = new MainAdapter(NoticeManagement.this, postList);
-        mainAdapter.setOnPostListener(onPostListener);
+        reviewAdapter = new ReviewAdapter(ReviewActivity.this, postList);
+        reviewAdapter.setOnReviewListener(onReviewListener);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        findViewById(R.id.noticeaddbutton).setOnClickListener(onClickListener);
+        RecyclerView recyclerView = findViewById(R.id.reviewRecyclerview);
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(NoticeManagement.this));
-        recyclerView.setAdapter(mainAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(ReviewActivity.this));
+        recyclerView.setAdapter(reviewAdapter);
     }
 
     @Override
@@ -106,19 +102,19 @@ public class NoticeManagement extends BasicActivity {
         postsUpdate();
     }
 
-    OnPostListener onPostListener = new OnPostListener() {
+    OnReviewListener onReviewListener = new OnReviewListener() {
         @Override
         public void onDelete(int position) {
             final String id = postList.get(position).getId();
             ArrayList<String> contentsList = postList.get(position).getContents();
             for (int i = 0; i < contentsList.size(); i++) {
                 String contents = contentsList.get(i);
-                if (Patterns.WEB_URL.matcher(contents).matches() && contents.contains("https://firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/owner_notice")) {
+                if (Patterns.WEB_URL.matcher(contents).matches() && contents.contains("https://firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/review")) {
                     successCount++;
                     String[] list = contents.split("\\?");
                     String[] list2 = list[0].split("%2F");
                     String name = list2[list2.length - 1];
-                    StorageReference desertRef = storageRef.child("owner_notice/"+id+"/"+name);
+                    StorageReference desertRef = storageRef.child("review/"+id+"/"+name);
                     desertRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
@@ -128,7 +124,7 @@ public class NoticeManagement extends BasicActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception exception) {
-                            showToast(NoticeManagement.this, "ERROR");
+                            showToast(ReviewActivity.this,"ERROR");
                         }
                     });
                 }
@@ -138,30 +134,14 @@ public class NoticeManagement extends BasicActivity {
 
         @Override
         public void onModify(int position) {
-            myStartActivity(NoticeAdd.class, postList.get(position));
+            myStartActivity(ReviewAdd.class, postList.get(position));
         }
     };
 
-    View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                /*
-                case R.id.logoutButton:
-                    FirebaseAuth.getInstance().signOut();
-                    myStartActivity(SignUpActivity.class);
-                    break;
-                */
-                case R.id.noticeaddbutton:
-                    myStartActivity(NoticeAdd.class);
-                    break;
-            }
-        }
-    };
 
     private void postsUpdate(){
-        if (firebaseUser != null) {
-            CollectionReference collectionReference = firebaseFirestore.collection("owner_notice");
+        if (user != null) {
+            CollectionReference collectionReference = firebaseFirestore.collection("review");
             collectionReference.orderBy("createdAt", Query.Direction.DESCENDING).get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
@@ -170,14 +150,14 @@ public class NoticeManagement extends BasicActivity {
                                 postList.clear();
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Log.d(TAG, document.getId() + " => " + document.getData());
-                                    postList.add(new OwnerNoticeInfo(
+                                    postList.add(new ReviewInfo(
                                             document.getData().get("title").toString(),
                                             (ArrayList<String>) document.getData().get("contents"),
                                             document.getData().get("publisher").toString(),
                                             new Date(document.getDate("createdAt").getTime()),
                                             document.getId()));
                                 }
-                                mainAdapter.notifyDataSetChanged();
+                                reviewAdapter.notifyDataSetChanged();
                             } else {
                                 Log.d(TAG, "Error getting documents: ", task.getException());
                             }
@@ -188,23 +168,24 @@ public class NoticeManagement extends BasicActivity {
 
     private void storeUploader(String id){
         if(successCount == 0) {
-            firebaseFirestore.collection("owner_notice").document(id)
+            firebaseFirestore.collection("review").document(id)
                     .delete()
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            showToast(NoticeManagement.this,"게시글을 삭제하였습니다.");
+                            showToast(ReviewActivity.this,"게시글을 삭제하였습니다.");
                             postsUpdate();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            showToast(NoticeManagement.this,"게시글을 삭제하지 못하였습니다.");
+                            showToast(ReviewActivity.this,"게시글을 삭제하지 못하였습니다.");
                         }
                     });
         }
     }
+
 
     private void myStartActivity(Class c) {
         Intent intent = new Intent(this, c);
@@ -212,13 +193,12 @@ public class NoticeManagement extends BasicActivity {
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
 
-    private void myStartActivity(Class c, OwnerNoticeInfo ownerNoticeInfo) {
+    private void myStartActivity(Class c, ReviewInfo reviewInfo) {
         Intent intent = new Intent(this, c);
-        intent.putExtra("ownerNoticeInfo", ownerNoticeInfo);
+        intent.putExtra("reviewInfo", reviewInfo);
         startActivity(intent);
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
-
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {   //휴대폰 자체 뒤로가기
@@ -248,6 +228,5 @@ public class NoticeManagement extends BasicActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }

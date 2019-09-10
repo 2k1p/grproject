@@ -121,7 +121,7 @@ public class CafeManager extends AppCompatActivity implements View.OnClickListen
                             @Override
                             public void onSuccess(Void aVoid) {
                                 startToast("카페정보 등록을 성공하였습니다.");
-                                myStartActivity(CafeManager2.class);
+                                myStartActivity(CafeActivity.class);
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -154,7 +154,7 @@ public class CafeManager extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.button_save:
+            case R.id.button_save:  //등록버튼
                 saveProduct();
                 break;
 
