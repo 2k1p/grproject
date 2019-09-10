@@ -1,9 +1,14 @@
-package com.example.ibyg.Notice;
+package com.example.ibyg.Review;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.InputType;
 import android.util.Log;
 import android.util.Patterns;
@@ -22,6 +27,8 @@ import androidx.appcompat.app.ActionBar;
 
 import com.bumptech.glide.Glide;
 import com.example.ibyg.BasicActivity;
+import com.example.ibyg.ListingActivity;
+import com.example.ibyg.Notice.GalleryActivity;
 import com.example.ibyg.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,14 +44,16 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 
 import static com.example.ibyg.Notice.Util.showToast;
 
-public class NoticeAdd extends BasicActivity {
-    private static final String TAG = "NoticeAdd";
+public class ReviewAdd extends BasicActivity {
+    private static final String TAG = "ReviewAdd";
     private FirebaseUser user;
     private StorageReference storageRef;
     private ArrayList<String> pathList = new ArrayList<>();
@@ -54,33 +63,42 @@ public class NoticeAdd extends BasicActivity {
     private EditText selectedEditText;
     private EditText contentsEditText;
     private EditText titleEditText;
-    private OwnerNoticeInfo ownerNoticeInfo;
-    private Util util;
+    private ReviewInfo reviewInfo;
     private int pathCount, successCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.notice_add);
+        setContentView(R.layout.review_add);
 
-        ActionBar actionBar = getSupportActionBar(); //제목줄 객체 얻어오기
-        actionBar.setTitle("공지사항 추가");          //액션바 제목설정
-        actionBar.setDisplayHomeAsUpEnabled(true);   //뒤로가기버튼 <- 만들기
+        ActionBar actionBar = getSupportActionBar();   //제목줄 객체 얻어오기
+        actionBar.setTitle("리뷰 작성");               //액션바 제목설정
+        actionBar.setDisplayHomeAsUpEnabled(true);    //뒤로가기버튼 <- 만들기
+
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        {
+            checkVerify();
+        }
+        else
+        {
+            startApp();
+        }
 
 
 
-        parent = findViewById(R.id.contentsLayout);
-        buttonsBackgroundLayout = findViewById(R.id.buttonsBackgroundLayout);
+        parent = findViewById(R.id.reviewcontentsLayout);
+        buttonsBackgroundLayout = findViewById(R.id.reviewbuttonsBackgroundLayout);
         //loaderLayout = findViewById(R.id.loaderLyaout);
-        contentsEditText = findViewById(R.id.contentsEditText);
-        titleEditText = findViewById(R.id.titleEditText);
+        contentsEditText = findViewById(R.id.reviewcontentsEditText);
+        titleEditText = findViewById(R.id.reviewtitleEditText);
 
-        findViewById(R.id.check).setOnClickListener(onClickListener);
-        findViewById(R.id.image).setOnClickListener(onClickListener);
+        findViewById(R.id.reviewcheck).setOnClickListener(onClickListener);
+        findViewById(R.id.reviewimage).setOnClickListener(onClickListener);
         findViewById(R.id.video).setOnClickListener(onClickListener);
-        findViewById(R.id.imageModify).setOnClickListener(onClickListener);
+        findViewById(R.id.reviewimageModify).setOnClickListener(onClickListener);
         findViewById(R.id.videoModify).setOnClickListener(onClickListener);
-        findViewById(R.id.delete).setOnClickListener(onClickListener);
+        findViewById(R.id.reviewdelete).setOnClickListener(onClickListener);
 
         buttonsBackgroundLayout.setOnClickListener(onClickListener);
         contentsEditText.setOnFocusChangeListener(onFocusChangeListener);
@@ -96,11 +114,58 @@ public class NoticeAdd extends BasicActivity {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
 
-        util = new Util(this);
 
-        ownerNoticeInfo = (OwnerNoticeInfo) getIntent().getSerializableExtra("ownerNoticeInfo");
+        reviewInfo = (ReviewInfo) getIntent().getSerializableExtra("reviewInfo");
         postInit();
     }
+
+
+
+
+
+    public void startApp()
+    {
+        File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        String strDir = file.getAbsolutePath();
+
+        File oFile = new File(strDir+"/abc.txt");
+        FileOutputStream oFos;
+        try
+        {
+            oFos = new FileOutputStream(oFile);
+            oFos.write("abc".getBytes(), 0, 3);
+            oFos.close();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    public void checkVerify()
+    {
+        if (
+                checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
+                        checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+        )
+        {
+            // Should we show an explanation?
+            if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE))
+            {
+                // ...
+            }
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_EXTERNAL_STORAGE},
+                    1);
+        }
+        else
+        {
+            startApp();
+        }
+    }
+
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -112,7 +177,7 @@ public class NoticeAdd extends BasicActivity {
                     pathList.add(profilePath);
 
                     ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    LinearLayout linearLayout = new LinearLayout(NoticeAdd.this);
+                    LinearLayout linearLayout = new LinearLayout(ReviewAdd.this);
                     linearLayout.setLayoutParams(layoutParams);
                     linearLayout.setOrientation(LinearLayout.VERTICAL);
 
@@ -127,7 +192,7 @@ public class NoticeAdd extends BasicActivity {
                         }
                     }
 
-                    ImageView imageView = new ImageView(NoticeAdd.this);
+                    ImageView imageView = new ImageView(ReviewAdd.this);
                     imageView.setLayoutParams(layoutParams);
                     imageView.setAdjustViewBounds(true);
                     imageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -141,7 +206,7 @@ public class NoticeAdd extends BasicActivity {
                     Glide.with(this).load(profilePath).override(1000).into(imageView);
                     linearLayout.addView(imageView);
 
-                    EditText editText = new EditText(NoticeAdd.this);
+                    EditText editText = new EditText(ReviewAdd.this);
                     editText.setLayoutParams(layoutParams);
                     editText.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE | InputType.TYPE_CLASS_TEXT);
                     editText.setHint("내용");
@@ -163,21 +228,22 @@ public class NoticeAdd extends BasicActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.check:
+                case R.id.reviewcheck:
                     storageUpload();
                     break;
-                case R.id.image:
+                case R.id.reviewimage:
+
                     myStartActivity(GalleryActivity.class, "image", 0);
                     break;
                 case R.id.video:
                     myStartActivity(GalleryActivity.class, "video", 0);
                     break;
-                case R.id.buttonsBackgroundLayout:
+                case R.id.reviewbuttonsBackgroundLayout:
                     if (buttonsBackgroundLayout.getVisibility() == View.VISIBLE) {
                         buttonsBackgroundLayout.setVisibility(View.GONE);
                     }
                     break;
-                case R.id.imageModify:
+                case R.id.reviewimageModify:
                     myStartActivity(GalleryActivity.class, "image", 1);
                     buttonsBackgroundLayout.setVisibility(View.GONE);
                     break;
@@ -185,7 +251,7 @@ public class NoticeAdd extends BasicActivity {
                     myStartActivity(GalleryActivity.class, "video", 1);
                     buttonsBackgroundLayout.setVisibility(View.GONE);
                     break;
-                case R.id.delete:
+                case R.id.reviewdelete:
                     View selectedView = (View) selectedImageVIew.getParent();
 
                     String[] list = pathList.get(parent.indexOfChild(selectedView) - 1).split("\\?");
@@ -193,16 +259,16 @@ public class NoticeAdd extends BasicActivity {
                     String name = list2[list2.length - 1];
                     Log.e("로그: ","이름: "+name);
 
-                    StorageReference desertRef = storageRef.child("owner_notice/"+ownerNoticeInfo.getId()+"/"+name);
+                    StorageReference desertRef = storageRef.child("review/"+reviewInfo.getId()+"/"+name);
                     desertRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            showToast(NoticeAdd.this,"파일을 삭제하였습니다.");
+                            showToast(ReviewAdd.this,"파일을 삭제하였습니다.");
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception exception) {
-                            showToast(NoticeAdd.this,"파일을 삭제하는데 실패하였습니다.");
+                            showToast(ReviewAdd.this,"파일을 삭제하는데 실패하였습니다.");
                         }
                     });
 
@@ -224,7 +290,7 @@ public class NoticeAdd extends BasicActivity {
     };
 
     private void storageUpload() {
-        final String title = ((EditText) findViewById(R.id.titleEditText)).getText().toString();
+        final String title = ((EditText) findViewById(R.id.reviewtitleEditText)).getText().toString();
 
         if (title.length() > 0) {
             //loaderLayout.setVisibility(View.VISIBLE);
@@ -233,8 +299,8 @@ public class NoticeAdd extends BasicActivity {
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference storageRef = storage.getReference();
             FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-            final DocumentReference documentReference = ownerNoticeInfo == null ? firebaseFirestore.collection("owner_notice").document() : firebaseFirestore.collection("owner_notice").document(ownerNoticeInfo.getId());
-            final Date date = ownerNoticeInfo == null ? new Date() : ownerNoticeInfo.getCreatedAt();
+            final DocumentReference documentReference = reviewInfo == null ? firebaseFirestore.collection("review").document() : firebaseFirestore.collection("review").document(reviewInfo.getId());
+            final Date date = reviewInfo == null ? new Date() : reviewInfo.getCreatedAt();
             for (int i = 0; i < parent.getChildCount(); i++) {
                 LinearLayout linearLayout = (LinearLayout) parent.getChildAt(i);
                 for (int ii = 0; ii < linearLayout.getChildCount(); ii++) {
@@ -249,7 +315,7 @@ public class NoticeAdd extends BasicActivity {
                         successCount++;
                         contentsList.add(path);
                         String[] pathArray = path.split("\\.");
-                        final StorageReference mountainImagesRef = storageRef.child("owner_notice/" + documentReference.getId() + "/" + pathCount + "." + pathArray[pathArray.length - 1]);
+                        final StorageReference mountainImagesRef = storageRef.child("review/" + documentReference.getId() + "/" + pathCount + "." + pathArray[pathArray.length - 1]);
                         try {
                             InputStream stream = new FileInputStream(new File(pathList.get(pathCount)));
                             StorageMetadata metadata = new StorageMetadata.Builder().setCustomMetadata("index", "" + (contentsList.size() - 1)).build();
@@ -268,8 +334,9 @@ public class NoticeAdd extends BasicActivity {
                                             successCount--;
                                             contentsList.set(index, uri.toString());
                                             if (successCount == 0) {
-                                                OwnerNoticeInfo ownerNoticeInfo = new OwnerNoticeInfo(title, contentsList, user.getUid(), date);
-                                                storeUpload(documentReference, ownerNoticeInfo);
+                                                ReviewInfo reviewInfo = new ReviewInfo(title, contentsList, user.getUid(), date);
+                                                storeUpload(documentReference, reviewInfo);
+                                                startToast("리뷰가 등록되었습니다.");
                                             }
                                         }
                                     });
@@ -283,15 +350,15 @@ public class NoticeAdd extends BasicActivity {
                 }
             }
             if (successCount == 0) {
-                storeUpload(documentReference, new OwnerNoticeInfo(title, contentsList, user.getUid(), date));
+                storeUpload(documentReference, new ReviewInfo(title, contentsList, user.getUid(), date));
             }
         } else {
             startToast("제목을 입력해주세요.");
         }
     }
 
-    private void storeUpload(DocumentReference documentReference, OwnerNoticeInfo postInfo) {
-        documentReference.set(postInfo)
+    private void storeUpload(DocumentReference documentReference, ReviewInfo reviewInfo) {
+        documentReference.set(reviewInfo)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -310,21 +377,21 @@ public class NoticeAdd extends BasicActivity {
     }
 
     private void postInit() {
-        if (ownerNoticeInfo != null) {
-            titleEditText.setText(ownerNoticeInfo.getTitle());
-            ArrayList<String> contentsList = ownerNoticeInfo.getContents();
+        if (reviewInfo != null) {
+            titleEditText.setText(reviewInfo.getTitle());
+            ArrayList<String> contentsList = reviewInfo.getContents();
             for (int i = 0; i < contentsList.size(); i++) {
                 String contents = contentsList.get(i);
-                if (Patterns.WEB_URL.matcher(contents).matches() && contents.contains("firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/owner_notice")) {
+                if (Patterns.WEB_URL.matcher(contents).matches() && contents.contains("firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/review")) {
                     pathList.add(contents);
 
                     ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    LinearLayout linearLayout = new LinearLayout(NoticeAdd.this);
+                    LinearLayout linearLayout = new LinearLayout(ReviewAdd.this);
                     linearLayout.setLayoutParams(layoutParams);
                     linearLayout.setOrientation(LinearLayout.VERTICAL);
                     parent.addView(linearLayout);
 
-                    ImageView imageView = new ImageView(NoticeAdd.this);
+                    ImageView imageView = new ImageView(ReviewAdd.this);
                     imageView.setLayoutParams(layoutParams);
                     imageView.setAdjustViewBounds(true);
                     imageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -338,13 +405,13 @@ public class NoticeAdd extends BasicActivity {
                     Glide.with(this).load(contents).override(1000).into(imageView);
                     linearLayout.addView(imageView);
 
-                    EditText editText = new EditText(NoticeAdd.this);
+                    EditText editText = new EditText(ReviewAdd.this);
                     editText.setLayoutParams(layoutParams);
                     editText.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE | InputType.TYPE_CLASS_TEXT);
                     editText.setHint("내용");
                     if (i < contentsList.size() - 1) {
                         String nextContents = contentsList.get(i + 1);
-                        if (!Patterns.WEB_URL.matcher(nextContents).matches() || !nextContents.contains("firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/owner_notice")) {
+                        if (!Patterns.WEB_URL.matcher(nextContents).matches() || !nextContents.contains("firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/review")) {
                             editText.setText(nextContents);
                         }
                     }
@@ -374,7 +441,7 @@ public class NoticeAdd extends BasicActivity {
     public boolean onKeyUp(int keyCode, KeyEvent event) {   //휴대폰 자체 뒤로가기
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
-                Intent i = new Intent(this, NoticeManagement.class);
+                Intent i = new Intent(this, ListingActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
@@ -388,7 +455,7 @@ public class NoticeAdd extends BasicActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:{
-                Intent i = new Intent(this, NoticeManagement.class);
+                Intent i = new Intent(this, ReviewActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);

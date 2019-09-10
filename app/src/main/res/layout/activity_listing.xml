@@ -94,6 +94,18 @@
             android:textColor="#2DA6E8"
             android:textSize="20dp"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/reviewButton"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:background="#C4FFFFFF"
+            android:text="리뷰 쓰기"
+            android:textColor="#2DA6E8"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
 
