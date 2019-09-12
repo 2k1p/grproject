@@ -1,4 +1,4 @@
-package com.example.ibyg.adapter;
+package com.example.ibyg.Notice;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -18,8 +18,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ibyg.Notice.OnPostListener;
-import com.example.ibyg.Notice.OwnerNoticeInfo;
 import com.example.ibyg.R;
 
 import java.text.SimpleDateFormat;
@@ -55,7 +53,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
 
     @NonNull
     @Override
-    public MainAdapter.MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         CardView cardView = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.item_post, parent, false);
         final MainViewHolder mainViewHolder = new MainViewHolder(cardView);
         cardView.setOnClickListener(new View.OnClickListener() {

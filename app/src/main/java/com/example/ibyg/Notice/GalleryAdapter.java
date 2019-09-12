@@ -1,4 +1,4 @@
-package com.example.ibyg.adapter;
+package com.example.ibyg.Notice;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -54,7 +54,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
     @Override
     public void onBindViewHolder(@NonNull final GalleryViewHolder holder, int position) {
         CardView cardView = holder.cardView;
-        ImageView imageView = cardView.findViewById(R.id.imageView);
+        ImageView imageView = cardView.findViewById(R.id.imageView3);
         Glide.with(activity).load(mDataset.get(position)).centerCrop().override(500).into(imageView);
     }
 

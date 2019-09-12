@@ -10,7 +10,7 @@ public class Util {
         this.activity = activity;
     }
 
-    public void showToast(String msg){
+    public static void showToast(Activity activity, String msg){
         Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show();
     }
 }

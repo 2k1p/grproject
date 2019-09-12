@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ibyg.MainActivity;
 import com.example.ibyg.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -89,7 +90,7 @@ public class CafeActivity extends AppCompatActivity {
     public boolean onKeyUp(int keyCode, KeyEvent event) {   //휴대폰 자체 뒤로가기
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
-                Intent i = new Intent(this, CafeManager.class);
+                Intent i = new Intent(this, MainActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
@@ -103,7 +104,7 @@ public class CafeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {   //툴바 뒤로가기
         switch (item.getItemId()){
             case android.R.id.home:{
-                Intent i = new Intent(this, CafeManager.class);
+                Intent i = new Intent(this, MainActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
