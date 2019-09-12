@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.ibyg.Manager.CafeActivity;
 import com.example.ibyg.Manager.CafeManager;
 import com.example.ibyg.Notice.NoticeManagement;
+import com.example.ibyg.QNA.QnaActivity;
 import com.example.ibyg.Review.ReviewActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(onClickListener);
         findViewById(R.id.button2).setOnClickListener(onClickListener);
         findViewById(R.id.button3).setOnClickListener(onClickListener);
+        findViewById(R.id.button4).setOnClickListener(onClickListener);
     }
 
     //로그아웃 로직
@@ -121,6 +123,9 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.button3:  //공지사항 버튼
                     myStartActivity(NoticeManagement.class);
+                    break;
+                case R.id.button4:  //1:1문의 버튼
+                    myStartActivity(QnaActivity.class);
                     break;
 
             }

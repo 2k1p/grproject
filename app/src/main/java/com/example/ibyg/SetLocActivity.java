@@ -2,9 +2,7 @@ package com.example.ibyg;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class SetLocActivity extends AppCompatActivity {
+public class SetLocActivity extends BasicActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
