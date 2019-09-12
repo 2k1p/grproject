@@ -51,6 +51,7 @@
         <activity android:name=".AhpActivity"></activity>
         <activity android:name=".Review.ReviewActivity"></activity>
         <activity android:name=".Review.ReviewAdd"></activity>
+
         <activity android:name=".Notice.NoticeManagement"></activity>
         <activity android:name=".Notice.NoticeAdd"></activity>
         <activity android:name=".Notice.GalleryActivity"></activity>
@@ -58,6 +59,9 @@
         <activity android:name=".Manager.CafeManager"></activity>
         <activity android:name=".Manager.CafeActivity"></activity>
         <activity android:name=".Manager.CafeManager2"></activity>
+
+        <activity android:name=".QNA.QnaActivity"></activity>
+        <activity android:name=".QNA.QnaManager"></activity>
 
 
     </application>

@@ -77,6 +77,7 @@ public class CafeAdapter extends RecyclerView.Adapter<CafeAdapter.ProductViewHol
                     Intent intent = new Intent(mCtx, CafeManager2.class);
                     intent.putExtra("product", ownerInfo);
                     mCtx.startActivity(intent);
+
                 }
             });
 
@@ -95,4 +96,5 @@ public class CafeAdapter extends RecyclerView.Adapter<CafeAdapter.ProductViewHol
 
 
     }
+
 }

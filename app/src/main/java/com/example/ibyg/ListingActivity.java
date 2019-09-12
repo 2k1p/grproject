@@ -1,15 +1,12 @@
 package com.example.ibyg;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ibyg.Review.ReviewAdd;
 
 
-public class ListingActivity extends AppCompatActivity {
+public class ListingActivity extends BasicActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +41,6 @@ public class ListingActivity extends AppCompatActivity {
     };
 
 
-    private void myStartActivity(Class c){
-        Intent intent = new Intent(this, c);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
+
 
 }
