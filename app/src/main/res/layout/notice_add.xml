@@ -35,7 +35,7 @@
                     android:orientation="vertical">
 
                     <EditText
-                        android:id="@+id/contentsEditText"
+                        android:id="@+id/contensEditText"
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
                         android:ems="10"

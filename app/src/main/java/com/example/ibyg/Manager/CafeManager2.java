@@ -4,17 +4,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ibyg.BasicActivity;
 import com.example.ibyg.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,7 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CafeManager2 extends AppCompatActivity implements View.OnClickListener {
+public class CafeManager2 extends BasicActivity implements View.OnClickListener {
     private static final String TAG = "CafeManager2";
 
     private EditText editTextName;
@@ -50,11 +47,7 @@ public class CafeManager2 extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cafemanager2);
 
-        ActionBar actionBar = getSupportActionBar();  //제목줄 객체 얻어오기
-        actionBar.setTitle("카페 수정");  //액션바 제목설정
-        actionBar.setDisplayHomeAsUpEnabled(true);   //뒤로가기버튼 <- 만들기
-        //업버튼이 되려면 눌렀을 때 돌아갈 Activity를 지정해줘야 함
-        //이 작업은 매니패스트에서 함
+        setToolbarTitle("카페 수정");  //액션바 제목설정
 
 
         ownerInfo = (OwnerInfo) getIntent().getSerializableExtra("product");
@@ -202,32 +195,4 @@ public class CafeManager2 extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {   //휴대폰 자체 뒤로가기
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                Intent i = new Intent(this, CafeActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
-                finish();
-                return true;
-        }
-        return super.onKeyUp(keyCode, event);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {   //툴바 뒤로가기
-        switch (item.getItemId()){
-            case android.R.id.home:{
-                Intent i = new Intent(this, CafeActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
-                finish();
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

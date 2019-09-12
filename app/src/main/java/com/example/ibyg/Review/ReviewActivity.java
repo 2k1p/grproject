@@ -4,16 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
-import android.view.KeyEvent;
-import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ibyg.MainActivity;
+import com.example.ibyg.BasicActivity;
 import com.example.ibyg.MemberInitActivity;
 import com.example.ibyg.R;
 import com.example.ibyg.SignUpActivity;
@@ -38,7 +34,7 @@ import java.util.Date;
 
 import static com.example.ibyg.Notice.Util.showToast;
 
-public class ReviewActivity extends AppCompatActivity {
+public class ReviewActivity extends BasicActivity {
     private static final String TAG = "ReviewActivity";
     private FirebaseUser user;
     private FirebaseFirestore firebaseFirestore;
@@ -52,9 +48,7 @@ public class ReviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review_main);
 
-        ActionBar actionBar = getSupportActionBar();  //제목줄 객체 얻어오기
-        actionBar.setTitle("리뷰 관리");  //액션바 제목설정
-        actionBar.setDisplayHomeAsUpEnabled(true);   //뒤로가기버튼 <- 만들기
+        setToolbarTitle("리뷰 관리");  //액션바 제목설정
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -187,12 +181,6 @@ public class ReviewActivity extends AppCompatActivity {
     }
 
 
-    private void myStartActivity(Class c) {
-        Intent intent = new Intent(this, c);
-        startActivity(intent);
-        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
-    }
-
     private void myStartActivity(Class c, ReviewInfo reviewInfo) {
         Intent intent = new Intent(this, c);
         intent.putExtra("reviewInfo", reviewInfo);
@@ -200,33 +188,5 @@ public class ReviewActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
 
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {   //휴대폰 자체 뒤로가기
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                Intent i = new Intent(this, MainActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
-                finish();
-                return true;
-        }
-        return super.onKeyUp(keyCode, event);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:{
-                Intent i = new Intent(this, MainActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
-                finish();
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
 }
