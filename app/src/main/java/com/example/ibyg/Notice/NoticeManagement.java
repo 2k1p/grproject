@@ -4,17 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
-import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ibyg.BasicActivity;
-import com.example.ibyg.MainActivity;
 import com.example.ibyg.MemberInitActivity;
 import com.example.ibyg.R;
 import com.example.ibyg.SignUpActivity;
@@ -46,7 +42,6 @@ public class NoticeManagement extends BasicActivity {
     private StorageReference storageRef;
     private MainAdapter mainAdapter;
     private ArrayList<OwnerNoticeInfo> postList;
-    private Util util;
     private int successCount;
 
     @Override
@@ -54,9 +49,7 @@ public class NoticeManagement extends BasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notice_management);
 
-        ActionBar actionBar = getSupportActionBar(); //제목줄 객체 얻어오기
-        actionBar.setTitle("공지사항 관리");          //액션바 제목설정
-        actionBar.setDisplayHomeAsUpEnabled(true);   //뒤로가기버튼 <- 만들기
+        setToolbarTitle("공지사항 관리");
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -87,7 +80,6 @@ public class NoticeManagement extends BasicActivity {
             });
         }
 
-        util = new Util(this);
         postList = new ArrayList<>();
         mainAdapter = new MainAdapter(NoticeManagement.this, postList);
         mainAdapter.setOnPostListener(onPostListener);
@@ -206,11 +198,6 @@ public class NoticeManagement extends BasicActivity {
         }
     }
 
-    private void myStartActivity(Class c) {
-        Intent intent = new Intent(this, c);
-        startActivity(intent);
-        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
-    }
 
     private void myStartActivity(Class c, OwnerNoticeInfo ownerNoticeInfo) {
         Intent intent = new Intent(this, c);
@@ -219,35 +206,6 @@ public class NoticeManagement extends BasicActivity {
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
 
-
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {   //휴대폰 자체 뒤로가기
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                Intent i = new Intent(this, MainActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
-                finish();
-                return true;
-        }
-        return super.onKeyUp(keyCode, event);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:{
-                Intent i = new Intent(this, MainActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
-                finish();
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
 
 }

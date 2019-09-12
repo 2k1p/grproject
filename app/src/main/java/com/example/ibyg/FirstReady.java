@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -24,10 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-
-
-public class FirstReady extends AppCompatActivity{
-
+public class FirstReady extends BasicActivity{
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 10;
     private FirebaseAuth mAuth;
@@ -39,9 +34,6 @@ public class FirstReady extends AppCompatActivity{
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
     }
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -89,12 +81,6 @@ public class FirstReady extends AppCompatActivity{
         });
 
     }
-
-
-
-
-
-
 
 
     /*
@@ -148,18 +134,6 @@ public class FirstReady extends AppCompatActivity{
     }
 
 
-    private void startToast(String msg){
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
-
-    private void myStartActivity(Class c){
-        Intent intent = new Intent(this, c);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
-    }
-
-
     private void signOut() {
         // Firebase sign out
         mAuth.signOut();
@@ -172,7 +146,5 @@ public class FirstReady extends AppCompatActivity{
                     }
                 });
     }
-
-
 
 }

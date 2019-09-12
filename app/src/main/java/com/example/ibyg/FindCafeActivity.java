@@ -2,9 +2,7 @@ package com.example.ibyg;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class FindCafeActivity extends AppCompatActivity {
+public class FindCafeActivity extends BasicActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

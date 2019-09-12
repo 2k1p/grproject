@@ -12,22 +12,17 @@ import android.os.Environment;
 import android.text.InputType;
 import android.util.Log;
 import android.util.Patterns;
-import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 
 import com.bumptech.glide.Glide;
 import com.example.ibyg.BasicActivity;
-import com.example.ibyg.ListingActivity;
 import com.example.ibyg.Notice.GalleryActivity;
 import com.example.ibyg.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -71,9 +66,7 @@ public class ReviewAdd extends BasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review_add);
 
-        ActionBar actionBar = getSupportActionBar();   //제목줄 객체 얻어오기
-        actionBar.setTitle("리뷰 작성");               //액션바 제목설정
-        actionBar.setDisplayHomeAsUpEnabled(true);    //뒤로가기버튼 <- 만들기
+        setToolbarTitle("리뷰 작성");               //액션바 제목설정
 
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
@@ -84,7 +77,6 @@ public class ReviewAdd extends BasicActivity {
         {
             startApp();
         }
-
 
 
         parent = findViewById(R.id.reviewcontentsLayout);
@@ -118,8 +110,6 @@ public class ReviewAdd extends BasicActivity {
         reviewInfo = (ReviewInfo) getIntent().getSerializableExtra("reviewInfo");
         postInit();
     }
-
-
 
 
 
@@ -163,7 +153,6 @@ public class ReviewAdd extends BasicActivity {
             startApp();
         }
     }
-
 
 
 
@@ -424,46 +413,11 @@ public class ReviewAdd extends BasicActivity {
         }
     }
 
-    private void startToast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
-
     private void myStartActivity(Class c, String media, int requestCode) {
         Intent intent = new Intent(this, c);
         intent.putExtra("media", media);
         startActivityForResult(intent, requestCode);
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
-    }
-
-
-
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {   //휴대폰 자체 뒤로가기
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                Intent i = new Intent(this, ListingActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
-                finish();
-                return true;
-        }
-        return super.onKeyUp(keyCode, event);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:{
-                Intent i = new Intent(this, ReviewActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
-                finish();
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 

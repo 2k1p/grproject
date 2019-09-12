@@ -7,18 +7,14 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.util.Patterns;
-import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 
 import com.bumptech.glide.Glide;
 import com.example.ibyg.BasicActivity;
@@ -63,16 +59,14 @@ public class NoticeAdd extends BasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notice_add);
 
-        ActionBar actionBar = getSupportActionBar(); //제목줄 객체 얻어오기
-        actionBar.setTitle("공지사항 추가");          //액션바 제목설정
-        actionBar.setDisplayHomeAsUpEnabled(true);   //뒤로가기버튼 <- 만들기
+        setToolbarTitle("공지사항 추가");          //액션바 제목설정
 
 
 
         parent = findViewById(R.id.contentsLayout);
         buttonsBackgroundLayout = findViewById(R.id.buttonsBackgroundLayout);
         //loaderLayout = findViewById(R.id.loaderLyaout);
-        contentsEditText = findViewById(R.id.contentsEditText);
+        contentsEditText = findViewById(R.id.contensEditText);
         titleEditText = findViewById(R.id.titleEditText);
 
         findViewById(R.id.check).setOnClickListener(onClickListener);
@@ -357,46 +351,11 @@ public class NoticeAdd extends BasicActivity {
         }
     }
 
-    private void startToast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
-
     private void myStartActivity(Class c, String media, int requestCode) {
         Intent intent = new Intent(this, c);
         intent.putExtra("media", media);
         startActivityForResult(intent, requestCode);
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
-    }
-
-
-
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {   //휴대폰 자체 뒤로가기
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                Intent i = new Intent(this, NoticeManagement.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
-                finish();
-                return true;
-        }
-        return super.onKeyUp(keyCode, event);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:{
-                Intent i = new Intent(this, NoticeManagement.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
-                finish();
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 
