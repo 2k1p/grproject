@@ -1,4 +1,4 @@
-package com.example.ibyg;
+package com.example.ibyg.Login;
 
 
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 
+import com.example.ibyg.BasicActivity;
+import com.example.ibyg.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
