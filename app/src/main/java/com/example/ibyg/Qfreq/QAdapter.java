@@ -1,4 +1,4 @@
-package com.example.ibyg.Review;
+package com.example.ibyg.Qfreq;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -24,10 +24,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MainViewHolder> {
-    private ArrayList<ReviewInfo> mDataset;
+public class QAdapter extends RecyclerView.Adapter<QAdapter.MainViewHolder> {
+    private ArrayList<QInfo> mDataset;
     private Activity activity;
-    private OnReviewListener onReviewListener;
+    private OnQListener onQListener;
 
     static class MainViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
@@ -37,13 +37,13 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MainViewHo
         }
     }
 
-    public ReviewAdapter(Activity activity, ArrayList<ReviewInfo> myDataset) {
+    public QAdapter(Activity activity, ArrayList<QInfo> myDataset) {
         this.mDataset = myDataset;
         this.activity = activity;
     }
 
-    public void setOnReviewListener(OnReviewListener onReviewListener){
-        this.onReviewListener = onReviewListener;
+    public void setOnQListener(OnQListener onQListener){
+        this.onQListener = onQListener;
     }
 
     @Override
@@ -53,8 +53,8 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MainViewHo
 
     @NonNull
     @Override
-    public ReviewAdapter.MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        CardView cardView = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.review_item, parent, false);
+    public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        CardView cardView = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.item_post, parent, false);
         final MainViewHolder mainViewHolder = new MainViewHolder(cardView);
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +63,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MainViewHo
             }
         });
 
-        cardView.findViewById(R.id.reviewmenu).setOnClickListener(new View.OnClickListener() {
+        cardView.findViewById(R.id.menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showPopup(v, mainViewHolder.getAdapterPosition());
@@ -76,13 +76,13 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MainViewHo
     @Override
     public void onBindViewHolder(@NonNull final MainViewHolder holder, int position) {
         CardView cardView = holder.cardView;
-        TextView titleTextView = cardView.findViewById(R.id.reviewTextView);
+        TextView titleTextView = cardView.findViewById(R.id.titleTextView);
         titleTextView.setText(mDataset.get(position).getTitle());
 
-        TextView createdAtTextView = cardView.findViewById(R.id.reviewcreateAtTextView);
+        TextView createdAtTextView = cardView.findViewById(R.id.createAtTextView);
         createdAtTextView.setText(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(mDataset.get(position).getCreatedAt()));
 
-        LinearLayout contetnsLayout = cardView.findViewById(R.id.reviewcontentsLayout);
+        LinearLayout contetnsLayout = cardView.findViewById(R.id.contentsLayout);
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         ArrayList<String> contentsList = mDataset.get(position).getContents();
 
@@ -99,7 +99,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MainViewHo
                     break;
                 }
                 String contents = contentsList.get(i);
-                if (Patterns.WEB_URL.matcher(contents).matches() && contents.contains("https://firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/review")) {
+                if (Patterns.WEB_URL.matcher(contents).matches() && contents.contains("https://firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/owner_qna")) {
                     ImageView imageView = new ImageView(activity);
                     imageView.setLayoutParams(layoutParams);
                     imageView.setAdjustViewBounds(true);
@@ -129,10 +129,10 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MainViewHo
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.modify:
-                        onReviewListener.onModify(position);
+                        onQListener.onModify(position);
                         return true;
                     case R.id.delete:
-                        onReviewListener.onDelete(position);
+                        onQListener.onDelete(position);
                         return true;
                     default:
                         return false;
@@ -141,7 +141,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MainViewHo
         });
 
         MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.review_post, popup.getMenu());
+        inflater.inflate(R.menu.post, popup.getMenu());
         popup.show();
     }
 }

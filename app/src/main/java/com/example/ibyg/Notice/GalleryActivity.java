@@ -26,7 +26,7 @@ public class GalleryActivity extends BasicActivity {
 
         final int numberOfColumns = 3;
 
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView_notice);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
 

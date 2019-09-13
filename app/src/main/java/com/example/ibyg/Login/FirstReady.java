@@ -1,4 +1,4 @@
-package com.example.ibyg;
+package com.example.ibyg.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.ibyg.BasicActivity;
+import com.example.ibyg.ListingActivity;
+import com.example.ibyg.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -22,7 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class FirstReady extends BasicActivity{
+public class FirstReady extends BasicActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 10;
     private FirebaseAuth mAuth;

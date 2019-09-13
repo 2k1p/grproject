@@ -1,4 +1,4 @@
-package com.example.ibyg.Notice;
+package com.example.ibyg.Qfreq;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.example.ibyg.BasicActivity;
+import com.example.ibyg.Notice.GalleryActivity;
 import com.example.ibyg.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,8 +40,8 @@ import java.util.Date;
 
 import static com.example.ibyg.Notice.Util.showToast;
 
-public class NoticeAdd extends BasicActivity {
-    private static final String TAG = "NoticeAdd";
+public class Qadd extends BasicActivity {
+    private static final String TAG = "Qadd";
     private FirebaseUser user;
     private StorageReference storageRef;
     private ArrayList<String> pathList = new ArrayList<>();
@@ -50,29 +51,29 @@ public class NoticeAdd extends BasicActivity {
     private EditText selectedEditText;
     private EditText contentsEditText;
     private EditText titleEditText;
-    private OwnerNoticeInfo ownerNoticeInfo;
+    private QInfo qInfo;
     private int pathCount, successCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.notice_add);
+        setContentView(R.layout.q_add);
 
-        setToolbarTitle("공지사항 추가");          //액션바 제목설정
+        setToolbarTitle("질문 추가");          //액션바 제목설정
 
 
-        parent = findViewById(R.id.contentsLayout);
-        buttonsBackgroundLayout = findViewById(R.id.buttonsBackgroundLayout);
+        parent = findViewById(R.id.qnacontentsLayout);
+        buttonsBackgroundLayout = findViewById(R.id.qnabuttonsBackgroundLayout);
         //loaderLayout = findViewById(R.id.loaderLyaout);
-        contentsEditText = findViewById(R.id.contensEditText);
-        titleEditText = findViewById(R.id.titleEditText);
+        contentsEditText = findViewById(R.id.qnacontensEditText);
+        titleEditText = findViewById(R.id.qnatitleEditText);
 
-        findViewById(R.id.check).setOnClickListener(onClickListener);
+        findViewById(R.id.qnacheck).setOnClickListener(onClickListener);
         findViewById(R.id.image).setOnClickListener(onClickListener);
         findViewById(R.id.video).setOnClickListener(onClickListener);
         findViewById(R.id.imageModify).setOnClickListener(onClickListener);
         findViewById(R.id.videoModify).setOnClickListener(onClickListener);
-        findViewById(R.id.delete).setOnClickListener(onClickListener);
+        findViewById(R.id.qnadelete).setOnClickListener(onClickListener);
 
         buttonsBackgroundLayout.setOnClickListener(onClickListener);
         contentsEditText.setOnFocusChangeListener(onFocusChangeListener);
@@ -89,7 +90,7 @@ public class NoticeAdd extends BasicActivity {
         storageRef = storage.getReference();
 
 
-        ownerNoticeInfo = (OwnerNoticeInfo) getIntent().getSerializableExtra("ownerNoticeInfo");
+        qInfo = (QInfo) getIntent().getSerializableExtra("qInfo");
         postInit();
     }
 
@@ -103,7 +104,7 @@ public class NoticeAdd extends BasicActivity {
                     pathList.add(profilePath);
 
                     ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    LinearLayout linearLayout = new LinearLayout(NoticeAdd.this);
+                    LinearLayout linearLayout = new LinearLayout(Qadd.this);
                     linearLayout.setLayoutParams(layoutParams);
                     linearLayout.setOrientation(LinearLayout.VERTICAL);
 
@@ -118,7 +119,7 @@ public class NoticeAdd extends BasicActivity {
                         }
                     }
 
-                    ImageView imageView = new ImageView(NoticeAdd.this);
+                    ImageView imageView = new ImageView(Qadd.this);
                     imageView.setLayoutParams(layoutParams);
                     imageView.setAdjustViewBounds(true);
                     imageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -132,7 +133,7 @@ public class NoticeAdd extends BasicActivity {
                     Glide.with(this).load(profilePath).override(1000).into(imageView);
                     linearLayout.addView(imageView);
 
-                    EditText editText = new EditText(NoticeAdd.this);
+                    EditText editText = new EditText(Qadd.this);
                     editText.setLayoutParams(layoutParams);
                     editText.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE | InputType.TYPE_CLASS_TEXT);
                     editText.setHint("내용");
@@ -154,7 +155,7 @@ public class NoticeAdd extends BasicActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.check:
+                case R.id.qnacheck:
                     storageUpload();
                     break;
                 case R.id.image:
@@ -176,7 +177,7 @@ public class NoticeAdd extends BasicActivity {
                     myStartActivity(GalleryActivity.class, "video", 1);
                     buttonsBackgroundLayout.setVisibility(View.GONE);
                     break;
-                case R.id.delete:
+                case R.id.qnadelete:
                     View selectedView = (View) selectedImageVIew.getParent();
 
                     String[] list = pathList.get(parent.indexOfChild(selectedView) - 1).split("\\?");
@@ -184,16 +185,16 @@ public class NoticeAdd extends BasicActivity {
                     String name = list2[list2.length - 1];
                     Log.e("로그: ","이름: "+name);
 
-                    StorageReference desertRef = storageRef.child("owner_notice/"+ownerNoticeInfo.getId()+"/"+name);
+                    StorageReference desertRef = storageRef.child("owner_q/"+qInfo.getId()+"/"+name);
                     desertRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            showToast(NoticeAdd.this,"파일을 삭제하였습니다.");
+                            showToast(Qadd.this,"파일을 삭제하였습니다.");
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception exception) {
-                            showToast(NoticeAdd.this,"파일을 삭제하는데 실패하였습니다.");
+                            showToast(Qadd.this,"파일을 삭제하는데 실패하였습니다.");
                         }
                     });
 
@@ -215,7 +216,7 @@ public class NoticeAdd extends BasicActivity {
     };
 
     private void storageUpload() {
-        final String title = ((EditText) findViewById(R.id.titleEditText)).getText().toString();
+        final String title = ((EditText) findViewById(R.id.qnatitleEditText)).getText().toString();
 
         if (title.length() > 0) {
             //loaderLayout.setVisibility(View.VISIBLE);
@@ -224,8 +225,8 @@ public class NoticeAdd extends BasicActivity {
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference storageRef = storage.getReference();
             FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-            final DocumentReference documentReference = ownerNoticeInfo == null ? firebaseFirestore.collection("owner_notice").document() : firebaseFirestore.collection("owner_notice").document(ownerNoticeInfo.getId());
-            final Date date = ownerNoticeInfo == null ? new Date() : ownerNoticeInfo.getCreatedAt();
+            final DocumentReference documentReference = qInfo == null ? firebaseFirestore.collection("owner_q").document() : firebaseFirestore.collection("owner_q").document(qInfo.getId());
+            final Date date = qInfo == null ? new Date() : qInfo.getCreatedAt();
             for (int i = 0; i < parent.getChildCount(); i++) {
                 LinearLayout linearLayout = (LinearLayout) parent.getChildAt(i);
                 for (int ii = 0; ii < linearLayout.getChildCount(); ii++) {
@@ -240,7 +241,7 @@ public class NoticeAdd extends BasicActivity {
                         successCount++;
                         contentsList.add(path);
                         String[] pathArray = path.split("\\.");
-                        final StorageReference mountainImagesRef = storageRef.child("owner_notice/" + documentReference.getId() + "/" + pathCount + "." + pathArray[pathArray.length - 1]);
+                        final StorageReference mountainImagesRef = storageRef.child("owner_q/" + documentReference.getId() + "/" + pathCount + "." + pathArray[pathArray.length - 1]);
                         try {
                             InputStream stream = new FileInputStream(new File(pathList.get(pathCount)));
                             StorageMetadata metadata = new StorageMetadata.Builder().setCustomMetadata("index", "" + (contentsList.size() - 1)).build();
@@ -259,8 +260,8 @@ public class NoticeAdd extends BasicActivity {
                                             successCount--;
                                             contentsList.set(index, uri.toString());
                                             if (successCount == 0) {
-                                                OwnerNoticeInfo ownerNoticeInfo = new OwnerNoticeInfo(title, contentsList, user.getUid(), date);
-                                                storeUpload(documentReference, ownerNoticeInfo);
+                                                QInfo qInfo = new QInfo(title, contentsList, user.getUid(), date);
+                                                storeUpload(documentReference, qInfo);
                                             }
                                         }
                                     });
@@ -274,15 +275,15 @@ public class NoticeAdd extends BasicActivity {
                 }
             }
             if (successCount == 0) {
-                storeUpload(documentReference, new OwnerNoticeInfo(title, contentsList, user.getUid(), date));
+                storeUpload(documentReference, new QInfo(title, contentsList, user.getUid(), date));
             }
         } else {
             startToast("제목을 입력해주세요.");
         }
     }
 
-    private void storeUpload(DocumentReference documentReference, OwnerNoticeInfo postInfo) {
-        documentReference.set(postInfo)
+    private void storeUpload(DocumentReference documentReference, QInfo qInfo) {
+        documentReference.set(qInfo)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -301,21 +302,21 @@ public class NoticeAdd extends BasicActivity {
     }
 
     private void postInit() {
-        if (ownerNoticeInfo != null) {
-            titleEditText.setText(ownerNoticeInfo.getTitle());
-            ArrayList<String> contentsList = ownerNoticeInfo.getContents();
+        if (qInfo != null) {
+            titleEditText.setText(qInfo.getTitle());
+            ArrayList<String> contentsList = qInfo.getContents();
             for (int i = 0; i < contentsList.size(); i++) {
                 String contents = contentsList.get(i);
-                if (Patterns.WEB_URL.matcher(contents).matches() && contents.contains("firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/owner_notice")) {
+                if (Patterns.WEB_URL.matcher(contents).matches() && contents.contains("firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/owner_q")) {
                     pathList.add(contents);
 
                     ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    LinearLayout linearLayout = new LinearLayout(NoticeAdd.this);
+                    LinearLayout linearLayout = new LinearLayout(Qadd.this);
                     linearLayout.setLayoutParams(layoutParams);
                     linearLayout.setOrientation(LinearLayout.VERTICAL);
                     parent.addView(linearLayout);
 
-                    ImageView imageView = new ImageView(NoticeAdd.this);
+                    ImageView imageView = new ImageView(Qadd.this);
                     imageView.setLayoutParams(layoutParams);
                     imageView.setAdjustViewBounds(true);
                     imageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -329,13 +330,13 @@ public class NoticeAdd extends BasicActivity {
                     Glide.with(this).load(contents).override(1000).into(imageView);
                     linearLayout.addView(imageView);
 
-                    EditText editText = new EditText(NoticeAdd.this);
+                    EditText editText = new EditText(Qadd.this);
                     editText.setLayoutParams(layoutParams);
                     editText.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE | InputType.TYPE_CLASS_TEXT);
                     editText.setHint("내용");
                     if (i < contentsList.size() - 1) {
                         String nextContents = contentsList.get(i + 1);
-                        if (!Patterns.WEB_URL.matcher(nextContents).matches() || !nextContents.contains("firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/owner_notice")) {
+                        if (!Patterns.WEB_URL.matcher(nextContents).matches() || !nextContents.contains("firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/owner_q")) {
                             editText.setText(nextContents);
                         }
                     }
