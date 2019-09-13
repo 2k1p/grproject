@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ibyg.BasicActivity;
-import com.example.ibyg.MemberInitActivity;
+import com.example.ibyg.Login.MemberInitActivity;
 import com.example.ibyg.R;
-import com.example.ibyg.SignUpActivity;
+import com.example.ibyg.Login.SignUpActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

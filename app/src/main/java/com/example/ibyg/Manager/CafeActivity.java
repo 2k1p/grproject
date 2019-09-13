@@ -30,13 +30,13 @@ public class CafeActivity extends BasicActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recyclerview);
+        setContentView(R.layout.cafe_recyclerview);
 
         setToolbarTitle("카페 관리");
 
         progressBar = findViewById(R.id.progressbar);
 
-        recyclerView = findViewById(R.id.recyclerview_products);
+        recyclerView = findViewById(R.id.recyclerview_cafe);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

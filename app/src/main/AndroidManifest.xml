@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FirstReady">
+        <activity android:name=".Login.FirstReady">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,16 +34,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:parentActivityName=".SignUpActivity">
+            android:name=".Login.LoginActivity"
+            android:parentActivityName=".Login.SignUpActivity">
         </activity>
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".Login.SignUpActivity"></activity>
         <activity
-            android:name=".PasswordResetActivity"
-            android:parentActivityName=".LoginActivity">
+            android:name=".Login.PasswordResetActivity"
+            android:parentActivityName=".Login.LoginActivity">
         </activity>
         <activity android:name=".BasicActivity"></activity>
-        <activity android:name=".MemberInitActivity"></activity>
+        <activity android:name=".Login.MemberInitActivity"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".ListingActivity"></activity>
         <activity android:name=".SetLocActivity"></activity>
@@ -60,8 +60,11 @@
         <activity android:name=".Manager.CafeActivity"></activity>
         <activity android:name=".Manager.CafeManager2"></activity>
 
-        <activity android:name=".QNA.QnaActivity"></activity>
-        <activity android:name=".QNA.QnaManager"></activity>
+        <activity android:name=".Qfreq.QnaActivity"></activity>
+        <activity android:name=".Qfreq.Qfreq"></activity>
+        <activity android:name=".Qfreq.Qadd"></activity>
+        <activity android:name=".Qna.QnaManager"></activity>
+        <activity android:name=".Qna.QnaAdd"></activity>
 
 
     </application>
