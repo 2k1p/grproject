@@ -1,4 +1,4 @@
-package com.example.ibyg;
+package com.example.ibyg.Login;
 
 public class Memberinfo {
     private String name;

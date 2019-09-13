@@ -132,7 +132,7 @@ public class ReviewAdd extends BasicActivity {
     }
 
     @TargetApi(Build.VERSION_CODES.M)
-    public void checkVerify()
+    public void checkVerify()       //파일접근 권한묻기
     {
         if (
                 checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
