@@ -11,22 +11,25 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ibyg.Login.MemberInitActivity;
+import com.example.ibyg.Login.SignUpActivity;
 import com.example.ibyg.Manager.CafeActivity;
 import com.example.ibyg.Manager.CafeManager;
 import com.example.ibyg.Notice.NoticeManagement;
+import com.example.ibyg.Qfreq.QnaActivity;
+import com.example.ibyg.Review.ReviewActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    private FirebaseAuth mAuth;
+    private FirebaseAuth user;
+    private FirebaseFirestore db;
 
     private BackPressCloseHandler backPressCloseHandler;
 
@@ -41,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         backPressCloseHandler = new BackPressCloseHandler(this);
 
-
-        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -78,7 +81,9 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.logout).setOnClickListener(onClickListener);
         findViewById(R.id.button).setOnClickListener(onClickListener);
+        findViewById(R.id.button2).setOnClickListener(onClickListener);
         findViewById(R.id.button3).setOnClickListener(onClickListener);
+        findViewById(R.id.button4).setOnClickListener(onClickListener);
     }
 
     //로그아웃 로직
@@ -93,32 +98,36 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.button:   //카페관리 버튼
-                    FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
-                    CollectionReference allUsersRef = rootRef.collection("owner_cafe");
-
-                    allUsersRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    DocumentReference documentReference = db.collection("owner_cafe").document(user.getUid());
+                    documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.isSuccessful()) {
-                                for (DocumentSnapshot document : task.getResult()) {
+                                DocumentSnapshot document = task.getResult();
                                     String userName = document.getString("editTextName");
                                     if (userName == null) {
-                                        //login();
                                         myStartActivity(CafeManager.class);
                                         startToast( "카페정보가 없어서 등록화면으로 이동합니다");
                                     } else {
-                                        myStartActivity(CafeActivity.class);
                                         Log.d(TAG, "onEvent: username does not exists");
+                                        myStartActivity(CafeActivity.class);
                                     }
-                                }
+
                             } else {
-                                Log.d("TAG", "Error getting documents: ", task.getException());
+                                Log.d(TAG, "get failed with ", task.getException());
                             }
                         }
                     });
                     break;
+                case R.id.button2:  //리뷰관리 버튼
+                    myStartActivity(ReviewActivity.class);
+                    break;
+
                 case R.id.button3:  //공지사항 버튼
                     myStartActivity(NoticeManagement.class);
+                    break;
+                case R.id.button4:  //1:1문의 버튼
+                    myStartActivity(QnaActivity.class);
                     break;
 
             }
@@ -126,34 +135,6 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-//    private void login(){
-//        String email = ((EditText)findViewById(R.id.emailEditText)).getText().toString();
-//        String password = ((EditText)findViewById(R.id.passwordEditText)).getText().toString();
-//
-//
-//
-//        if(email.length() > 0 && password.length() > 0){
-//            mAuth.signInWithEmailAndPassword(email, password)
-//                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<AuthResult> task) {
-//                            if (task.isSuccessful()) {
-//
-//                                FirebaseUser user = mAuth.getCurrentUser();
-//                                startToast("로그인 하였습니다");
-//                                myStartActivity(CafeManager.class);
-//                            } else {
-//                                if(task.getException() != null){
-//                                    startToast("이메일 또는 비밀번호가 일치하지 않습니다.");
-//                                    //startToast(task.getException().toString());
-//                                }
-//                            }
-//                        }
-//                    });
-//        }else{
-//            startToast("이메일 또는 비밀번호를 입력해 주세요.");
-//        }
-//    }
 
     private void startToast(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();

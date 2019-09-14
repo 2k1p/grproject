@@ -1,4 +1,4 @@
-package com.example.ibyg.adapter;
+package com.example.ibyg.Qna;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -18,18 +18,16 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ibyg.Notice.OnPostListener;
-import com.example.ibyg.Notice.OwnerNoticeInfo;
 import com.example.ibyg.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder> {
-    private ArrayList<OwnerNoticeInfo> mDataset;
+public class QnaAdapter extends RecyclerView.Adapter<QnaAdapter.MainViewHolder> {
+    private ArrayList<QnaInfo> mDataset;
     private Activity activity;
-    private OnPostListener onPostListener;
+    private OnQnaListener onQnaListener;
 
     static class MainViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
@@ -39,13 +37,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         }
     }
 
-    public MainAdapter(Activity activity, ArrayList<OwnerNoticeInfo> myDataset) {
+    public QnaAdapter(Activity activity, ArrayList<QnaInfo> myDataset) {
         this.mDataset = myDataset;
         this.activity = activity;
     }
 
-    public void setOnPostListener(OnPostListener onPostListener){
-        this.onPostListener = onPostListener;
+    public void setOnQnaListener(OnQnaListener onQnaListener){
+        this.onQnaListener = onQnaListener;
     }
 
     @Override
@@ -55,7 +53,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
 
     @NonNull
     @Override
-    public MainAdapter.MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         CardView cardView = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.item_post, parent, false);
         final MainViewHolder mainViewHolder = new MainViewHolder(cardView);
         cardView.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +99,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
                     break;
                 }
                 String contents = contentsList.get(i);
-                if (Patterns.WEB_URL.matcher(contents).matches() && contents.contains("https://firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/owner_notice")) {
+                if (Patterns.WEB_URL.matcher(contents).matches() && contents.contains("https://firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/owner_qna")) {
                     ImageView imageView = new ImageView(activity);
                     imageView.setLayoutParams(layoutParams);
                     imageView.setAdjustViewBounds(true);
@@ -131,10 +129,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.modify:
-                        onPostListener.onModify(position);
+                        onQnaListener.onModify(position);
                         return true;
                     case R.id.delete:
-                        onPostListener.onDelete(position);
+                        onQnaListener.onDelete(position);
                         return true;
                     default:
                         return false;
@@ -143,7 +141,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         });
 
         MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.post, popup.getMenu());
+        inflater.inflate(R.menu.qna_post, popup.getMenu());
         popup.show();
     }
 }

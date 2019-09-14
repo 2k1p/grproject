@@ -90,7 +90,6 @@
             android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:background="@color/cardview_dark_background"
             android:text="로그아웃"
             android:textColor="@android:color/background_light"

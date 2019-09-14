@@ -16,7 +16,7 @@
             android:orientation="vertical" >
 
             <EditText
-                android:id="@+id/titleEditText"
+                android:id="@+id/qna2titleEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -24,7 +24,7 @@
                 android:inputType="textPersonName" />
 
             <LinearLayout
-                android:id="@+id/contentsLayout"
+                android:id="@+id/qna2contentsLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -35,12 +35,22 @@
                     android:orientation="vertical">
 
                     <EditText
-                        android:id="@+id/contensEditText"
+                        android:id="@+id/qna2contensEditText"
                         android:layout_width="match_parent"
-                        android:layout_height="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="100dp"
                         android:ems="10"
                         android:gravity="top"
-                        android:hint="내용"
+                        android:hint="문의내용"
+                        android:inputType="textMultiLine" />
+
+                    <EditText
+                        android:id="@+id/qna2requestEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:hint="답변"
                         android:inputType="textMultiLine" />
                 </LinearLayout>
 
@@ -69,7 +79,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/check"
+                android:id="@+id/qna2check"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="등록하기" />
@@ -79,7 +89,7 @@
     </ScrollView>
 
     <RelativeLayout
-        android:id="@+id/buttonsBackgroundLayout"
+        android:id="@+id/qna2buttonsBackgroundLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#91646464"
@@ -111,7 +121,7 @@
                     android:text="비디오 수정" />
 
                 <Button
-                    android:id="@+id/delete"
+                    android:id="@+id/qna2delete"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="삭제" />

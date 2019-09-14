@@ -1,23 +1,21 @@
-package com.example.ibyg;
+package com.example.ibyg.Login;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ibyg.BasicActivity;
+import com.example.ibyg.MainActivity;
+import com.example.ibyg.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BasicActivity {
     private FirebaseAuth mAuth;
 
 
@@ -77,47 +75,6 @@ public class LoginActivity extends AppCompatActivity {
         }else{
             startToast("이메일 또는 비밀번호를 입력해 주세요.");
         }
-    }
-
-    private void startToast(String msg){
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
-
-
-    private void myStartActivity(Class c){
-        Intent intent = new Intent(this, c);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
-    }
-
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {   //휴대폰 뒤로가기, 둘다 액티비티 통일
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                Intent i = new Intent(this, SignUpActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
-                finish();
-                return true;
-        }
-        return super.onKeyUp(keyCode, event);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {   //툴바 뒤로가기
-        switch (item.getItemId()){
-            case android.R.id.home:{
-                Intent i = new Intent(this, SignUpActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
-                finish();
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 
