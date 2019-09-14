@@ -64,8 +64,9 @@
         <activity android:name=".Qfreq.QnaActivity"></activity>
         <activity android:name=".Qfreq.Qfreq"></activity>
         <activity android:name=".Qfreq.Qadd"></activity>
-        <activity android:name=".Qna.QnaManager"></activity>
         <activity android:name=".Qna.QnaAdd"></activity>
+
+
 
 
     </application>

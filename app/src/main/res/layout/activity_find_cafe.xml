@@ -3,7 +3,14 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="카페 리스팅 되는곳" />
 
-
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_find"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
