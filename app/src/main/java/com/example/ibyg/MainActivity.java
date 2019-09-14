@@ -17,7 +17,6 @@ import com.example.ibyg.Manager.CafeActivity;
 import com.example.ibyg.Manager.CafeManager;
 import com.example.ibyg.Notice.NoticeManagement;
 import com.example.ibyg.Qfreq.Qfreq;
-import com.example.ibyg.Review.ReviewActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -81,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.logout).setOnClickListener(onClickListener);
         findViewById(R.id.button).setOnClickListener(onClickListener);
-        findViewById(R.id.button2).setOnClickListener(onClickListener);
         findViewById(R.id.button3).setOnClickListener(onClickListener);
         findViewById(R.id.button4).setOnClickListener(onClickListener);
     }
@@ -119,9 +117,9 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                     break;
-                case R.id.button2:  //리뷰관리 버튼
-                    myStartActivity(ReviewActivity.class);
-                    break;
+//                case R.id.button2:  //리뷰관리 버튼
+//                    myStartActivity(ReviewActivity.class);
+//                    break;
 
                 case R.id.button3:  //공지사항 버튼
                     myStartActivity(NoticeManagement.class);

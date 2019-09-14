@@ -85,7 +85,7 @@ public class NoticeManagement extends BasicActivity {
         mainAdapter.setOnPostListener(onPostListener);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView_notice);
-        findViewById(R.id.noticeaddbutton).setOnClickListener(onClickListener);
+        //findViewById(R.id.noticeaddbutton).setOnClickListener(onClickListener);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(NoticeManagement.this));
@@ -144,9 +144,9 @@ public class NoticeManagement extends BasicActivity {
                     myStartActivity(SignUpActivity.class);
                     break;
                 */
-                case R.id.noticeaddbutton:
-                    myStartActivity(NoticeAdd.class);
-                    break;
+//                case R.id.noticeaddbutton:
+//                    myStartActivity(NoticeAdd.class);
+//                    break;
             }
         }
     };
