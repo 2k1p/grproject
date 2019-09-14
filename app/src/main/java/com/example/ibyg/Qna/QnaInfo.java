@@ -10,23 +10,20 @@ public class QnaInfo implements Serializable {
     private String publisher;
     private Date createdAt;
     private String id;
-    private ArrayList<String> request;
 
-    public QnaInfo(String title, ArrayList<String> contents, String publisher, Date createdAt, String id, ArrayList<String> request){
+    public QnaInfo(String title, ArrayList<String> contents, String publisher, Date createdAt, String id){
         this.title = title;
         this.contents = contents;
         this.publisher = publisher;
         this.createdAt = createdAt;
         this.id = id;
-        this.request = request;
     }
 
-    public QnaInfo(String title, ArrayList<String> contents, String publisher, Date createdAt, ArrayList<String> request){
+    public QnaInfo(String title, ArrayList<String> contents, String publisher, Date createdAt){
         this.title = title;
         this.contents = contents;
         this.publisher = publisher;
         this.createdAt = createdAt;
-        this.request = request;
     }
 
     public String getTitle(){
@@ -54,8 +51,4 @@ public class QnaInfo implements Serializable {
     public String getId(){ return this.id; }
     public void setId(String id){
         this.id = id;
-    }
-    public ArrayList<String> getRequest(){ return this.request; }
-    public void setRequest(ArrayList<String> request){
-        this.request = request;
     }}

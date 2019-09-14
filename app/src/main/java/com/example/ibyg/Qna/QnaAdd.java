@@ -60,7 +60,7 @@ public class QnaAdd extends BasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.qna_add);
 
-        setToolbarTitle("답변 달기");          //액션바 제목설정
+        setToolbarTitle("1:1문의하기");          //액션바 제목설정
 
 
         parent = findViewById(R.id.qna2contentsLayout);
@@ -68,7 +68,6 @@ public class QnaAdd extends BasicActivity {
         //loaderLayout = findViewById(R.id.loaderLyaout);
         contentsEditText = findViewById(R.id.qna2contensEditText);
         titleEditText = findViewById(R.id.qna2titleEditText);
-        requestEditText = findViewById(R.id.qna2requestEditText);   //답변
 
 
         findViewById(R.id.qna2check).setOnClickListener(onClickListener);
@@ -80,7 +79,6 @@ public class QnaAdd extends BasicActivity {
 
         buttonsBackgroundLayout.setOnClickListener(onClickListener);
         contentsEditText.setOnFocusChangeListener(onFocusChangeListener);
-        requestEditText.setOnFocusChangeListener(onFocusChangeListener);    //답변
         titleEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -266,7 +264,7 @@ public class QnaAdd extends BasicActivity {
                                             successCount--;
                                             contentsList.set(index, uri.toString());
                                             if (successCount == 0) {
-                                                QnaInfo qnaInfo = new QnaInfo(title, contentsList, user.getUid(), date, request);
+                                                QnaInfo qnaInfo = new QnaInfo(title, contentsList, user.getUid(), date);
                                                 storeUpload(documentReference, qnaInfo);
                                             }
                                         }
@@ -281,7 +279,8 @@ public class QnaAdd extends BasicActivity {
                 }
             }
             if (successCount == 0) {
-                storeUpload(documentReference, new QnaInfo(title, contentsList, user.getUid(), date, request));
+                startToast("1:1문의를 성공적으로 보냈습니다.");
+                storeUpload(documentReference, new QnaInfo(title, contentsList, user.getUid(), date));
             }
         } else {
             startToast("제목을 입력해주세요.");
@@ -311,7 +310,6 @@ public class QnaAdd extends BasicActivity {
         if (qnaInfo != null) {
             titleEditText.setText(qnaInfo.getTitle());
             ArrayList<String> contentsList = qnaInfo.getContents();
-            ArrayList<String> request = qnaInfo.getRequest();
             for (int i = 0; i < contentsList.size(); i++) {
                 String contents = contentsList.get(i);
                 if (Patterns.WEB_URL.matcher(contents).matches() && contents.contains("firebasestorage.googleapis.com/v0/b/ibyg-project.appspot.com/o/owner_qna")) {

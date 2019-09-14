@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.ibyg.BasicActivity;
-import com.example.ibyg.Qna.QnaManager;
 import com.example.ibyg.R;
 
 public class QnaActivity extends BasicActivity {
@@ -29,7 +28,7 @@ public class QnaActivity extends BasicActivity {
                     myStartActivity(Qfreq.class);
                     break;
                 case R.id.qnabutton2: //1:1문의 관리
-                    myStartActivity(QnaManager.class);
+                    //myStartActivity(QnaManager.class);
                     break;
             }
         }
