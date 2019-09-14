@@ -83,15 +83,15 @@
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/button_update2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:layout_weight="1"
-                android:text="수정"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent" />
+<!--            <Button-->
+<!--                android:id="@+id/button_update2"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="7dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="수정"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@color/colorAccent" />-->
 
 
         </LinearLayout>
