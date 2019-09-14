@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.util.Patterns;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -140,8 +139,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
             }
         });
 
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.post, popup.getMenu());
-        popup.show();
+//        MenuInflater inflater = popup.getMenuInflater();
+//        inflater.inflate(R.menu.post, popup.getMenu());
+//        popup.show();
     }
 }

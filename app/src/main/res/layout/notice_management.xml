@@ -3,12 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/noticeaddbutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/notice01" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_notice"
         android:layout_width="match_parent"

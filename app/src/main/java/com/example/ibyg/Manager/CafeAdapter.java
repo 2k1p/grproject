@@ -1,11 +1,9 @@
 package com.example.ibyg.Manager;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -56,7 +54,7 @@ public class CafeAdapter extends RecyclerView.Adapter<CafeAdapter.ProductViewHol
     class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView textViewName, textViewAddress, textViewPhone, textViewTime, textViewWifi, textViewSeat, textViewConsent, textViewPrice;
-        Button update;
+        //Button update;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
@@ -69,17 +67,17 @@ public class CafeAdapter extends RecyclerView.Adapter<CafeAdapter.ProductViewHol
             textViewSeat = itemView.findViewById(R.id.textview_seat);
             textViewConsent = itemView.findViewById(R.id.textview_consent);
             textViewPrice = itemView.findViewById(R.id.textview_price);
-            update = itemView.findViewById(R.id.button_update2);
-            update.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    OwnerInfo ownerInfo = cafeList.get(getAdapterPosition());
-                    Intent intent = new Intent(mCtx, CafeManager2.class);
-                    intent.putExtra("product", ownerInfo);
-                    mCtx.startActivity(intent);
-
-                }
-            });
+//            update = itemView.findViewById(R.id.button_update2);
+//            update.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    OwnerInfo ownerInfo = cafeList.get(getAdapterPosition());
+//                    Intent intent = new Intent(mCtx, CafeManager2.class);
+//                    intent.putExtra("product", ownerInfo);
+//                    mCtx.startActivity(intent);
+//
+//                }
+//            });
 
             itemView.setOnClickListener(this);
 
@@ -88,9 +86,9 @@ public class CafeAdapter extends RecyclerView.Adapter<CafeAdapter.ProductViewHol
         @Override
         public void onClick(View v) {
             OwnerInfo ownerInfo = cafeList.get(getAdapterPosition());
-            Intent intent = new Intent(mCtx, CafeManager2.class);
-            intent.putExtra("product", ownerInfo);
-            mCtx.startActivity(intent);
+            //Intent intent = new Intent(mCtx, CafeManager2.class);
+            //intent.putExtra("product", ownerInfo);
+            //mCtx.startActivity(intent);
         }
 
 
