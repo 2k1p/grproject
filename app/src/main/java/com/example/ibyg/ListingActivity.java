@@ -2,12 +2,15 @@ package com.example.ibyg;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.appcompat.widget.Toolbar;
 
 
 public class ListingActivity extends AppCompatActivity {
@@ -16,6 +19,8 @@ public class ListingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listing);
+
+
 
 
         TextView text = (TextView)findViewById(R.id.textView9);
@@ -61,11 +66,17 @@ public class ListingActivity extends AppCompatActivity {
     }
 
 
+    private void myStartActivity (Class c){
+            Intent intent = new Intent(this, c);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
 
-    private void myStartActivity(Class c){
-        Intent intent = new Intent(this, c);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+
+
+
     }
 
-}
+
+
+
