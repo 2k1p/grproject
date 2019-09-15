@@ -22,7 +22,7 @@ import com.example.ibyg.R;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
-
+//공지사항 리싸이클뷰를 표시하기위한 어뎁터
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder> {
     private ArrayList<OwnerNoticeInfo> mDataset;
     private Activity activity;
@@ -62,12 +62,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
             }
         });
 
-        cardView.findViewById(R.id.menu).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopup(v, mainViewHolder.getAdapterPosition());
-            }
-        });
+//        cardView.findViewById(R.id.menu).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showPopup(v, mainViewHolder.getAdapterPosition());
+//            }
+//        });
 
         return mainViewHolder;
     }
