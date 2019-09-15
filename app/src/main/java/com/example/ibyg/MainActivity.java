@@ -16,7 +16,7 @@ import com.example.ibyg.Login.SignUpActivity;
 import com.example.ibyg.Manager.CafeActivity;
 import com.example.ibyg.Manager.CafeManager;
 import com.example.ibyg.Notice.NoticeManagement;
-import com.example.ibyg.Qfreq.Qfreq;
+import com.example.ibyg.Qfreq.Qadd;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     myStartActivity(NoticeManagement.class);
                     break;
                 case R.id.button4:  //1:1문의 버튼
-                    myStartActivity(Qfreq.class);
+                    myStartActivity(Qadd.class);
                     break;
 
             }

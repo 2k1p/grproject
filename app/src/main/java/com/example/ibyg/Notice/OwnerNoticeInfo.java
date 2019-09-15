@@ -3,7 +3,7 @@ package com.example.ibyg.Notice;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-
+//공지사항 제목, 내용을 받아오고, 보낼 정보들
 public class OwnerNoticeInfo implements Serializable {
     private String title;
     private ArrayList<String> contents;

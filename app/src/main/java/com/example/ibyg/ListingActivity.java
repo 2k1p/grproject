@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.ibyg.Qna.QnaAdd;
-import com.example.ibyg.Review.ReviewAdd;
 
 
 public class ListingActivity extends BasicActivity {
@@ -17,7 +16,7 @@ public class ListingActivity extends BasicActivity {
         findViewById(R.id.textView9).setOnClickListener(onClickListener);
         findViewById(R.id.findcafeButton).setOnClickListener(onClickListener);
         findViewById(R.id.ahpButton).setOnClickListener(onClickListener);
-        findViewById(R.id.reviewButton).setOnClickListener(onClickListener);
+        //findViewById(R.id.reviewButton).setOnClickListener(onClickListener);
         findViewById(R.id.qnaButton).setOnClickListener(onClickListener);
     }
 
@@ -35,9 +34,9 @@ public class ListingActivity extends BasicActivity {
                 case R.id.ahpButton:
                     myStartActivity(AhpActivity.class);
                     break;
-                case R.id.reviewButton:
-                    myStartActivity(ReviewAdd.class);
-                    break;
+//                case R.id.reviewButton:
+//                    myStartActivity(ReviewAdd.class);
+//                    break;
                 case R.id.qnaButton:
                     myStartActivity(QnaAdd.class);
                     break;
