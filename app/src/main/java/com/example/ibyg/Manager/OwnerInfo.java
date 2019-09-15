@@ -3,7 +3,7 @@ package com.example.ibyg.Manager;
 import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
-
+//카페 정보를 받아오고, 보내줄 정보들
 public class OwnerInfo implements Serializable {
 
     @Exclude private String id;
