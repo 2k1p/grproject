@@ -51,7 +51,6 @@ public class QnaAdd extends BasicActivity {
     private EditText selectedEditText;
     private EditText contentsEditText;
     private EditText titleEditText;
-    private EditText requestEditText;
     private QnaInfo qnaInfo;
     private int pathCount, successCount;
 
@@ -60,7 +59,7 @@ public class QnaAdd extends BasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.qna_add);
 
-        setToolbarTitle("1:1문의하기");          //액션바 제목설정
+        setToolbarTitle("개발자에게 질문하기");          //액션바 제목설정
 
 
         parent = findViewById(R.id.qna2contentsLayout);

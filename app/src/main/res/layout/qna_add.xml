@@ -40,7 +40,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:gravity="top"
-                        android:hint="문의내용"
+                        android:hint="내용"
                         android:inputType="textMultiLine" />
 
                 </LinearLayout>

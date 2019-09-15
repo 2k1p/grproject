@@ -59,7 +59,7 @@ public class Qadd extends BasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.q_add);
 
-        setToolbarTitle("질문 추가");          //액션바 제목설정
+        setToolbarTitle("카페 수정 요청");          //액션바 제목설정
 
 
         parent = findViewById(R.id.qnacontentsLayout);
@@ -67,6 +67,8 @@ public class Qadd extends BasicActivity {
         //loaderLayout = findViewById(R.id.loaderLyaout);
         contentsEditText = findViewById(R.id.qnacontensEditText);
         titleEditText = findViewById(R.id.qnatitleEditText);
+
+        contentsEditText.setText("수정하고 싶은 카페정보를 적어주세요. \n카페명:\n주소:\n주소:\n전화번호:\n와이파이:\n좌석수:\n콘센트:\n최소가격:");
 
         findViewById(R.id.qnacheck).setOnClickListener(onClickListener);
         findViewById(R.id.image).setOnClickListener(onClickListener);
@@ -275,6 +277,7 @@ public class Qadd extends BasicActivity {
                 }
             }
             if (successCount == 0) {
+                startToast("카페 수정 요청을 성공적으로 보냈습니다.");
                 storeUpload(documentReference, new QInfo(title, contentsList, user.getUid(), date));
             }
         } else {
