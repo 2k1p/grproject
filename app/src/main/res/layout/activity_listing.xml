@@ -9,7 +9,11 @@
     tools:context=".MainActivity">
 
 
-    <TextView
+
+
+
+
+       <TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +25,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="186dp"
+        android:layout_height="117dp"
         android:background="#00000000"
         android:orientation="vertical">
 
@@ -29,7 +33,7 @@
             android:id="@+id/textView16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="알 고 가"
             android:textColor="#FAFFFFFF"
@@ -58,7 +62,7 @@
         <Button
             android:id="@+id/findcafeButton"
             android:layout_width="300dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:background="#C4FFFFFF"
             android:text="내 주변 카페 보기"
@@ -79,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:text="카페가 다 비슷비슷해?"
+            android:text="나에게 최적화된 카페 찾기!"
             android:textColor="#FFFFFF"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -87,13 +91,26 @@
         <Button
             android:id="@+id/ahpButton"
             android:layout_width="300dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:background="#C4FFFFFF"
             android:text="카페 선택 도우미"
             android:textColor="#2DA6E8"
             android:textSize="20dp"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/qnaButton"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="90dp"
+            android:background="#C4FFFFFF"
+            android:text="개발자에게 질문하기"
+            android:textColor="#2DA6E8"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
 

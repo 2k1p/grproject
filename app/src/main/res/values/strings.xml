@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">IBYG</string>
+    <string name="app_name">알고가</string>
     <string name="todo">TODO</string>
     <string name="image01">알고가</string>
     <string name="address">주소</string>
+
+    <string name="please_grant_permission">권한을 허용해 주세요.</string>
 </resources>
