@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.util.Patterns;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,7 @@ import com.example.ibyg.R;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
-
+//공지사항 리싸이클뷰를 표시하기위한 어뎁터
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder> {
     private ArrayList<OwnerNoticeInfo> mDataset;
     private Activity activity;
@@ -63,12 +62,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
             }
         });
 
-        cardView.findViewById(R.id.menu).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopup(v, mainViewHolder.getAdapterPosition());
-            }
-        });
+//        cardView.findViewById(R.id.menu).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showPopup(v, mainViewHolder.getAdapterPosition());
+//            }
+//        });
 
         return mainViewHolder;
     }
@@ -140,8 +139,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
             }
         });
 
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.post, popup.getMenu());
-        popup.show();
+//        MenuInflater inflater = popup.getMenuInflater();
+//        inflater.inflate(R.menu.post, popup.getMenu());
+//        popup.show();
     }
 }

@@ -72,7 +72,10 @@
                 android:id="@+id/qnacheck"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="등록하기" />
+                android:text="등록하기"
+                android:background="#2DA6E8"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

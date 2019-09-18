@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.ibyg.R;
 
 import java.util.ArrayList;
-
+//갤러리를 리싸이클뷰로 표시할 어뎁터
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder> {
     private ArrayList<String> mDataset;
     private Activity activity;

@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="제목"
+                android:hint="이메일"
                 android:inputType="textPersonName" />
 
             <LinearLayout
@@ -38,20 +38,11 @@
                         android:id="@+id/qna2contensEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="100dp"
                         android:ems="10"
                         android:gravity="top"
-                        android:hint="문의내용"
+                        android:hint="내용"
                         android:inputType="textMultiLine" />
 
-                    <EditText
-                        android:id="@+id/qna2requestEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="답변"
-                        android:inputType="textMultiLine" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -82,7 +73,10 @@
                 android:id="@+id/qna2check"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="등록하기" />
+                android:text="등록하기"
+                android:background="#2DA6E8"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

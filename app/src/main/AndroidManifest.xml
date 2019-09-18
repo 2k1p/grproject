@@ -42,6 +42,7 @@
             android:name=".Login.PasswordResetActivity"
             android:parentActivityName=".Login.LoginActivity">
         </activity>
+
         <activity android:name=".BasicActivity"></activity>
         <activity android:name=".Login.MemberInitActivity"></activity>
         <activity android:name=".MainActivity"></activity>
@@ -60,11 +61,10 @@
         <activity android:name=".Manager.CafeActivity"></activity>
         <activity android:name=".Manager.CafeManager2"></activity>
 
-        <activity android:name=".Qfreq.QnaActivity"></activity>
-        <activity android:name=".Qfreq.Qfreq"></activity>
         <activity android:name=".Qfreq.Qadd"></activity>
-        <activity android:name=".Qna.QnaManager"></activity>
         <activity android:name=".Qna.QnaAdd"></activity>
+
+
 
 
     </application>

@@ -14,7 +14,7 @@ import com.example.ibyg.BasicActivity;
 import com.example.ibyg.R;
 
 import java.util.ArrayList;
-
+//갤러리를 화면에 출력해줄 클래스
 public class GalleryActivity extends BasicActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
