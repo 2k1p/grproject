@@ -8,29 +8,89 @@
     tools:context=".MainActivity" >
 
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="알 고 가"
+        android:textColor="#C82DA6E8"
+        android:textSize="50dp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#2DA6E8"
+        android:scrollbarSize="2dp" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="카페 관리" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="공지사항" />
+        android:layout_height="80dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="16dp"
+        android:background="#2DA6E8"
+        android:text="내 카페 등록하기"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="40dp"
+        android:background="#2DA6E8"
+        android:text="카페 수정 요청"
+        android:textColor="#FDFFFFFF"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.8dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="40dp"
+        android:background="#2DA6E8"
+        android:scrollbarSize="2dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:text="카페 수정 요청" />
+        android:layout_gravity="center"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="10dp"
+        android:background="#7C909B"
+        android:text="공지사항"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/logout"
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:background="@color/cardview_dark_background"
+        android:layout_gravity="center"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#7C909B"
         android:text="로그아웃"
         android:textColor="@android:color/background_light"
         android:textSize="16sp"
