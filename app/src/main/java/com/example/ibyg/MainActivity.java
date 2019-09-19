@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.ibyg.Login.MemberInitActivity;
 import com.example.ibyg.Login.SignUpActivity;
 import com.example.ibyg.Manager.CafeActivity;
-import com.example.ibyg.Manager.CafeManager;
+import com.example.ibyg.Manager.CafeAhp;
 import com.example.ibyg.Notice.NoticeManagement;
 import com.example.ibyg.Qfreq.Qadd;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                                 DocumentSnapshot document = task.getResult();
                                     String userName = document.getString("editTextName");
                                     if (userName == null) {
-                                        myStartActivity(CafeManager.class);
+                                        myStartActivity(CafeAhp.class);
                                         startToast( "카페정보가 없어서 등록화면으로 이동합니다");
                                     } else {
                                         Log.d(TAG, "onEvent: username does not exists");

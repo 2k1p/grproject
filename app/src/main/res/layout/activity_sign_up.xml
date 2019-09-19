@@ -13,7 +13,7 @@
         android:layout_marginBottom="70dp"
         android:background="#F4F5F6"
         android:gravity="center"
-        android:text="사장님 계정 등록"
+        android:text="카페 등록 계정만들기"
         android:textColor="#2DA7E9"
         android:textSize="42dp"
         android:textStyle="bold" />
