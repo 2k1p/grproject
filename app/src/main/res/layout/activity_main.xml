@@ -38,7 +38,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginRight="16dp"
         android:background="#2DA6E8"
-        android:text="내 카페 등록하기"
+        android:text="내 카페 조회하기"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         android:textStyle="bold" />

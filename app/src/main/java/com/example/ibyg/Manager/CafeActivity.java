@@ -1,6 +1,9 @@
 package com.example.ibyg.Manager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -8,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ibyg.BasicActivity;
+import com.example.ibyg.MainActivity;
 import com.example.ibyg.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -19,7 +23,7 @@ import java.util.List;
 
 //등록한 카페정보 표시(recyclerview)
 public class CafeActivity extends BasicActivity {
-
+    private static final String TAG = "CafeActivity";
     private RecyclerView recyclerView;
     private CafeAdapter adapter;
     private List<OwnerInfo> cafeList;
@@ -76,6 +80,35 @@ public class CafeActivity extends BasicActivity {
                     }
                 });
 
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {   //핸드폰 자체 뒤로가기
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                Intent i = new Intent(this, MainActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+                finish();
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+                return true;
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {   //툴바 뒤로가기
+        switch (item.getItemId()){
+            case android.R.id.home:{
+                Intent i = new Intent(this, MainActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+                finish();
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
