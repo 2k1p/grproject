@@ -42,6 +42,7 @@
             android:name=".Login.PasswordResetActivity"
             android:parentActivityName=".Login.LoginActivity">
         </activity>
+
         <activity android:name=".BasicActivity"></activity>
         <activity android:name=".Login.MemberInitActivity"></activity>
         <activity android:name=".MainActivity"></activity>
@@ -56,7 +57,9 @@
         <activity android:name=".Notice.NoticeAdd"></activity>
         <activity android:name=".Notice.GalleryActivity"></activity>
 
+        <activity android:name=".Manager.CafeAhp"></activity>
         <activity android:name=".Manager.CafeManager"></activity>
+        <activity android:name=".Manager.CafeManager0"></activity>
         <activity android:name=".Manager.CafeActivity"></activity>
         <activity android:name=".Manager.CafeManager2"></activity>
 

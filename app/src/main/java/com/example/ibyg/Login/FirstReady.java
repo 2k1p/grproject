@@ -66,6 +66,15 @@ public class FirstReady extends BasicActivity {
             }
         });
 
+        Button button3 = (Button)findViewById(R.id.unsignedButton);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myStartActivity(ListingActivity.class);
+            }
+
+        });
+
         Button button2 = (Button)findViewById(R.id.goManagerButton);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
