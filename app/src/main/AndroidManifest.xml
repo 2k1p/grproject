@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login.FirstReady">
+        <activity android:name=".fragment.ListingActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,7 +46,6 @@
         <activity android:name=".BasicActivity"></activity>
         <activity android:name=".Login.MemberInitActivity"></activity>
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".ListingActivity"></activity>
         <activity android:name=".SetLocActivity"></activity>
         <activity android:name=".FindCafeActivity"></activity>
         <activity android:name=".AhpActivity"></activity>
