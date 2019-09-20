@@ -65,6 +65,7 @@
         <activity android:name=".Qfreq.Qadd"></activity>
         <activity android:name=".Qna.QnaAdd"></activity>
 
+        <activity android:name=".fragment.LoginFragment"></activity>
 
 
 
