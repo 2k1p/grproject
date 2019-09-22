@@ -5,14 +5,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
 import com.example.ibyg.BasicActivity;
 import com.example.ibyg.Login.MemberInitActivity;
-import com.example.ibyg.R;
 import com.example.ibyg.Login.SignUpActivity;
+import com.example.ibyg.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,18 +21,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-//카페명, 주소, 전화번호, 영업시간, 와이파이, 콘센트, 좌석수, 최소가격
-public class CafeManager extends BasicActivity implements View.OnClickListener {
-    private static final String TAG = "CafeManager";
+//카페명, 주소, 전화번호, 영업시간
+public class CafeManager0 extends BasicActivity implements View.OnClickListener {
+    private static final String TAG = "CafeManager0";
 
     private EditText editTextName;
     private EditText editTextAddress;
     private EditText editTextPhone;
     private EditText editTexttime;
-    private EditText editTextwifi;
-    private EditText editTextseat;
-    private EditText editTextconsent;
-    private EditText editTextprice;
 
     private FirebaseFirestore db;
 
@@ -43,8 +38,6 @@ public class CafeManager extends BasicActivity implements View.OnClickListener {
         setContentView(R.layout.cafemanager);
 
         setToolbarTitle("카페 등록");  //액션바 제목설정
-        LinearLayout layout = findViewById(R.id.ahpshow);
-        layout.setVisibility(View.VISIBLE); //의사결정시스템 정보수집 숨긴거 보이게
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -84,10 +77,7 @@ public class CafeManager extends BasicActivity implements View.OnClickListener {
         editTextAddress = findViewById(R.id.CafeEdit2);
         editTextPhone = findViewById(R.id.CafeEdit3);
         editTexttime = findViewById(R.id.CafeEdit4);
-        editTextwifi = findViewById(R.id.CafeEdit5);
-        editTextseat = findViewById(R.id.CafeEdit6);
-        editTextconsent = findViewById(R.id.CafeEdit7);
-        editTextprice = findViewById(R.id.CafeEdit8);
+
 
         findViewById(R.id.button_save).setOnClickListener(this);
     }
@@ -98,12 +88,8 @@ public class CafeManager extends BasicActivity implements View.OnClickListener {
         String address = editTextAddress.getText().toString().trim();
         String phone = editTextPhone.getText().toString().trim();
         String time = editTexttime.getText().toString().trim();
-        String wifi = editTextwifi.getText().toString().trim();
-        String seat = editTextseat.getText().toString().trim();
-        String consent = editTextconsent.getText().toString().trim();
-        String price = editTextprice.getText().toString().trim();
 
-        OwnerInfo ownerInfo = new OwnerInfo(name, address, phone, time, wifi, seat, consent, price);
+        OwnerInfo ownerInfo = new OwnerInfo(name, address, phone, time, null, null, null, null);
 
         if(name.length() > 0 && address.length() > 0 && phone.length() > 0 && time.length() > 0
                 ){
@@ -133,7 +119,6 @@ public class CafeManager extends BasicActivity implements View.OnClickListener {
 
 
     }
-
 
     @Override
     public void onClick(View v) {
