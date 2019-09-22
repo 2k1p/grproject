@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login.FirstReady">
+        <activity android:name=".fragment.ListingActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,7 +46,6 @@
         <activity android:name=".BasicActivity"></activity>
         <activity android:name=".Login.MemberInitActivity"></activity>
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".ListingActivity"></activity>
         <activity android:name=".SetLocActivity"></activity>
         <activity android:name=".FindCafeActivity"></activity>
         <activity android:name=".AhpActivity"></activity>
@@ -57,13 +56,16 @@
         <activity android:name=".Notice.NoticeAdd"></activity>
         <activity android:name=".Notice.GalleryActivity"></activity>
 
+        <activity android:name=".Manager.CafeAhp"></activity>
         <activity android:name=".Manager.CafeManager"></activity>
+        <activity android:name=".Manager.CafeManager0"></activity>
         <activity android:name=".Manager.CafeActivity"></activity>
         <activity android:name=".Manager.CafeManager2"></activity>
 
         <activity android:name=".Qfreq.Qadd"></activity>
         <activity android:name=".Qna.QnaAdd"></activity>
 
+        <activity android:name=".fragment.LoginFragment"></activity>
 
 
 

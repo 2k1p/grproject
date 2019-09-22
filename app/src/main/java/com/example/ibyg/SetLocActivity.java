@@ -8,5 +8,5 @@ public class SetLocActivity extends BasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_loc);
 
-    }
+}
 }

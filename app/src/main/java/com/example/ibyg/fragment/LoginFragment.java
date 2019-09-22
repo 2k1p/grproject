@@ -1,15 +1,20 @@
-package com.example.ibyg.Login;
+package com.example.ibyg.fragment;
+
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.ibyg.BasicActivity;
-import com.example.ibyg.fragment.ListingActivity;
 import com.example.ibyg.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -17,31 +22,29 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class FirstReady extends BasicActivity {
-    private GoogleSignInClient mGoogleSignInClient;
+//로그인화면, 구글로그인
+public class LoginFragment extends BasicActivity {
+
     private static final int RC_SIGN_IN = 10;
+    private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
 
     @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first);
+        setContentView(R.layout.fragment_login);
         mAuth = FirebaseAuth.getInstance();
 
         // Configure Google Sign In
@@ -50,15 +53,14 @@ public class FirstReady extends BasicActivity {
                 .requestEmail()
                 .build();
 
-
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        TextView text = (TextView)findViewById(R.id.textView10);
+        TextView text = (TextView)findViewById(R.id.textView24);
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()){
-                    case R.id.textView10:
+                    case R.id.textView24:
                         signOut();
                         startToast("구글 계정에서 로그아웃 되었습니다.");
                         break;
@@ -66,44 +68,41 @@ public class FirstReady extends BasicActivity {
             }
         });
 
-        Button button3 = (Button)findViewById(R.id.unsignedButton);
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myStartActivity(ListingActivity.class);
-            }
-
-        });
-
-        Button button2 = (Button)findViewById(R.id.goManagerButton);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myStartActivity(SignUpActivity.class);
-            }
-        });
-
-        SignInButton button = (SignInButton)findViewById(R.id.userLoginButton);
+        SignInButton button = (SignInButton) findViewById(R.id.findcafeButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, RC_SIGN_IN);
-            }
+                startActivityForResult(signInIntent, RC_SIGN_IN);           }
         });
 
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
+        bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(1);
+        menuItem.setChecked(true);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.ic_android:
+                        myStartActivity(ListingActivity.class);
+                        break;
+
+                    case R.id.ic_books:
+
+                        break;
+
+
+                }
+
+
+                return false;
+            }
+        });
     }
-
-
-    /*
-    public void onClick(View v){
-        switch (v.getId()){
-            case R.id.textView10:
-                FirebaseAuth.getInstance().signOut();
-                startToast("구글 계정에서 로그아웃 되었습니다.");
-        }
-    }*/
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -117,26 +116,24 @@ public class FirstReady extends BasicActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
-                //Log.w(TAG, "Google sign in failed", e);
-                // ...
+
             }
         }
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+
+
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
                             startToast("구글 로그인에 성공하였습니다.");
                             myStartActivity(ListingActivity.class);
 
-                        } else {
-                            // If sign in fails, display a message to the user.
+                        }else{
                             startToast("구글 로그인에 실패하였습니다.");
                         }
 
@@ -144,7 +141,6 @@ public class FirstReady extends BasicActivity {
                     }
                 });
     }
-
 
     private void signOut() {
         // Firebase sign out
@@ -158,5 +154,6 @@ public class FirstReady extends BasicActivity {
                     }
                 });
     }
+
 
 }
