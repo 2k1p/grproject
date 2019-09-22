@@ -3,13 +3,11 @@ package com.example.ibyg.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,16 +20,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 //로그인화면, 구글로그인
@@ -153,6 +148,43 @@ public class LoginFragment extends BasicActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                     }
                 });
+    }
+
+    public void myStartActivity(Class c){
+        Intent intent = new Intent(this, c);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+    }
+
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {   //핸드폰 자체 뒤로가기
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                //Intent i = new Intent(this, FirstReady.class);
+                //i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //startActivity(i);
+                finish();
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+                return true;
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {   //툴바 뒤로가기
+        switch (item.getItemId()){
+            case android.R.id.home:{
+                //Intent i = new Intent(this, MainActivity.class);
+                //i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //startActivity(i);
+                finish();
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
