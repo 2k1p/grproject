@@ -10,7 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.ibyg.AhpActivity;
 import com.example.ibyg.BasicActivity;
-import com.example.ibyg.FindCafeActivity;
+import com.example.ibyg.Listing.FindCafeActivity;
 import com.example.ibyg.Login.SignUpActivity;
 import com.example.ibyg.Qna.QnaAdd;
 import com.example.ibyg.R;
@@ -20,7 +20,6 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 //카페, 초기화면
 public class ListingActivity extends BasicActivity {
-    private SectionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
 
     @Override
@@ -28,7 +27,7 @@ public class ListingActivity extends BasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listing);
 
-        mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
+
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);

@@ -46,7 +46,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import static com.example.ibyg.Notice.Util.showToast;
-
+//현재 안쓰는 기능
 public class ReviewAdd extends BasicActivity {
     private static final String TAG = "ReviewAdd";
     private FirebaseUser user;
