@@ -3,9 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,12 +14,12 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <com.example.ibyg.Notice.ContentsItemView
+            <com.example.ibyg.Listing.FindAdapter2
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/readContentsView">
 
-            </com.example.ibyg.Notice.ContentsItemView>
+            </com.example.ibyg.Listing.FindAdapter2>
         </LinearLayout>
     </ScrollView>
 

@@ -15,10 +15,32 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/createAtTextView"
+        android:id="@+id/Text1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
-        tools:text="2019-04-25" />
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        tools:text="TextView" />
+    <TextView
+        android:id="@+id/Text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        tools:text="TextView" />
+    <TextView
+        android:id="@+id/Text3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        tools:text="TextView" />
+    <TextView
+        android:id="@+id/Text4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        tools:text="TextView" />
 
 </merge>
