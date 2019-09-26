@@ -47,7 +47,10 @@
         <activity android:name=".Login.MemberInitActivity"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".SetLocActivity"></activity>
-        <activity android:name=".FindCafeActivity"></activity>
+
+        <activity android:name=".Listing.FindCafeActivity"></activity>
+        <activity android:name=".Listing.FindView2"></activity>
+
         <activity android:name=".AhpActivity"></activity>
         <activity android:name=".Review.ReviewActivity"></activity>
         <activity android:name=".Review.ReviewAdd"></activity>
@@ -64,6 +67,9 @@
 
         <activity android:name=".Qfreq.Qadd"></activity>
         <activity android:name=".Qna.QnaAdd"></activity>
+
+        <activity android:name=".fragment.LoginFragment"></activity>
+
 
 
 
