@@ -41,17 +41,25 @@ public class FindAdapter2 extends LinearLayout {
     }
 
     public void setPostInfo(OwnerInfo ownerInfo){
+        TextView text11 = findViewById(R.id.Text11);
+        text11.setText("카페명");
         TextView text1 = findViewById(R.id.Text1);
-        text1.setText("카페명 : " + ownerInfo.geteditTextName());
+        text1.setText(ownerInfo.geteditTextName());
 
+        TextView text12 = findViewById(R.id.Text12);
+        text12.setText("주소");
         TextView text2 = findViewById(R.id.Text2);
-        text2.setText("주소 : " + ownerInfo.geteditTextAddress());
+        text2.setText(ownerInfo.geteditTextAddress());
 
+        TextView text13 = findViewById(R.id.Text13);
+        text13.setText("전화번호");
         TextView text3 = findViewById(R.id.Text3);
-        text3.setText("전화번호 : " + ownerInfo.geteditTextPhone());
+        text3.setText(ownerInfo.geteditTextPhone());
 
+        TextView text14 = findViewById(R.id.Text14);
+        text14.setText("영업시간");
         TextView text4 = findViewById(R.id.Text4);
-        text4.setText("영업시간 : " + ownerInfo.geteditTexttime());
+        text4.setText(ownerInfo.geteditTexttime());
 
     }
 }
