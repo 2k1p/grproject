@@ -36,14 +36,22 @@ public class CafeAdapter extends RecyclerView.Adapter<CafeAdapter.ProductViewHol
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         OwnerInfo ownerInfo = cafeList.get(position);
 
-        holder.textViewName.setText("카페명 : " + ownerInfo.geteditTextName());
-        holder.textViewAddress.setText("주소 : " + ownerInfo.geteditTextAddress());
-        holder.textViewPhone.setText("전화번호 : " + ownerInfo.geteditTextPhone());
-        holder.textViewTime.setText("영업시간 : " + ownerInfo.geteditTexttime());
-        holder.textViewWifi.setText("와이파이 : " + ownerInfo.geteditTextwifi() + "개");
-        holder.textViewSeat.setText("좌석 수 : " + ownerInfo.geteditTextseat() + "개");
-        holder.textViewConsent.setText("콘센트 : " + ownerInfo.geteditTextconsent() + "개");
-        holder.textViewPrice.setText("최소가격 : " + ownerInfo.geteditTextprice() + "원");
+        holder.text_1.setText("카페명");
+        holder.text_2.setText("주소");
+        holder.text_3.setText("전화번호");
+        holder.text_4.setText("영업시간");
+        holder.text_5.setText("와이파이");
+        holder.text_6.setText("좌석수");
+        holder.text_7.setText("콘센트");
+        holder.text_8.setText("최소가격");
+        holder.textViewName.setText(ownerInfo.geteditTextName());
+        holder.textViewAddress.setText(ownerInfo.geteditTextAddress());
+        holder.textViewPhone.setText(ownerInfo.geteditTextPhone());
+        holder.textViewTime.setText(ownerInfo.geteditTexttime());
+        holder.textViewWifi.setText(ownerInfo.geteditTextwifi() + "개");
+        holder.textViewSeat.setText(ownerInfo.geteditTextseat() + "개");
+        holder.textViewConsent.setText(ownerInfo.geteditTextconsent() + "개");
+        holder.textViewPrice.setText(ownerInfo.geteditTextprice() + "원");
     }
 
     @Override
@@ -54,11 +62,20 @@ public class CafeAdapter extends RecyclerView.Adapter<CafeAdapter.ProductViewHol
     class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView textViewName, textViewAddress, textViewPhone, textViewTime, textViewWifi, textViewSeat, textViewConsent, textViewPrice;
+        TextView text_1, text_2, text_3, text_4, text_5, text_6, text_7, text_8;
         //Button update;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
 
+            text_1 = itemView.findViewById(R.id.text_1);
+            text_2 = itemView.findViewById(R.id.text_2);
+            text_3 = itemView.findViewById(R.id.text_3);
+            text_4 = itemView.findViewById(R.id.text_4);
+            text_5 = itemView.findViewById(R.id.text_5);
+            text_6 = itemView.findViewById(R.id.text_6);
+            text_7 = itemView.findViewById(R.id.text_7);
+            text_8 = itemView.findViewById(R.id.text_8);
             textViewName = itemView.findViewById(R.id.textview_name);
             textViewAddress = itemView.findViewById(R.id.textview_address);
             textViewPhone = itemView.findViewById(R.id.textview_phone);
