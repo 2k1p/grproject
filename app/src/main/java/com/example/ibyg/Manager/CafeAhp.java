@@ -25,10 +25,10 @@ public class CafeAhp extends BasicActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.yesButton:  //예
-                myStartActivity(CafeManager0.class);
+                myStartActivity(CafeManager.class);
                 break;
             case R.id.noButton:  //아니오
-                myStartActivity(CafeManager.class);
+                myStartActivity(CafeManager0.class);
                 break;
 
 

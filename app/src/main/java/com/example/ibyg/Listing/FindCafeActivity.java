@@ -1,4 +1,4 @@
-package com.example.ibyg;
+package com.example.ibyg.Listing;
 
 import android.os.Bundle;
 import android.widget.ProgressBar;
@@ -6,7 +6,9 @@ import android.widget.ProgressBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ibyg.BasicActivity;
 import com.example.ibyg.Manager.OwnerInfo;
+import com.example.ibyg.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -16,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindCafeActivity extends BasicActivity {
-
     private RecyclerView recyclerView;
     private FindAdapter adapter;
     private List<OwnerInfo> cafeList;
@@ -29,7 +30,7 @@ public class FindCafeActivity extends BasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_cafe);
 
-        setToolbarTitle("카페 관리");
+        setToolbarTitle("내 주변 카페");
 
         recyclerView = findViewById(R.id.recyclerview_find);
         recyclerView.setHasFixedSize(true);

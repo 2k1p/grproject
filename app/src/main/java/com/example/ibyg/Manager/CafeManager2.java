@@ -23,7 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
-
+//수정삭제 현재 안쓰는기능
 public class CafeManager2 extends BasicActivity implements View.OnClickListener {
     private static final String TAG = "CafeManager2";
 
