@@ -1,7 +1,5 @@
 package com.example.ibyg.Listing;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ibyg.AhpActivity;
 import com.example.ibyg.BasicActivity;
 import com.example.ibyg.Manager.OwnerInfo;
 import com.example.ibyg.R;
@@ -104,8 +101,9 @@ public class FindCafeActivity extends BasicActivity {
         public void onClick(View v) {
             switch(v.getId()){
                 case R.id.mapButton:        //카카오맵으로
-                    Intent intent = new Intent (Intent.ACTION_VIEW, Uri.parse("https://map.kakao.com"));
-                    startActivity(intent);
+//                    Intent intent = new Intent (Intent.ACTION_VIEW, Uri.parse("https://map.kakao.com"));
+//                    startActivity(intent);
+                    myStartActivity(KakaoWeb.class);
                     break;
                 case R.id.ahpButton:        //카페 선택 도우미 화면으로
                     myStartActivity(AhpActivity.class);
