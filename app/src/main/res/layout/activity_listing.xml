@@ -15,17 +15,26 @@
         android:layout_height="match_parent"
         android:background="#6f4e37">
 
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FDFFFFFF"
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="주소설정" />
 
         <Button
             android:id="@+id/addButton"
-            android:layout_width="190dp"
-            android:layout_height="30dp"
+            android:layout_width="189dp"
+            android:layout_height="33dp"
             android:layout_above="@+id/bottomBar"
             android:layout_alignParentStart="true"
             android:layout_gravity="center"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="7dp"
             android:background="#C4FFFFFF"
             android:drawableLeft="@drawable/iconfinder_coffee"
             android:drawableTint="#6f4e37"
@@ -49,24 +58,12 @@
                 android:background="@drawable/white_grey_border_top"
                 app:menu="@menu/bottom_navigation_menu">
 
-
             </com.google.android.material.bottomnavigation.BottomNavigationView>
 
         </RelativeLayout>
 
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FDFFFFFF"
-            android:gravity="center"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:text="주소설정" />
-
-
     </RelativeLayout>
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -87,6 +84,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="알 고 가"
+            android:layout_marginBottom="20dp"
             android:textColor="#FAFFFFFF"
             android:textSize="50sp"
             android:textStyle="bold" />
@@ -94,35 +92,18 @@
         <Button
             android:id="@+id/findcafeButton"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
-            android:background="#C4FFFFFF"
+            android:background="@drawable/cafe_image2"
             android:drawableRight="@drawable/iconfinder_location"
             android:paddingRight="10dp"
-            android:drawableTint="#6f4e37"
-            android:layout_marginBottom="10dp"
+            android:paddingLeft="30dp"
+            android:drawableTint="#ffffff"
             android:text="내 주변 카페 보기"
-            android:textColor="#6f4e37"
+            android:textColor="#ffffff"
             android:textSize="28sp"
             android:textStyle="bold" />
-
-
-        <Button
-            android:id="@+id/ahpButton"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:background="#C4FFFFFF"
-            android:paddingRight="10dp"
-            android:drawableRight="@drawable/iconfinder_check"
-            android:drawableTint="#6f4e37"
-            android:text="카페 선택 도우미"
-            android:textColor="#6f4e37"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
 
     </LinearLayout>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

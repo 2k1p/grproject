@@ -14,6 +14,8 @@ public class AhpActivity extends BasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ahp);
 
+        setToolbarTitle("카페 선택 도우미");
+
         final EditText edittext = (EditText) findViewById(R.id.editText);
         final EditText edittext2 = (EditText) findViewById(R.id.editText2);
         final EditText edittext3 = (EditText) findViewById(R.id.editText3);
