@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.example.ibyg.Manager.OwnerInfo;
 import com.example.ibyg.R;
-
+//
 //내 주변 카페, 해당카페 누를시 카페정보 보여줄 화면 어뎁터
 public class FindAdapter2 extends LinearLayout {
     private Context context;

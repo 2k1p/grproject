@@ -7,12 +7,14 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.ibyg.BasicActivity;
+import com.example.ibyg.Qna.QnaAdd;
 import com.example.ibyg.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -42,6 +44,16 @@ public class LoginFragment extends BasicActivity {
         setContentView(R.layout.fragment_login);
         mAuth = FirebaseAuth.getInstance();
 
+
+        Button button2 = findViewById(R.id.qnaButton);  //개발자에게 문의하기
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    myStartActivity(QnaAdd.class);
+            }
+        });
+
+
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -63,7 +75,7 @@ public class LoginFragment extends BasicActivity {
             }
         });
 
-        SignInButton button = (SignInButton) findViewById(R.id.findcafeButton);
+        SignInButton button = (SignInButton) findViewById(R.id.findcafeButton); //구글로그인
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

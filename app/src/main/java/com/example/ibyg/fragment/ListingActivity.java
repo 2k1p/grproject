@@ -12,7 +12,6 @@ import com.example.ibyg.AhpActivity;
 import com.example.ibyg.BasicActivity;
 import com.example.ibyg.Listing.FindCafeActivity;
 import com.example.ibyg.Login.SignUpActivity;
-import com.example.ibyg.Qna.QnaAdd;
 import com.example.ibyg.R;
 import com.example.ibyg.SetLocActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -36,7 +35,6 @@ public class ListingActivity extends BasicActivity {
         findViewById(R.id.findcafeButton).setOnClickListener(onClickListener);
         findViewById(R.id.ahpButton).setOnClickListener(onClickListener);
         //findViewById(R.id.reviewButton).setOnClickListener(onClickListener);
-        findViewById(R.id.qnaButton).setOnClickListener(onClickListener);
         findViewById(R.id.addButton).setOnClickListener(onClickListener);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
@@ -50,7 +48,6 @@ public class ListingActivity extends BasicActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.ic_android:
-
                         break;
 
                     case R.id.ic_books:
@@ -85,9 +82,9 @@ public class ListingActivity extends BasicActivity {
 //                case R.id.reviewButton:
 //                    myStartActivity(ReviewAdd.class);
 //                    break;
-                case R.id.qnaButton:
-                    myStartActivity(QnaAdd.class);
-                    break;
+//                case R.id.qnaButton:
+//                    myStartActivity(QnaAdd.class);
+//                    break;
                 case R.id.addButton:
                     myStartActivity(SignUpActivity.class);
                     break;
