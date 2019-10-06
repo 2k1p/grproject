@@ -1,4 +1,4 @@
-package com.example.ibyg;
+package com.example.ibyg.Listing;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -7,12 +7,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.ibyg.BasicActivity;
+import com.example.ibyg.R;
+
 
 public class AhpActivity extends BasicActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ahp);
+
+        setToolbarTitle("카페 선택 도우미");
 
         final EditText edittext = (EditText) findViewById(R.id.editText);
         final EditText edittext2 = (EditText) findViewById(R.id.editText2);
