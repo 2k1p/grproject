@@ -1,5 +1,6 @@
 package com.example.ibyg.Listing;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -11,11 +12,16 @@ import androidx.annotation.Nullable;
 
 import com.example.ibyg.Manager.OwnerInfo;
 import com.example.ibyg.R;
+
+import java.util.ArrayList;
+
 //
 //내 주변 카페, 해당카페 누를시 카페정보 보여줄 화면 어뎁터
 public class FindAdapter2 extends LinearLayout {
     private Context context;
     private int moreIndex = -1;
+    private Activity activity;
+    private ArrayList<OwnerInfo> mDataset;
 
     public FindAdapter2(Context context) {
         super(context);
@@ -41,6 +47,9 @@ public class FindAdapter2 extends LinearLayout {
     }
 
     public void setPostInfo(OwnerInfo ownerInfo){
+
+
+
         TextView text11 = findViewById(R.id.Text11);
         text11.setText("카페명");
         TextView text1 = findViewById(R.id.Text1);
@@ -60,6 +69,27 @@ public class FindAdapter2 extends LinearLayout {
         text14.setText("영업시간");
         TextView text4 = findViewById(R.id.Text4);
         text4.setText(ownerInfo.geteditTexttime());
+
+
+        TextView text15 = findViewById(R.id.Text15);    //메뉴이름
+        text15.setText(ownerInfo.geteditCoffee1());
+        TextView text5 = findViewById(R.id.Text5);      //메뉴가격
+        text5.setText(ownerInfo.geteditPrice1());
+
+        TextView text16 = findViewById(R.id.Text16);
+        text16.setText(ownerInfo.geteditCoffee2());
+        TextView text6 = findViewById(R.id.Text6);
+        text6.setText(ownerInfo.geteditPrice2());
+
+        TextView text17 = findViewById(R.id.Text17);
+        text17.setText(ownerInfo.geteditCoffee3());
+        TextView text7 = findViewById(R.id.Text7);
+        text7.setText(ownerInfo.geteditPrice3());
+
+        TextView text18 = findViewById(R.id.Text18);
+        text18.setText(ownerInfo.geteditCoffee4());
+        TextView text8 = findViewById(R.id.Text8);
+        text8.setText(ownerInfo.geteditPrice4());
 
     }
 }

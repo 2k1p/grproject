@@ -71,7 +71,7 @@
 
         <activity android:name=".fragment.LoginFragment"></activity>
 
-
+        <activity android:name=".Imagetest"></activity>
 
 
 
