@@ -2,9 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ibyg">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -15,8 +22,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fragment.ListingActivity">
 
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
+        <activity android:name=".fragment.ListingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,51 +51,37 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="http"
-                    android:host="google.com" />
+                    android:host="google.com"
+                    android:scheme="http" />
             </intent-filter>
         </activity>
         <activity
             android:name=".Login.LoginActivity"
-            android:parentActivityName=".Login.SignUpActivity">
-        </activity>
-        <activity android:name=".Login.SignUpActivity"></activity>
+            android:parentActivityName=".Login.SignUpActivity"></activity>
+        <activity android:name=".Login.SignUpActivity" />
         <activity
             android:name=".Login.PasswordResetActivity"
-            android:parentActivityName=".Login.LoginActivity">
-        </activity>
-
-        <activity android:name=".BasicActivity"></activity>
-        <activity android:name=".Login.MemberInitActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".SetLocActivity"></activity>
-
-        <activity android:name=".Listing.FindCafeActivity"></activity>
-        <activity android:name=".Listing.FindView2"></activity>
-
-        <activity android:name=".AhpActivity"></activity>
-        <activity android:name=".Review.ReviewActivity"></activity>
-        <activity android:name=".Review.ReviewAdd"></activity>
-
-        <activity android:name=".Notice.NoticeManagement"></activity>
-        <activity android:name=".Notice.NoticeAdd"></activity>
-        <activity android:name=".Notice.GalleryActivity"></activity>
-
-        <activity android:name=".Manager.CafeAhp"></activity>
-        <activity android:name=".Manager.CafeManager"></activity>
-        <activity android:name=".Manager.CafeManager0"></activity>
-        <activity android:name=".Manager.CafeActivity"></activity>
-        <activity android:name=".Manager.CafeManager2"></activity>
-
-        <activity android:name=".Qfreq.Qadd"></activity>
-        <activity android:name=".Qna.QnaAdd"></activity>
-
-        <activity android:name=".fragment.LoginFragment"></activity>
-
-
-
-
-
+            android:parentActivityName=".Login.LoginActivity"></activity>
+        <activity android:name=".BasicActivity" />
+        <activity android:name=".Login.MemberInitActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".SetLocActivity" />
+        <activity android:name=".Listing.FindCafeActivity" />
+        <activity android:name=".Listing.FindView2" />
+        <activity android:name=".AhpActivity" />
+        <activity android:name=".Review.ReviewActivity" />
+        <activity android:name=".Review.ReviewAdd" />
+        <activity android:name=".Notice.NoticeManagement" />
+        <activity android:name=".Notice.NoticeAdd" />
+        <activity android:name=".Notice.GalleryActivity" />
+        <activity android:name=".Manager.CafeAhp" />
+        <activity android:name=".Manager.CafeManager" />
+        <activity android:name=".Manager.CafeManager0" />
+        <activity android:name=".Manager.CafeActivity" />
+        <activity android:name=".Manager.CafeManager2" />
+        <activity android:name=".Qfreq.Qadd" />
+        <activity android:name=".Qna.QnaAdd" />
+        <activity android:name=".fragment.LoginFragment" />
     </application>
 
 </manifest>

@@ -4,13 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import com.example.ibyg.BasicActivity;
 import com.example.ibyg.Login.MemberInitActivity;
+import com.example.ibyg.MapsActivity;
 import com.example.ibyg.R;
 import com.example.ibyg.Login.SignUpActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,6 +44,25 @@ public class CafeManager extends BasicActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cafemanager);
+
+        TextView textView1 = (TextView)findViewById(R.id.textView35);
+        TextView textView2 = (TextView)findViewById(R.id.textView36);
+
+        Intent secmyIntent = getIntent();
+
+        String lat = secmyIntent.getStringExtra("위도");
+        textView1.setText(lat);
+
+        String lng = secmyIntent.getStringExtra("경도");
+        textView2.setText(lng);
+
+        Button button = (Button)findViewById(R.id.button6);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myStartActivity(MapsActivity.class);
+            }
+        });
 
         setToolbarTitle("카페 등록");  //액션바 제목설정
         LinearLayout layout = findViewById(R.id.ahpshow);
@@ -90,6 +112,11 @@ public class CafeManager extends BasicActivity implements View.OnClickListener {
         editTextprice = findViewById(R.id.CafeEdit8);
 
         findViewById(R.id.button_save).setOnClickListener(this);
+
+
+
+
+
     }
 
 
@@ -135,12 +162,15 @@ public class CafeManager extends BasicActivity implements View.OnClickListener {
     }
 
 
+
     @Override
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.button_save:  //등록버튼
                 saveProduct();
                 break;
+
+
 
         }
 
