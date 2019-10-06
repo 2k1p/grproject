@@ -50,8 +50,9 @@
 
         <activity android:name=".Listing.FindCafeActivity"></activity>
         <activity android:name=".Listing.FindView2"></activity>
+        <activity android:name=".Listing.KakaoWeb"></activity>
 
-        <activity android:name=".AhpActivity"></activity>
+        <activity android:name=".Listing.AhpActivity"></activity>
         <activity android:name=".Review.ReviewActivity"></activity>
         <activity android:name=".Review.ReviewAdd"></activity>
 
@@ -70,7 +71,7 @@
 
         <activity android:name=".fragment.LoginFragment"></activity>
 
-
+        <activity android:name=".Imagetest"></activity>
 
 
 
