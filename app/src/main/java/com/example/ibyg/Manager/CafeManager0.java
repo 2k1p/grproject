@@ -115,7 +115,7 @@ public class CafeManager0 extends BasicActivity implements View.OnClickListener 
         String price3 = editPrice3.getText().toString().trim();
         String price4 = editPrice4.getText().toString().trim();
 
-        OwnerInfo ownerInfo = new OwnerInfo(name, address, phone, time, null, null, null, null, coffee1, coffee2, coffee3, coffee4, price1, price2, price3, price4);
+        OwnerInfo ownerInfo = new OwnerInfo(name, address, phone, time, null, null, null, null, coffee1, coffee2, coffee3, coffee4, price1, price2, price3, price4, null);
 
         if(name.length() > 0 && address.length() > 0 && phone.length() > 0 && time.length() > 0
                 ){

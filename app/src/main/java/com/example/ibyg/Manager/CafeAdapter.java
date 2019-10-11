@@ -4,11 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.ibyg.R;
 
 import java.util.List;
@@ -36,6 +38,7 @@ public class CafeAdapter extends RecyclerView.Adapter<CafeAdapter.ProductViewHol
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         OwnerInfo ownerInfo = cafeList.get(position);
 
+        Glide.with(mCtx).load(ownerInfo.getPhotoUrl()).into(holder.image);
         holder.text_1.setText("카페명");
         holder.text_2.setText("주소");
         holder.text_3.setText("전화번호");
@@ -52,6 +55,7 @@ public class CafeAdapter extends RecyclerView.Adapter<CafeAdapter.ProductViewHol
         holder.textViewSeat.setText(ownerInfo.geteditTextseat() + "개");
         holder.textViewConsent.setText(ownerInfo.geteditTextconsent() + "개");
         holder.textViewPrice.setText(ownerInfo.geteditTextprice() + "원");
+
     }
 
     @Override
@@ -63,11 +67,13 @@ public class CafeAdapter extends RecyclerView.Adapter<CafeAdapter.ProductViewHol
 
         TextView textViewName, textViewAddress, textViewPhone, textViewTime, textViewWifi, textViewSeat, textViewConsent, textViewPrice;
         TextView text_1, text_2, text_3, text_4, text_5, text_6, text_7, text_8;
+        ImageView image;
         //Button update;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
 
+            image = itemView.findViewById(R.id.imageView);
             text_1 = itemView.findViewById(R.id.text_1);
             text_2 = itemView.findViewById(R.id.text_2);
             text_3 = itemView.findViewById(R.id.text_3);
