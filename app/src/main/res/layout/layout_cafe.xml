@@ -36,7 +36,7 @@
                     android:layout_weight="3"
                     android:text="TextView"
                     android:textColor="@android:color/black"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -46,7 +46,7 @@
                     android:layout_weight="1"
                     android:text="카페명"
                     android:textColor="@android:color/black"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -62,7 +62,7 @@
                     android:layout_weight="3"
                     android:text="TextView"
                     android:textColor="@android:color/black"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -72,7 +72,7 @@
                     android:layout_weight="1"
                     android:text="주소"
                     android:textColor="@android:color/black"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -88,7 +88,7 @@
                     android:layout_weight="3"
                     android:text="TextView"
                     android:textColor="@android:color/black"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -98,7 +98,7 @@
                     android:layout_weight="1"
                     android:text="전화번호"
                     android:textColor="@android:color/black"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -114,7 +114,7 @@
                     android:layout_weight="3"
                     android:text="TextView"
                     android:textColor="@android:color/black"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -124,7 +124,7 @@
                     android:layout_weight="1"
                     android:text="영업시간"
                     android:textColor="@android:color/black"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -148,7 +148,7 @@
                         android:layout_weight="3"
                         android:text="TextView"
                         android:textColor="@android:color/black"
-                        android:textSize="22sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -158,7 +158,7 @@
                         android:layout_weight="1"
                         android:text="와이파이"
                         android:textColor="@android:color/black"
-                        android:textSize="22sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -174,7 +174,7 @@
                         android:layout_weight="3"
                         android:text="TextView"
                         android:textColor="@android:color/black"
-                        android:textSize="22sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -184,7 +184,7 @@
                         android:layout_weight="1"
                         android:text="좌석수"
                         android:textColor="@android:color/black"
-                        android:textSize="22sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -200,7 +200,7 @@
                         android:layout_weight="3"
                         android:text="TextView"
                         android:textColor="@android:color/black"
-                        android:textSize="22sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -210,7 +210,7 @@
                         android:layout_weight="1"
                         android:text="콘센트"
                         android:textColor="@android:color/black"
-                        android:textSize="22sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -226,7 +226,7 @@
                         android:layout_weight="3"
                         android:text="TextView"
                         android:textColor="@android:color/black"
-                        android:textSize="22sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -236,7 +236,7 @@
                         android:layout_weight="1"
                         android:text="최소가격"
                         android:textColor="@android:color/black"
-                        android:textSize="22sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
