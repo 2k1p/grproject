@@ -45,13 +45,7 @@ public class LoginFragment extends BasicActivity {
         setContentView(R.layout.fragment_login);
         mAuth = FirebaseAuth.getInstance();
 
-        Button button3 = findViewById(R.id.imagebutton);  //개발자에게 문의하기
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myStartActivity(Imagetest.class);
-            }
-        });
+
 
         Button button2 = findViewById(R.id.qnaButton);  //개발자에게 문의하기
         button2.setOnClickListener(new View.OnClickListener() {

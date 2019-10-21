@@ -3,7 +3,6 @@ package com.example.ibyg.Manager;
 import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 //카페 정보를 받아오고, 보내줄 정보들
 public class OwnerInfo implements Serializable {
@@ -18,7 +17,6 @@ public class OwnerInfo implements Serializable {
     private String editTextseat;
     private String editTextconsent;
     private String editTextprice;
-    private ArrayList<String> contents;
 
     private String editCoffee1;
     private String editPrice1;
@@ -29,14 +27,16 @@ public class OwnerInfo implements Serializable {
     private String editCoffee4;
     private String editPrice4;
 
-    public OwnerInfo() {
+    private String photoUrl;
+
+    public OwnerInfo(){
 
     }
 
     public OwnerInfo(String editTextName, String editTextAddress, String editTextPhone, String editTexttime,
                      String editTextwifi, String editTextseat, String editTextconsent, String editTextprice,
                      String editCoffee1, String editPrice1, String editCoffee2, String editPrice2,
-                     String editCoffee3, String editPrice3, String editCoffee4, String editPrice4){
+                     String editCoffee3, String editPrice3, String editCoffee4, String editPrice4, String photoUrl){
         this.editTextName = editTextName;
         this.editTextAddress = editTextAddress;
         this.editTextPhone = editTextPhone;
@@ -54,7 +54,10 @@ public class OwnerInfo implements Serializable {
         this.editPrice3  = editPrice3 ;
         this.editCoffee4  = editCoffee4 ;
         this.editPrice4  = editPrice4 ;
+        this.photoUrl = photoUrl;
     }
+
+
 
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
@@ -111,10 +114,6 @@ public class OwnerInfo implements Serializable {
         this.editTextprice  = editTextprice ;
     }
 
-    public ArrayList<String> getContents(){ return this.contents; }
-    public void setContents(ArrayList<String> contents){
-        this.contents = contents;
-    }
 
     public String geteditCoffee1(){
         return this.editCoffee1;
@@ -154,5 +153,10 @@ public class OwnerInfo implements Serializable {
     public String geteditPrice4(){
         return this.editPrice4;
     }
-    public void seteditPrice4(String editPrice4){ this.editPrice4 = editPrice4;}}
+    public void seteditPrice4(String editPrice4){ this.editPrice4 = editPrice4;}
+
+    public String getPhotoUrl(){ return this.photoUrl; }
+    public void setPhotoUrl(String photoUrl){
+        this.photoUrl = photoUrl;
+    }}
 

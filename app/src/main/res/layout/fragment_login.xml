@@ -81,16 +81,6 @@
 
         </com.google.android.gms.common.SignInButton>
 
-        <Button
-            android:id="@+id/imagebutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="229dp"
-            android:layout_marginEnd="160dp"
-            android:text="테스트" />
-
     </RelativeLayout>
 
 

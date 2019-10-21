@@ -46,14 +46,12 @@
         <TextView
             android:id="@+id/textView35"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/textView36"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/button6"
@@ -92,7 +90,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/reviewimage"
+                android:id="@+id/cafeimage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -102,19 +100,10 @@
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/profileImageView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/reviewcontentsEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:gravity="top"
-                    android:inputType="textMultiLine" />
-            </LinearLayout>
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
@@ -349,100 +338,10 @@
             android:textColor="@color/colorAccent"
             android:textStyle="bold" />
 
-        <RelativeLayout
-            android:id="@+id/reviewbuttonsBackgroundLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#91646464"
-            android:visibility="gone">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:elevation="10dp"
-                app:cardCornerRadius="15dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="5dp">
-
-                    <Button
-                        android:id="@+id/reviewimageModify"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="이미지 수정" />
-
-                    <Button
-                        android:id="@+id/videoModify"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="비디오 수정" />
-
-                    <Button
-                        android:id="@+id/reviewdelete"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="삭제" />
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </RelativeLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone"
-            android:padding="10dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <EditText
-                    android:id="@+id/reviewtitleEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="제목"
-                    android:inputType="textPersonName" />
 
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
 
-
-
-                    <Button
-                        android:id="@+id/video"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="비디오"
-                        android:visibility="gone" />
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/reviewcheck"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:text="등록하기"
-                    android:background="#2DA6E8"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-        </ScrollView>
 
 
     </LinearLayout>

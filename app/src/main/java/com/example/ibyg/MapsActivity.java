@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ibyg.Listing.FindCafeActivity;
 import com.example.ibyg.Manager.CafeManager;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -54,6 +55,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
+        Button button = (Button)findViewById(R.id.button7);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myStartActivity(FindCafeActivity.class);
+            }
+        });
+
 
 
     }
@@ -73,7 +82,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng gwanghwamoon = new LatLng(37.9038958, 127.0374742);
+        LatLng gwanghwamoon = new LatLng(37.576074, 126.976766);
         mMap.addMarker(new MarkerOptions().position(gwanghwamoon).title("광화문"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(gwanghwamoon));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f)); //카메라 줌
@@ -109,6 +118,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     mMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f)); //카메라 줌
                     final Intent myIntent = new Intent(getApplication(), CafeManager.class);
 
+                    /*
                     double res1 = location.getLatitude();
                     double res2 = location.getLongitude();
 
@@ -121,7 +131,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     myIntent.putExtra("경도", res4);
 
                     startActivity(myIntent);
-
+*/
 
                 }
             }

@@ -11,7 +11,18 @@ android:layout_width="match_parent"
         android:layout_marginTop="500dp"
         android:background="#2DA6E8"
         android:onClick="onLastLocationButtonClicked"
-        android:text="현재 위치를 저장"
+        android:text="현재 위치 찾기"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="560dp"
+        android:background="#2DA6EB"
+        android:text="이 위치로 설정"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 

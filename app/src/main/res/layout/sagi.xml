@@ -15,23 +15,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="120dp"
             android:orientation="vertical">
-
-            <Button
-                android:id="@+id/ahpButton"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:background="#C4FFFFFF"
-                android:drawableLeft="@drawable/iconfinder_check"
-                android:paddingLeft="10dp"
-                android:paddingRight="30dp"
-                android:text="원하는 카페찾기"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/mapButton"
@@ -40,7 +25,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:background="#C4FFFFFF"
-                android:drawableLeft="@drawable/iconfinder_navigation"
+                android:drawableLeft="@drawable/iconfinder_map"
                 android:paddingLeft="10dp"
                 android:paddingRight="30dp"
                 android:text="길찾기"
@@ -48,19 +33,15 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/location"
+            <TextView
+                android:id="@+id/textView9"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:background="#C4FFFFFF"
-                android:drawableLeft="@drawable/iconfinder_map"
-                android:paddingLeft="10dp"
-                android:paddingRight="30dp"
-                android:text="현재 위치 설정"
-                android:textColor="#000000"
-                android:textSize="20sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="계산 결과에 의해 정렬되었습니다!"
+                android:textColor="#DA6F4E37"
+                android:textSize="19dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -69,7 +50,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="180dp"
+            android:layout_marginTop="120dp"
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
