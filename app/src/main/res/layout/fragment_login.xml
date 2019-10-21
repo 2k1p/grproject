@@ -9,27 +9,58 @@
     tools:context=".fragment.LoginFragment">
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:background="#2DA6E8"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#DA6F4E37">
 
+
+        <Button
+            android:id="@+id/qnaButton"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_above="@+id/bottomBar"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:background="#C4FFFFFF"
+            android:text="개발자에게 문의하기"
+            android:textColor="#6f4e37"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_anchorGravity="center" />
 
         <RelativeLayout
+            android:id="@+id/bottomBar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/bottomBar"
             android:layout_alignParentBottom="true">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavView_Bar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/bottomNavView_Bar"
                 android:background="@drawable/white_grey_border_top"
                 app:menu="@menu/bottom_navigation_menu">
 
 
             </com.google.android.material.bottomnavigation.BottomNavigationView>
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="187dp"
+            android:layout_height="27dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="113dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginEnd="111dp"
+            android:layout_marginRight="120dp"
+            android:layout_marginBottom="663dp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:text="다른 구글계정으로 로그인 하기" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/findcafeButton"
@@ -50,22 +81,9 @@
 
         </com.google.android.gms.common.SignInButton>
 
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="187dp"
-            android:layout_height="27dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="113dp"
-            android:layout_marginTop="160dp"
-            android:layout_marginEnd="111dp"
-            android:layout_marginRight="120dp"
-            android:layout_marginBottom="663dp"
-            android:gravity="center"
-            android:text="다른 구글계정으로 로그인 하기" />
-
-
     </RelativeLayout>
+
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

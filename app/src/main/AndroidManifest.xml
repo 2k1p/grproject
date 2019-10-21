@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ibyg">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -43,6 +44,12 @@
             android:parentActivityName=".Login.LoginActivity">
         </activity>
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <activity android:name=".Listing.sagi"></activity>
+
+        <activity android:name=".MapsActivity"></activity>
         <activity android:name=".BasicActivity"></activity>
         <activity android:name=".Login.MemberInitActivity"></activity>
         <activity android:name=".MainActivity"></activity>
@@ -50,8 +57,9 @@
 
         <activity android:name=".Listing.FindCafeActivity"></activity>
         <activity android:name=".Listing.FindView2"></activity>
+        <activity android:name=".Listing.KakaoWeb"></activity>
 
-        <activity android:name=".AhpActivity"></activity>
+        <activity android:name=".Listing.AhpActivity"></activity>
         <activity android:name=".Review.ReviewActivity"></activity>
         <activity android:name=".Review.ReviewAdd"></activity>
 
@@ -70,7 +78,7 @@
 
         <activity android:name=".fragment.LoginFragment"></activity>
 
-
+        <activity android:name=".Imagetest"></activity>
 
 
 

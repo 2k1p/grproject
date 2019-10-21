@@ -88,7 +88,7 @@ public class CafeManager2 extends BasicActivity implements View.OnClickListener 
         String consent = editTextconsent.getText().toString().trim();
         String price = editTextprice.getText().toString().trim();
 
-        OwnerInfo p = new OwnerInfo(name, address, phone, time, wifi, seat, consent, price);
+        OwnerInfo p = new OwnerInfo(name, address, phone, time, wifi, seat, consent, price, null, null,null,null,null,null,null,null,null);
 
         db.collection("owner_cafe").document(ownerInfo.getId())
                 .update(

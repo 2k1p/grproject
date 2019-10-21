@@ -5,14 +5,12 @@
 
         <item
             android:id="@+id/ic_android"
-            android:icon="@drawable/ic_free_breakfast_black_24dp"
-            android:title="카페"
-            />
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="홈" />
         <item
             android:id="@+id/ic_books"
-            android:icon="@drawable/ic_person_black_24dp"
-            android:title="로그인"
-            />
+            android:icon="@drawable/iconfinder_configuration7"
+            android:title="설정" />
 
 
 
