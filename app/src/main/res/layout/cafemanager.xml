@@ -20,17 +20,17 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:gravity="center"
-            android:text="카페 정보가 표시되는 곳입니다!" />
+            android:text="카페 정보가 표시되는 곳 입니다!" />
 
         <EditText
-            android:id="@+id/CafeEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/edittext_background"
-            android:hint="카페이름"
-            android:padding="10dp" />
+        android:id="@+id/CafeEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/edittext_background"
+        android:hint="카페이름"
+        android:padding="10dp" />
 
         <EditText
             android:id="@+id/CafeEdit2"
@@ -42,6 +42,25 @@
             android:hint="주소"
             android:padding="10dp" />
 
+
+        <TextView
+            android:id="@+id/textView35"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#2DA6E8"
+            android:text="내 위치 지정하기"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/CafeEdit3"
@@ -62,6 +81,32 @@
             android:background="@drawable/edittext_background"
             android:hint="오픈시간~마감시간"
             android:padding="10dp" />
+
+
+        <LinearLayout
+            android:id="@+id/reviewcontentsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/cafeimage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="#2DA6E8"
+                android:text="카페사진 업로드하기"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/profileImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
 
 
         <LinearLayout
@@ -138,16 +183,165 @@
         </LinearLayout>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="3dp"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="20dp"
+                android:background="#2DA6E8"
+                android:scrollbarSize="2dp" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="메뉴를 등록해주세요!" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/CafeEdit9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/edittext_background"
+                    android:hint="메뉴이름"
+                    android:padding="10dp" />
+
+                <EditText
+                    android:id="@+id/CafeEdit10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/edittext_background"
+                    android:hint="메뉴가격"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/CafeEdit11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/edittext_background"
+                    android:hint="메뉴이름"
+                    android:padding="10dp" />
+
+                <EditText
+                    android:id="@+id/CafeEdit12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/edittext_background"
+                    android:hint="메뉴가격"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/CafeEdit13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/edittext_background"
+                    android:hint="메뉴이름"
+                    android:padding="10dp" />
+
+                <EditText
+                    android:id="@+id/CafeEdit14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/edittext_background"
+                    android:hint="메뉴가격"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/CafeEdit15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/edittext_background"
+                    android:hint="메뉴이름"
+                    android:padding="10dp" />
+
+                <EditText
+                    android:id="@+id/CafeEdit16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/edittext_background"
+                    android:hint="메뉴가격"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
         <Button
             android:id="@+id/button_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:background="#2DA6E8"
-
             android:text="등록하기"
             android:textColor="@color/colorAccent"
             android:textStyle="bold" />
+
+
+
+
+
 
 
     </LinearLayout>

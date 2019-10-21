@@ -30,6 +30,15 @@ public class CafeManager0 extends BasicActivity implements View.OnClickListener 
     private EditText editTextPhone;
     private EditText editTexttime;
 
+    private EditText editCoffee1;
+    private EditText editCoffee2;
+    private EditText editCoffee3;
+    private EditText editCoffee4;
+    private EditText editPrice1;
+    private EditText editPrice2;
+    private EditText editPrice3;
+    private EditText editPrice4;
+
     private FirebaseFirestore db;
 
     @Override
@@ -78,6 +87,14 @@ public class CafeManager0 extends BasicActivity implements View.OnClickListener 
         editTextPhone = findViewById(R.id.CafeEdit3);
         editTexttime = findViewById(R.id.CafeEdit4);
 
+        editCoffee1 = findViewById(R.id.CafeEdit9);
+        editCoffee2 = findViewById(R.id.CafeEdit10);
+        editCoffee3 = findViewById(R.id.CafeEdit11);
+        editCoffee4 = findViewById(R.id.CafeEdit12);
+        editPrice1 = findViewById(R.id.CafeEdit13);
+        editPrice2 = findViewById(R.id.CafeEdit14);
+        editPrice3 = findViewById(R.id.CafeEdit15);
+        editPrice4 = findViewById(R.id.CafeEdit16);
 
         findViewById(R.id.button_save).setOnClickListener(this);
     }
@@ -89,7 +106,16 @@ public class CafeManager0 extends BasicActivity implements View.OnClickListener 
         String phone = editTextPhone.getText().toString().trim();
         String time = editTexttime.getText().toString().trim();
 
-        OwnerInfo ownerInfo = new OwnerInfo(name, address, phone, time, null, null, null, null);
+        String coffee1 = editCoffee1.getText().toString().trim();
+        String coffee2 = editCoffee2.getText().toString().trim();
+        String coffee3 = editCoffee3.getText().toString().trim();
+        String coffee4 = editCoffee4.getText().toString().trim();
+        String price1 = editPrice1.getText().toString().trim();
+        String price2 = editPrice2.getText().toString().trim();
+        String price3 = editPrice3.getText().toString().trim();
+        String price4 = editPrice4.getText().toString().trim();
+
+        OwnerInfo ownerInfo = new OwnerInfo(name, address, phone, time, null, null, null, null, coffee1, coffee2, coffee3, coffee4, price1, price2, price3, price4, null);
 
         if(name.length() > 0 && address.length() > 0 && phone.length() > 0 && time.length() > 0
                 ){
