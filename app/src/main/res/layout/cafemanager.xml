@@ -20,17 +20,17 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:gravity="center"
-            android:text="카페 정보가 표시되는 곳입니다!" />
+            android:text="카페 정보가 표시되는 곳 입니다!" />
 
         <EditText
-            android:id="@+id/CafeEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/edittext_background"
-            android:hint="카페이름"
-            android:padding="10dp" />
+        android:id="@+id/CafeEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/edittext_background"
+        android:hint="카페이름"
+        android:padding="10dp" />
 
         <EditText
             android:id="@+id/CafeEdit2"
@@ -42,6 +42,25 @@
             android:hint="주소"
             android:padding="10dp" />
 
+
+        <TextView
+            android:id="@+id/textView35"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#2DA6E8"
+            android:text="내 위치 지정하기"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/CafeEdit3"

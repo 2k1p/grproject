@@ -24,7 +24,7 @@ public class ListingActivity extends BasicActivity {
         setContentView(R.layout.activity_listing);
 
 
-        findViewById(R.id.textView9).setOnClickListener(onClickListener);
+//        findViewById(R.id.textView9).setOnClickListener(onClickListener);
         findViewById(R.id.findcafeButton).setOnClickListener(onClickListener);
         //findViewById(R.id.ahpButton).setOnClickListener(onClickListener);
         //findViewById(R.id.reviewButton).setOnClickListener(onClickListener);
@@ -62,9 +62,9 @@ public class ListingActivity extends BasicActivity {
         @Override
         public void onClick(View v) {
             switch(v.getId()){
-                case R.id.textView9:        //주소설정
+                /*-case R.id.textView9:        //주소설정
                     myStartActivity(SetLocActivity.class);
-                    break;
+                    break;*/
                 case R.id.findcafeButton:   //내 주변 카페 보기
                     myStartActivity(FindCafeActivity.class);
                     break;
