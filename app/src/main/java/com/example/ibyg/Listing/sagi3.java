@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ibyg.BasicActivity;
 import com.example.ibyg.Manager.OwnerInfo;
-import com.example.ibyg.MapsActivity;
 import com.example.ibyg.R;
 import com.example.ibyg.fragment.ListingActivity;
 import com.example.ibyg.fragment.LoginFragment;
@@ -21,12 +20,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindCafeActivity extends BasicActivity {
+public class sagi3 extends BasicActivity {
     private RecyclerView recyclerView;
     private FindAdapter adapter;
     private List<OwnerInfo> cafeList;
@@ -37,15 +37,12 @@ public class FindCafeActivity extends BasicActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_cafe);
+        setContentView(R.layout.sagi);
 
         setToolbarTitle("내 주변 카페");
 
-
-
         findViewById(R.id.mapButton).setOnClickListener(onClickListener);
-        findViewById(R.id.ahpButton).setOnClickListener(onClickListener);
-        findViewById(R.id.location).setOnClickListener(onClickListener);
+
 
         //하단 네비게이션바 추가
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
@@ -83,7 +80,7 @@ public class FindCafeActivity extends BasicActivity {
         db = FirebaseFirestore.getInstance();
 
 
-        db.collection("owner_cafe").get()
+        db.collection("owner_cafe").orderBy("editTextseat", Query.Direction.DESCENDING).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -109,15 +106,10 @@ public class FindCafeActivity extends BasicActivity {
 //                    startActivity(intent);
                     myStartActivity(KakaoWeb.class);
                     break;
-                case R.id.ahpButton:        //카페 선택 도우미 화면으로
-                    myStartActivity(AhpActivity.class);
-                    break;
-                case R.id.location:
-                    myStartActivity(MapsActivity.class);
-                    break;
-
             }
         }
     };
 
 }
+
+
