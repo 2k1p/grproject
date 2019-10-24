@@ -20,6 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class sagi extends BasicActivity {
         setToolbarTitle("내 주변 카페");
 
         findViewById(R.id.mapButton).setOnClickListener(onClickListener);
+
 
         //하단 네비게이션바 추가
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
@@ -78,7 +80,7 @@ public class sagi extends BasicActivity {
         db = FirebaseFirestore.getInstance();
 
 
-        db.collection("owner_cafe").get()
+        db.collection("owner_cafe").orderBy("editTextName", Query.Direction.DESCENDING).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
