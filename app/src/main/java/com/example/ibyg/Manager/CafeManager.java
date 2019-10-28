@@ -21,7 +21,6 @@ import androidx.core.content.ContextCompat;
 import com.example.ibyg.BasicActivity;
 import com.example.ibyg.Login.MemberInitActivity;
 import com.example.ibyg.Login.SignUpActivity;
-import com.example.ibyg.MapsActivity;
 import com.example.ibyg.Notice.GalleryActivity;
 import com.example.ibyg.R;
 import com.google.android.gms.tasks.Continuation;
@@ -97,7 +96,6 @@ public class CafeManager extends BasicActivity implements View.OnClickListener {
 
 
 
-        findViewById(R.id.button6).setOnClickListener(this);
         findViewById(R.id.button_save).setOnClickListener(this);
         findViewById(R.id.cafeimage).setOnClickListener(this);
         profileImageVIew = findViewById(R.id.profileImageView);
@@ -142,9 +140,6 @@ public class CafeManager extends BasicActivity implements View.OnClickListener {
                 }else{
                     myStartActivity(GalleryActivity.class);
                 }
-                break;
-            case R.id.button6:
-                myStartActivity(MapsActivity.class);
                 break;
         }
 
@@ -236,6 +231,7 @@ public class CafeManager extends BasicActivity implements View.OnClickListener {
                     @Override
                     public void onSuccess(Void aVoid) {
                         startToast("카페정보 등록을 성공하였습니다.");
+                        myStartActivity(CafeActivity.class);
                         finish();
                     }
                 })
